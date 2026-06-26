@@ -1,0 +1,859 @@
+<nav class="nav on-hero" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+
+      <a href="#home" class="logo">
+        <img src="images/logo-horizontal.svg" alt="ComproPay">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Produtos</a></li>
+        <li><a href="#features">Benefícios Corporativos</a></li>
+        <li><a href="#for-who">Para Empresas</a></li>
+        <li><a href="#app">Para Colaboradores</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <a href="#contact" class="btn btn-nav">
+          <i class="fa-brands fa-whatsapp"></i>Entrar em contato
+        </a>
+      </div>
+
+      <button class="ham" id="ham" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<nav class="mob-nav" id="mobNav" aria-label="Menu mobile">
+  <a href="#services" onclick="closeMenu()">Produtos</a>
+  <a href="#features" onclick="closeMenu()">Benefícios Corporativos</a>
+  <a href="#for-who" onclick="closeMenu()">Para Empresas</a>
+  <a href="#app" onclick="closeMenu()">Para Colaboradores</a>
+  <a href="#contact" onclick="closeMenu()">Contato</a>
+  <a href="#contact" class="btn btn-nav" onclick="closeMenu()">
+    <i class="fa-brands fa-whatsapp"></i>Entrar em contato
+  </a>
+</nav>
+
+<main id="main-content">
+
+<!-- ================================================================
+     HERO
+================================================================ -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-orb hero-orb-1"></div>
+
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- Copy -->
+      <div>
+        <div class="tag tag-white fi">
+          <i class="fa-solid fa-bolt"></i>Benefícios corporativos + carteira digital
+        </div>
+
+        <h1 class="hero-title fi d1">
+          Benefícios e carteira digital num só app
+        </h1>
+
+        <p class="hero-sub fi d2">
+          Sua empresa centraliza alimentação, refeição e benefícios flexíveis. Colaboradores acompanham saldo, pagam pelo app e usam a rede credenciada.
+        </p>
+
+        <div class="hero-btns fi d3">
+          <a href="#contact" class="btn-pill">
+            Entrar em contato
+            <span class="btn-pill-icon"><i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a href="#features" class="btn btn-ghost-white btn-lg">
+            Ver recursos
+          </a>
+        </div>
+
+        <div class="hero-stats fi d4">
+          <div class="hero-stat-card">
+            <div class="hero-stat-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div>
+              <div class="stat-val stat-val-text">Benefícios flexíveis</div>
+              <div class="stat-lbl">Alimentação, refeição e saldo digital em uma só operação.</div>
+            </div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-icon"><i class="fa-solid fa-wallet"></i></div>
+            <div>
+              <div class="stat-val stat-val-text">Carteira digital integrada</div>
+              <div class="stat-lbl">Saldo, cartões e pagamentos centralizados no app.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual -->
+      <div class="hero-vis fi d2">
+        <div class="hero-vis-fx" aria-hidden="true">
+          <span class="hvfx hvfx-glow"></span>
+          <span class="hvfx hvfx-ring"></span>
+          <span class="hvfx hvfx-ring hvfx-ring-2"></span>
+          <span class="hvfx hvfx-blob"></span>
+          <span class="hvfx hvfx-dot hvfx-dot-1"></span>
+          <span class="hvfx hvfx-dot hvfx-dot-2"></span>
+          <span class="hvfx hvfx-dot hvfx-dot-3"></span>
+        </div>
+        <img src="images/img1.png" alt="Tela do aplicativo ComproPay com saldo, pagamentos e serviços" class="hero-phone-img" loading="eager" decoding="async">
+
+        <!-- Floating glass widgets -->
+        <div class="fc fc2">
+          <div class="fc-ico fc-ico-g"><i class="fa-solid fa-building-user"></i></div>
+          <div class="fc-body">
+            <div class="fc-lbl">Gestão centralizada</div>
+            <div class="fc-val g">248 colaboradores</div>
+            <span class="fc-delta up"><i class="fa-solid fa-arrow-up"></i>Benefícios ativos este mês</span>
+          </div>
+        </div>
+        <div class="fc fc3">
+          <div class="fc-ico fc-ico-p"><i class="fa-solid fa-users"></i></div>
+          <div class="fc-body">
+            <div class="fc-lbl">Pagamento aprovado</div>
+            <div class="fc-val">Rede credenciada</div>
+            <span class="fc-delta muted"><i class="fa-solid fa-mobile-screen"></i>Compra concluída pelo app</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     FOR WHO
+================================================================ -->
+<section class="for-who" id="for-who">
+  <div class="container">
+      <div class="for-who-hd">
+        <h2 class="sec-title fi d1">ComproPay para cada perfil</h2>
+        <p class="sec-desc fi d2">Empresa distribui benefícios. Colaborador usa no app. Lojista recebe na rede credenciada.</p>
+      </div>
+
+    <div class="sol-grid">
+
+      <!-- 1 · Lojistas — visual (painel de vendas) -->
+      <div class="sol-card is-visual tone-purple fi">
+        <div class="sol-badge badge-loja">
+          <div class="sb-line">Suas vendas subiram <b>18%</b></div>
+          <div class="sb-pill"><i class="fa-solid fa-arrow-trend-up"></i> melhor mês do ano</div>
+        </div>
+        <div class="sol-dash">
+          <div class="sol-dash-top">
+            <div>
+              <div class="sol-dash-lbl">Vendas no mês</div>
+              <div class="sol-dash-val">R$ 24.870</div>
+            </div>
+            <div class="sol-dash-chip"><i class="fa-solid fa-arrow-up"></i> 18%</div>
+          </div>
+          <div class="sol-bars">
+            <div class="sol-bar-wrap"><div class="sol-bar a" style="height:60%"></div><div class="sol-bar-lbl">Mar</div></div>
+            <div class="sol-bar-wrap"><div class="sol-bar b" style="height:78%"></div><div class="sol-bar-lbl">Abr</div></div>
+            <div class="sol-bar-wrap"><div class="sol-bar a" style="height:50%"></div><div class="sol-bar-lbl">Mai</div></div>
+            <div class="sol-bar-wrap"><div class="sol-bar b" style="height:40%"></div><div class="sol-bar-lbl">Jun</div></div>
+            <div class="sol-bar-wrap"><div class="sol-bar a" style="height:92%"></div><div class="sol-bar-lbl">Jul</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 · Lojistas — texto -->
+      <div class="sol-card is-text tone-soft fi d1">
+        <span class="sol-eyebrow"><i class="fa-solid fa-store"></i> Para Lojistas</span>
+        <h3 class="sol-h3">Aceite pagamentos e<br>aumente suas vendas</h3>
+        <p class="sol-lead">Entre na rede credenciada e comece a receber clientes com ticket alimentação, carteira digital e benefícios.</p>
+        <ul class="sol-list">
+          <li><i class="fa-solid fa-chevron-right"></i><span>Aceite pagamentos via app, cartão e Pix com facilidade</span></li>
+          <li><i class="fa-solid fa-chevron-right"></i><span>Visualize suas vendas em tempo real pelo painel digital</span></li>
+          <li><i class="fa-solid fa-chevron-right"></i><span>Receba também pagamentos de ticket alimentação</span></li>
+        </ul>
+        <a href="#contact" class="sol-btn">
+          <i class="fa-solid fa-rocket"></i> Quero vender com ComproPay
+        </a>
+      </div>
+
+      <!-- 3 · Usuários — texto -->
+      <div class="sol-card is-text tone-soft accent-orange sol-utext fi">
+        <span class="sol-eyebrow"><i class="fa-solid fa-id-card"></i> Para Usuários</span>
+        <h3 class="sol-h3">Pague e gerencie tudo<br>pelo seu celular</h3>
+        <p class="sol-lead">Cadastre seus cartões, gerencie seu saldo e use o ComproPay como ticket alimentação.</p>
+        <ul class="sol-list">
+          <li><i class="fa-solid fa-chevron-right"></i><span>Cadastre cartões e pague em estabelecimentos credenciados</span></li>
+          <li><i class="fa-solid fa-chevron-right"></i><span>Use como ticket alimentação oferecido pela sua empresa</span></li>
+          <li><i class="fa-solid fa-chevron-right"></i><span>Controle gastos e extrato diretamente pelo app</span></li>
+        </ul>
+        <a href="#app" class="sol-btn">
+          <i class="fa-solid fa-wallet"></i> Conhecer o app
+        </a>
+      </div>
+
+      <!-- 4 · Usuários — visual (app) -->
+      <div class="sol-card is-visual tone-purple sol-uvis fi d1">
+        <div class="sol-badge badge-user">
+          <div class="sb-line">João, você economizou <b>R$ 88,02</b></div>
+          <div class="sb-pill"><i class="fa-solid fa-sack-dollar"></i> Saldo R$ 2.400,03</div>
+        </div>
+        <img src="images/men.png" alt="Usuário ComproPay usando o aplicativo no celular" class="sol-user-photo" loading="lazy" decoding="async">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SERVICES
+================================================================ -->
+<section class="services" id="services">
+  <div class="sv-sticky">
+
+    <div class="sv-hd">
+      <h2 class="sec-title fi d1">Produtos e soluções<br>ComproPay</h2>
+      <p class="sec-desc fi d2">Uma plataforma pensada para empresas, colaboradores e lojistas: benefícios, carteira digital e pagamentos em um só lugar.</p>
+    </div>
+
+    <div class="sv-track-wrap">
+      <div class="sv-cards">
+
+        <div class="sv-card sv-card-1 fi">
+          <div class="sv-card-body">
+            <span class="sv-eyebrow">Para colaboradores</span>
+            <h3 class="sv-name">Carteira digital integrada</h3>
+            <p class="sv-desc">Saldo, cartões cadastrados, extrato e pagamentos reunidos em uma mesma experiência para uso diário no aplicativo.</p>
+            <a href="#features" class="sv-link"><i class="fa-solid fa-arrow-right"></i> Ver recursos</a>
+          </div>
+          <div class="sv-visual">
+            <div class="sv-vis-glow"></div>
+            <img src="images/moeda.png" alt="Moeda ComproPay" class="sv-vis-img sv-vis-coin" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="sv-card sv-card-2 fi d1">
+          <div class="sv-card-body">
+            <span class="sv-eyebrow">Para Empresas</span>
+            <h3 class="sv-name">Benefícios corporativos</h3>
+            <p class="sv-desc">Distribua alimentação, refeição e benefícios flexíveis com gestão simplificada, leitura clara e operação totalmente digital.</p>
+            <a href="#contact" class="sv-link"><i class="fa-solid fa-arrow-right"></i> Falar com especialista</a>
+          </div>
+          <div class="sv-visual">
+            <div class="sv-vis-glow"></div>
+            <img src="images/card.png" alt="Cartão ComproPay" class="sv-vis-img" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="sv-card sv-card-3 fi d2">
+          <div class="sv-card-body">
+            <span class="sv-eyebrow">Para Lojistas</span>
+            <h3 class="sv-name">Aceite pagamentos digitais</h3>
+            <p class="sv-desc">Credencie seu estabelecimento para receber pagamentos digitais e benefícios com mais agilidade no dia a dia da operação.</p>
+            <a href="#contact" class="sv-link sv-link-accent"><i class="fa-solid fa-arrow-right"></i> Solicitar credenciamento</a>
+          </div>
+          <div class="sv-visual">
+            <div class="sv-vis-glow"></div>
+            <img src="images/maquininha.png" alt="Maquininha ComproPay" class="sv-vis-img sv-vis-machine" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="sv-card sv-card-4 fi d3">
+          <div class="sv-card-body">
+            <span class="sv-eyebrow">Gestão e controle</span>
+            <h3 class="sv-name">Gestão e uso em tempo real</h3>
+            <p class="sv-desc">Empresas acompanham o que distribuem, colaboradores usam o saldo e lojistas consultam pagamentos com uma leitura simples.</p>
+            <a href="#app" class="sv-link"><i class="fa-solid fa-arrow-right"></i> Conhecer a experiência</a>
+          </div>
+          <div class="sv-visual">
+            <div class="sv-vis-glow"></div>
+            <img src="images/chart.png" alt="Gráficos e dashboard de gestão ComproPay" class="sv-vis-img" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     APP FEATURES GRID
+================================================================ -->
+<section class="feat" id="features">
+  <div class="container">
+    <div class="feat-hd">
+      <h2 class="sec-title fi d1">Tudo em um único app</h2>
+      <p class="sec-desc fi d2">Do saldo de benefícios ao pagamento na rede credenciada, tudo em uma experiência simples para empresas, colaboradores e lojistas.</p>
+    </div>
+
+    <div class="feat-grid">
+
+      <div class="feat-card feat-card-featured fi">
+        <div class="feat-copy">
+          <span class="feat-badge">Essencial</span>
+          <div class="feat-ico"><i class="fa-solid fa-wallet"></i></div>
+          <div class="feat-name">Saldo de benefícios</div>
+          <p class="feat-desc">Acompanhe ticket alimentação, ticket refeição e benefícios flexíveis em um só lugar, com leitura simples e uso imediato pelo app.</p>
+        </div>
+      </div>
+
+      <div class="feat-card feat-card-benefit fi d1">
+        <span class="feat-badge">App</span>
+        <div class="feat-ico"><i class="fa-solid fa-credit-card"></i></div>
+        <div class="feat-name">Carteira digital</div>
+        <p class="feat-desc">Concentre saldo, cartões cadastrados e pagamentos em uma experiência simples e segura.</p>
+      </div>
+
+      <div class="feat-card fi d2">
+        <span class="feat-badge">Uso diário</span>
+        <div class="feat-ico"><i class="fa-solid fa-qrcode"></i></div>
+        <div class="feat-name">Pagamento por app</div>
+        <p class="feat-desc">Pague com praticidade na rede credenciada, direto pelo celular e com confirmação em tempo real.</p>
+      </div>
+
+      <div class="feat-card feat-card-network fi d3">
+        <span class="feat-badge">Rede</span>
+        <div class="feat-ico"><i class="fa-solid fa-store"></i></div>
+        <div class="feat-name">Rede credenciada</div>
+        <p class="feat-desc">Encontre estabelecimentos habilitados para aceitar ComproPay perto de você.</p>
+      </div>
+
+      <div class="feat-card fi">
+        <span class="feat-badge">Controle</span>
+        <div class="feat-ico"><i class="fa-solid fa-receipt"></i></div>
+        <div class="feat-name">Extrato e controle</div>
+        <p class="feat-desc">Visualize movimentações, benefícios recebidos e uso do saldo em tempo real.</p>
+      </div>
+
+      <div class="feat-card fi d1">
+        <span class="feat-badge">Empresa</span>
+        <div class="feat-ico"><i class="fa-solid fa-building"></i></div>
+        <div class="feat-name">Gestão centralizada</div>
+        <p class="feat-desc">Empresas acompanham benefícios e pagamentos com mais controle e menos burocracia.</p>
+      </div>
+
+      <div class="feat-card feat-card-wide fi d2">
+        <span class="feat-badge">Lojista</span>
+        <div class="feat-ico"><i class="fa-solid fa-cash-register"></i></div>
+        <div class="feat-name">Recebimento para lojistas</div>
+        <p class="feat-desc">Estabelecimentos acompanham pagamentos aprovados, operação digital e uso dos benefícios com leitura rápida para o balcão e para o caixa.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     DIFFERENTIALS
+================================================================ -->
+<section class="diffs" id="differentials">
+  <div class="container">
+    <div class="diffs-inner">
+      <div class="diffs-copy">
+        <h2 class="sec-title fi d1"><span class="diffs-title-line">Tudo integrado</span><br>para sua operação</h2>
+        <p class="sec-desc fi d2">Centralize benefícios, conta digital e pagamentos em uma plataforma própria. Mais controle para a empresa e mais fluidez no dia a dia.</p>
+
+        <div class="df-list">
+          <div class="df-item is-featured fi d1">
+            <div class="df-ico"><i class="fa-solid fa-circle-nodes"></i></div>
+            <div class="df-txt">
+              <h4>Operação integrada</h4>
+              <p>Benefícios, conta digital e pagamentos no mesmo fluxo.</p>
+            </div>
+          </div>
+          <div class="df-item fi d2">
+            <div class="df-ico"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <div class="df-txt">
+              <h4>Plataforma própria</h4>
+              <p>Mais autonomia para evoluir segurança, produto e experiência.</p>
+            </div>
+          </div>
+          <div class="df-item fi d3">
+            <div class="df-ico"><i class="fa-solid fa-handshake"></i></div>
+            <div class="df-txt">
+              <h4>Atendimento próximo</h4>
+              <p>Suporte humano do início da implantação à rotina da operação.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="diffs-vis fi d2">
+        <div class="diffs-stack" role="img" aria-label="Dois cartões ComproPay metálicos em tons de roxo, sobrepostos">
+          <div class="cp-card-metal cp-card-front" aria-hidden="true">
+            <div class="cp-card-content">
+              <div class="cp-card-head">
+                <div class="cp-card-brand">ComproPay</div>
+                <span class="cp-card-chip"></span>
+              </div>
+              <div class="cp-card-tag">Conta digital integrada</div>
+              <div>
+                <div class="cp-card-number">1234 5678 9012 3456</div>
+                <div class="cp-card-name">Fluxo principal</div>
+              </div>
+            </div>
+          </div>
+          <div class="cp-card-metal cp-card-back" aria-hidden="true">
+            <div class="cp-card-content">
+              <div class="cp-card-head">
+                <div class="cp-card-brand">ComproPay</div>
+                <span class="cp-card-chip"></span>
+              </div>
+              <div class="cp-card-tag">Benefícios corporativos</div>
+              <div>
+                <div class="cp-card-number">3456 9012 5678 1234</div>
+                <div class="cp-card-name">Uso diário</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span class="metric-icon"><i class="fa-solid fa-cubes-stacked"></i></span>
+            <div class="metric-n">Plataforma própria</div>
+            <div class="metric-l">Produto, segurança e operação evoluem com mais consistência.</div>
+          </div>
+          <div class="metric">
+            <span class="metric-icon"><i class="fa-solid fa-headset"></i></span>
+            <div class="metric-n">Suporte humano</div>
+            <div class="metric-l">Atendimento próximo para empresas, colaboradores e lojistas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     ROXINHA — MAQUININHA
+================================================================ -->
+<section class="roxinha" id="roxinha">
+  <div class="container">
+    <div class="rox-inner">
+
+      <div class="rox-content fi">
+        <div class="rox-tag"><i class="fa-solid fa-credit-card"></i>Maquininha Roxinha</div>
+        <h2 class="rox-title">A maquininha que é<br>a cara do seu <span>negócio</span></h2>
+        <p class="rox-sub">Conheça a <strong>Roxinha</strong>, a principal maquininha de pagamento do Espírito Santo. Entrega em até 8 horas, aluguel grátis e um time de verdade para atender sem robô e sem burocracia.</p>
+
+        <div class="rox-feats">
+          <span class="rox-feat fi d1"><i class="fa-solid fa-check"></i>Aluguel grátis</span>
+          <span class="rox-feat fi d1"><i class="fa-solid fa-check"></i>Taxas fixas</span>
+          <span class="rox-feat fi d2"><i class="fa-solid fa-check"></i>+80 bandeiras</span>
+          <span class="rox-feat fi d2"><i class="fa-solid fa-check"></i>Parcele em até 21x</span>
+          <span class="rox-feat fi d3"><i class="fa-solid fa-check"></i>Atendimento humano</span>
+        </div>
+
+        <div class="rox-stats fi d2">
+          <div>
+            <div class="rox-stat-val">4.000+</div>
+            <div class="rox-stat-lbl">Lojistas atendidos</div>
+          </div>
+          <div>
+            <div class="rox-stat-val">8h</div>
+            <div class="rox-stat-lbl">Entrega na Grande Vitória</div>
+          </div>
+          <div>
+            <div class="rox-stat-val">21x</div>
+            <div class="rox-stat-lbl">Parcelamento</div>
+          </div>
+        </div>
+
+        <div class="rox-btns fi d3">
+          <a href="https://roxinhacompropay.com.br/" target="_blank" rel="noopener" class="rox-btn-primary">
+            <i class="fa-solid fa-bolt"></i>Quero minha Roxinha
+          </a>
+          <a href="https://roxinhacompropay.com.br/" target="_blank" rel="noopener" class="rox-btn-ghost">
+            Conhecer a Roxinha <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="rox-vis fi d2">
+        <img src="images/roxinha.webp" alt="Maquininha Roxinha ComproPay" class="rox-machine-img" loading="lazy" decoding="async">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     TESTIMONIALS
+================================================================ -->
+<section class="testi" id="testimonials">
+  <div class="container">
+    <div class="testi-hd">
+      <h2 class="sec-title fi d1">Quem usa o ComproPay conta</h2>
+      <p class="sec-desc fi d2">Empresas, colaboradores e lojistas que já simplificaram benefícios e pagamentos com o ComproPay.</p>
+    </div>
+
+    <div class="testi-grid">
+      <article class="t-card t-card-featured fi">
+        <div class="t-feature-layout">
+          <div class="t-feature-copy">
+            <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <p class="t-quote">Hoje acompanho alimentação e refeição no app, pago com praticidade e vejo cada movimentação em tempo real.</p>
+            <div class="t-author">
+              <div class="t-av av-o">AC</div>
+              <div><div class="t-name">Ana Carvalho</div><div class="t-role">Analista - Usuária ComproPay</div></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div class="t-card t-card-compact fi d1">
+        <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="t-quote">Passei a receber clientes com benefícios e carteira digital sem atrito. A operação ficou mais rápida já na primeira semana.</p>
+        <div class="t-author">
+          <div class="t-av av-p">MR</div>
+          <div><div class="t-name">Marcos Rodrigues</div><div class="t-role">Proprietário - Lanchonete do Marcos</div></div>
+        </div>
+      </div>
+
+      <div class="t-card t-card-compact fi d2">
+        <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="t-quote">A distribuição de alimentação e refeição ficou mais organizada para o RH, com adoção rápida e suporte próximo do início ao fim.</p>
+        <div class="t-author">
+          <div class="t-av av-dp">PL</div>
+          <div><div class="t-name">Paulo Lima</div><div class="t-role">Gestor de RH - Empresa Parceira</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     FAQ
+================================================================ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-inner">
+
+      <div class="faq-left fi">
+        <h2 class="sec-title">Perguntas<br>frequentes</h2>
+        <p class="sec-desc">Tire suas dúvidas sobre benefícios, credenciamento e uso do aplicativo.</p>
+        <a href="#contact" class="btn btn-primary">
+          <i class="fa-brands fa-whatsapp"></i>Entrar em contato
+        </a>
+      </div>
+
+      <div class="faq-list">
+
+        <article class="faq-item fi">
+          <div class="faq-icon"><i class="fa-solid fa-wallet"></i></div>
+          <h3 class="faq-q">O que é o ComproPay?</h3>
+          <div class="faq-a">O ComproPay é uma plataforma de benefícios corporativos e carteira digital que conecta empresas, colaboradores e lojistas em uma mesma operação.</div>
+        </article>
+
+        <article class="faq-item fi d1">
+          <div class="faq-icon"><i class="fa-solid fa-store"></i></div>
+          <h3 class="faq-q">Como funciona o credenciamento para lojistas?</h3>
+          <div class="faq-a">Você envia sua solicitação pelo formulário, nosso time avalia o perfil da operação e orienta os próximos passos para ativar o recebimento na rede.</div>
+        </article>
+
+        <article class="faq-item fi d2">
+          <div class="faq-icon"><i class="fa-solid fa-utensils"></i></div>
+          <h3 class="faq-q">Como os benefícios chegam ao colaborador?</h3>
+          <div class="faq-a">Alimentação, refeição e benefícios flexíveis ficam disponíveis direto na carteira digital do app, com uso simples na rede credenciada.</div>
+        </article>
+
+        <article class="faq-item fi d3">
+          <div class="faq-icon"><i class="fa-solid fa-qrcode"></i></div>
+          <h3 class="faq-q">Quais formas de pagamento a plataforma aceita?</h3>
+          <div class="faq-a">A plataforma aceita pagamentos pelo app, carteira digital, ticket alimentação, ticket refeição e benefícios flexíveis em estabelecimentos da rede credenciada.</div>
+        </article>
+
+        <article class="faq-item fi d4">
+          <div class="faq-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3 class="faq-q">O ComproPay é seguro?</h3>
+          <div class="faq-a">Sim. A plataforma opera em conformidade com a LGPD e adota criptografia em todas as transações. Seus dados não são compartilhados com terceiros sem autorização.</div>
+        </article>
+
+        <article class="faq-item fi d5">
+          <div class="faq-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h3 class="faq-q">Quem usa o aplicativo no dia a dia?</h3>
+          <div class="faq-a">Colaboradores acompanham saldo e fazem pagamentos, enquanto empresas e lojistas ganham mais visibilidade da operação em tempo real.</div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     APP DOWNLOAD
+================================================================ -->
+<section class="app-dl" id="app">
+  <div class="container">
+    <div class="app-dl-inner">
+
+      <div class="app-dl-content fi">
+        <div class="app-dl-tag"><i class="fa-solid fa-mobile-screen-button"></i>Carteira digital + benefícios</div>
+        <h2 class="app-dl-title">O app que conecta<br><span>benefícios</span>, carteira digital e pagamentos</h2>
+        <p class="app-dl-sub">Acompanhe saldo, use benefícios e pague pelo app em uma experiência simples, integrada e fácil de acompanhar no dia a dia.</p>
+
+        <div class="app-dl-btns">
+          <a href="#features" class="btn btn-primary btn-lg fi d1">
+            <i class="fa-solid fa-grip"></i>Conhecer recursos
+          </a>
+          <a href="#services" class="btn btn-ghost btn-lg fi d2">
+            <i class="fa-solid fa-compass"></i>Conhecer a plataforma
+          </a>
+        </div>
+
+        <div class="app-dl-stats fi d3">
+          <div class="app-dl-stat-card">
+            <div class="app-dl-stat-top">
+              <span class="app-dl-stat-icon"><i class="fa-solid fa-wallet"></i></span>
+              <span class="app-dl-stat-chip">Atualizado</span>
+            </div>
+            <div class="app-dl-stat-val">Saldo disponível</div>
+            <div class="app-dl-stat-lbl">Alimentação e refeição visíveis no app, com leitura imediata.</div>
+          </div>
+          <div class="app-dl-stat-card">
+            <div class="app-dl-stat-top">
+              <span class="app-dl-stat-icon"><i class="fa-solid fa-check"></i></span>
+              <span class="app-dl-stat-chip">Aprovado</span>
+            </div>
+            <div class="app-dl-stat-val">Pagamento por app</div>
+            <div class="app-dl-stat-lbl">Uso confirmado em poucos toques, sem fricção na operação.</div>
+          </div>
+          <div class="app-dl-stat-card">
+            <div class="app-dl-stat-top">
+              <span class="app-dl-stat-icon"><i class="fa-solid fa-store"></i></span>
+              <span class="app-dl-stat-chip">Ao redor</span>
+            </div>
+            <div class="app-dl-stat-val">Rede credenciada</div>
+            <div class="app-dl-stat-lbl">Encontre onde usar o benefício com mais clareza e praticidade.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-dl-vis fi d2">
+        <div class="app-dl-orb app-dl-orb-1"></div>
+        <div class="app-dl-orb app-dl-orb-2"></div>
+        <img src="images/woman2.png" alt="Pessoa usando o app ComproPay no celular" class="app-dl-person" loading="lazy" decoding="async">
+        <div class="app-dl-float" aria-hidden="true">
+          <div class="app-dl-float-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <div>
+            <div class="app-dl-float-title">Pagamento aprovado</div>
+            <div class="app-dl-float-text">Uso confirmado no app agora</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CTA BANNER
+================================================================ -->
+<section class="cta-sec" id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-title fi d1">Leve benefícios corporativos<br>e pagamentos digitais para a sua operação</h2>
+      <p class="cta-sub fi d2">Fale com a ComproPay e veja como simplificar benefícios, carteira digital e recebimentos em uma única solução para empresas, colaboradores e lojistas.</p>
+      <div class="cta-btns fi d3">
+        <a href="#contact" class="btn btn-primary btn-lg">
+          <i class="fa-brands fa-whatsapp"></i>Entrar em contato
+        </a>
+        <a href="#features" class="btn btn-ghost btn-lg">
+          <i class="fa-solid fa-grip"></i>Ver recursos
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CONTACT
+================================================================ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+
+      <div>
+        <h2 class="sec-title fi d1">Comece a receber<br>com o ComproPay</h2>
+        <p class="sec-desc fi d2">Quer aceitar pagamentos pelo ComproPay na sua loja? Envie sua solicitação. Nossa equipe avalia o perfil da sua empresa e entra em contato para ativar seu credenciamento.</p>
+
+        <div class="cstep-list">
+          <div class="cstep fi d1">
+            <div class="cstep-n">1</div>
+            <div class="cstep-tx">
+              <h4>Você envia a solicitação</h4>
+              <p>Preencha o formulário com os dados da sua empresa. Leva menos de 2 minutos.</p>
+            </div>
+          </div>
+          <div class="cstep fi d2">
+            <div class="cstep-n">2</div>
+            <div class="cstep-tx">
+              <h4>Avaliamos o seu perfil</h4>
+              <p>Nosso time analisa as informações do seu negócio para encontrar a melhor solução.</p>
+            </div>
+          </div>
+          <div class="cstep fi d3">
+            <div class="cstep-n">3</div>
+            <div class="cstep-tx">
+              <h4>Entramos em contato</h4>
+              <p>Retornamos em até 24 horas úteis para ativar seu credenciamento e tirar dúvidas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ch-list">
+          <a href="#cForm" class="ch fi d3">
+            <div class="ch-ico ch-ico-wa"><i class="fa-solid fa-clipboard-list"></i></div>
+            <div><div class="ch-lbl">Próximo passo</div><div class="ch-val">Preencher formulário</div></div>
+            <i class="fa-solid fa-arrow-right ch-arr"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form-card fi d2">
+        <h3 class="form-title">Solicite seu credenciamento</h3>
+        <p class="form-sub">Preencha os dados abaixo. Retornamos em até 24 horas úteis.</p>
+
+        <form id="cForm" novalidate>
+          <div class="fg-row">
+            <div class="fg">
+              <label class="fl" for="fname">Seu nome</label>
+              <input type="text" id="fname" class="fi-in" placeholder="Ex: João Silva" autocomplete="name">
+              <div class="ferr" id="eNome">Por favor, insira seu nome.</div>
+            </div>
+            <div class="fg">
+              <label class="fl" for="fcompany">Nome da empresa</label>
+              <input type="text" id="fcompany" class="fi-in" placeholder="Ex: Loja do João" autocomplete="organization">
+              <div class="ferr" id="eCompany">Informe o nome da empresa.</div>
+            </div>
+          </div>
+          <div class="fg-row">
+            <div class="fg">
+              <label class="fl" for="femail">E-mail</label>
+              <input type="email" id="femail" class="fi-in" placeholder="Ex: joao@email.com" autocomplete="email">
+              <div class="ferr" id="eEmail">Por favor, insira um e-mail válido.</div>
+            </div>
+            <div class="fg">
+              <label class="fl" for="fphone">WhatsApp</label>
+              <input type="tel" id="fphone" class="fi-in" placeholder="(11) 99999-9999" autocomplete="tel">
+              <div class="ferr" id="ePhone">Informe um telefone para contato.</div>
+            </div>
+          </div>
+          <div class="fg-row">
+            <div class="fg">
+              <label class="fl" for="fsegment">Segmento</label>
+              <select id="fsegment" class="fi-in placeholder">
+                <option value="" disabled selected>Selecione</option>
+                <option>Alimentação / Restaurante</option>
+                <option>Varejo / Comércio</option>
+                <option>Serviços</option>
+                <option>Saúde e bem-estar</option>
+                <option>Beleza e estética</option>
+                <option>Outro</option>
+              </select>
+              <div class="ferr" id="eSegment">Selecione um segmento.</div>
+            </div>
+            <div class="fg">
+              <label class="fl" for="frevenue">Faturamento mensal</label>
+              <select id="frevenue" class="fi-in placeholder">
+                <option value="" disabled selected>Selecione</option>
+                <option>Até R$ 10 mil</option>
+                <option>R$ 10 mil a R$ 50 mil</option>
+                <option>R$ 50 mil a R$ 100 mil</option>
+                <option>Acima de R$ 100 mil</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg">
+            <label class="fl" for="fmsg">Mensagem <span class="form-optional">(opcional)</span></label>
+            <textarea id="fmsg" class="fi-ta" placeholder="Conte um pouco sobre o seu negócio."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg f-btn">
+            <i class="fa-solid fa-paper-plane"></i>Enviar solicitação
+          </button>
+          <p class="form-note">Ao enviar, você concorda em ser contatado pela equipe ComproPay sobre o credenciamento.</p>
+        </form>
+
+        <div class="f-ok" id="fOk">
+          <i class="fa-solid fa-circle-check"></i>
+          <h4>Solicitação recebida</h4>
+          <p>Obrigado pelo interesse. Vamos avaliar o perfil da sua empresa e retornar em até 24 horas úteis.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">
+          <img src="images/logo-horizontal.svg" alt="ComproPay">
+        </div>
+        <p class="f-tag">Benefícios corporativos, carteira digital e pagamentos em um só lugar.</p>
+      </div>
+
+      <div>
+        <div class="f-col-t">Plataforma</div>
+        <ul class="f-links">
+          <li><a href="#services">Produtos</a></li>
+          <li><a href="#features">Benefícios corporativos</a></li>
+          <li><a href="#for-who">Para empresas</a></li>
+          <li><a href="#app">Para colaboradores</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="f-col-t">Institucional</div>
+        <ul class="f-links">
+          <li><a href="#contact">Contato</a></li>
+          <li><a href="#differentials">Diferenciais</a></li>
+          <li><a href="#testimonials">Depoimentos</a></li>
+          <li><a href="https://roxinhacompropay.com.br/" target="_blank" rel="noopener">Maquininha Roxinha</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="f-lgpd">
+      <span class="f-lgpd-label"><i class="fa-solid fa-shield-halved"></i>LGPD - Lei Geral de Proteção de Dados</span>
+      <div class="f-lgpd-btns">
+        <a href="https://compropay.com.br/politica-de-privacidade" target="_blank" rel="noopener" class="f-lgpd-btn">
+          <i class="fa-solid fa-file-shield"></i>Política de Privacidade
+        </a>
+        <a href="https://compropay.com.br/formulario-lgpd" target="_blank" rel="noopener" class="f-lgpd-btn">
+          <i class="fa-solid fa-clipboard-list"></i>Formulário - LGPD
+        </a>
+        <a href="https://compropay.com.br/compliance" target="_blank" rel="noopener" class="f-lgpd-btn">
+          <i class="fa-solid fa-scale-balanced"></i>Compliance
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bot">
+      <p class="f-copy">© 2025 ComproPay. Todos os direitos reservados.</p>
+      <div class="f-legal">
+        <a href="https://compropay.com.br/politica-de-privacidade" target="_blank" rel="noopener">Política de Privacidade</a>
+        <a href="https://compropay.com.br/compliance" target="_blank" rel="noopener">Compliance</a>
+      </div>
+    </div>
+  </div>
+</footer>
