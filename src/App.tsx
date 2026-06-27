@@ -18,6 +18,7 @@ function App() {
     const nav = root.querySelector<HTMLElement>("#nav")
     const ham = root.querySelector<HTMLButtonElement>("#ham")
     const mob = root.querySelector<HTMLElement>("#mobNav")
+    const backdrop = root.querySelector<HTMLElement>("#mobBackdrop")
     const form = root.querySelector<HTMLFormElement>("#cForm")
     const formSuccess = root.querySelector<HTMLElement>("#fOk")
     const servicesSection = root.querySelector<HTMLElement>(".services")
@@ -25,7 +26,7 @@ function App() {
     const fiElements = [...root.querySelectorAll<HTMLElement>(".fi")]
     const hashLinks = [...root.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')]
     const navLinks = [
-      ...root.querySelectorAll<HTMLAnchorElement>('.nav-links a[href^="#"], .mob-nav a[href^="#"]'),
+      ...root.querySelectorAll<HTMLAnchorElement>('.nav-links a[href^="#"], .mob-nav-links a[href^="#"]'),
     ]
 
     if (!nav || !ham || !mob) return
@@ -63,18 +64,26 @@ function App() {
 
     const closeMenu = () => {
       mob.classList.remove("open")
+      backdrop?.classList.remove("open")
       ham.classList.remove("open")
       ham.setAttribute("aria-expanded", "false")
+      document.body.style.overflow = ""
     }
 
     const onHamClick = () => {
       const open = mob.classList.toggle("open")
+      backdrop?.classList.toggle("open", open)
       ham.classList.toggle("open", open)
       ham.setAttribute("aria-expanded", String(open))
+      document.body.style.overflow = open ? "hidden" : ""
     }
 
     const onDocumentClick = (event: MouseEvent) => {
       const target = event.target as Node | null
+      if (target && backdrop?.contains(target)) {
+        closeMenu()
+        return
+      }
       if (target && !ham.contains(target) && !mob.contains(target)) {
         closeMenu()
       }
@@ -225,6 +234,7 @@ function App() {
       if (window.closeMenu === closeMenu) {
         delete window.closeMenu
       }
+      document.body.style.overflow = ""
     }
   }, [])
 

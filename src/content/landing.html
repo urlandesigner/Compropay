@@ -27,15 +27,27 @@
   </div>
 </nav>
 
+<div class="mob-nav-backdrop" id="mobBackdrop" aria-hidden="true"></div>
+
 <nav class="mob-nav" id="mobNav" aria-label="Menu mobile">
-  <a href="#services" onclick="closeMenu()">Produtos</a>
-  <a href="#features" onclick="closeMenu()">Benefícios Corporativos</a>
-  <a href="#for-who" onclick="closeMenu()">Para Empresas</a>
-  <a href="#app" onclick="closeMenu()">Para Colaboradores</a>
-  <a href="#contact" onclick="closeMenu()">Contato</a>
-  <a href="#contact" class="btn btn-nav" onclick="closeMenu()">
-    <i class="fa-brands fa-whatsapp"></i>Entrar em contato
-  </a>
+  <div class="mob-nav-head">
+    <img src="images/logo-horizontal.svg" alt="ComproPay" class="mob-nav-logo">
+    <button type="button" class="mob-nav-close" id="mobClose" aria-label="Fechar menu" onclick="closeMenu()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div class="mob-nav-links">
+    <a href="#services" onclick="closeMenu()">Produtos</a>
+    <a href="#features" onclick="closeMenu()">Benefícios Corporativos</a>
+    <a href="#for-who" onclick="closeMenu()">Para Empresas</a>
+    <a href="#app" onclick="closeMenu()">Para Colaboradores</a>
+    <a href="#contact" onclick="closeMenu()">Contato</a>
+  </div>
+  <div class="mob-nav-foot">
+    <a href="#contact" class="btn btn-nav" onclick="closeMenu()">
+      <i class="fa-brands fa-whatsapp"></i>Entrar em contato
+    </a>
+  </div>
 </nav>
 
 <main id="main-content">
@@ -67,7 +79,6 @@
         <div class="hero-btns fi d3">
           <a href="#contact" class="btn-pill">
             Entrar em contato
-            <span class="btn-pill-icon"><i class="fa-solid fa-arrow-right"></i></span>
           </a>
           <a href="#features" class="btn btn-ghost-white btn-lg">
             Ver recursos
@@ -180,28 +191,33 @@
         </a>
       </div>
 
-      <!-- 3 · Usuários — texto -->
-      <div class="sol-card is-text tone-soft accent-orange sol-utext fi">
-        <span class="sol-eyebrow"><i class="fa-solid fa-id-card"></i> Para Usuários</span>
-        <h3 class="sol-h3">Pague e gerencie tudo<br>pelo seu celular</h3>
-        <p class="sol-lead">Cadastre seus cartões, gerencie seu saldo e use o ComproPay como ticket alimentação.</p>
-        <ul class="sol-list">
-          <li><i class="fa-solid fa-chevron-right"></i><span>Cadastre cartões e pague em estabelecimentos credenciados</span></li>
-          <li><i class="fa-solid fa-chevron-right"></i><span>Use como ticket alimentação oferecido pela sua empresa</span></li>
-          <li><i class="fa-solid fa-chevron-right"></i><span>Controle gastos e extrato diretamente pelo app</span></li>
-        </ul>
-        <a href="#app" class="sol-btn">
-          <i class="fa-solid fa-wallet"></i> Conhecer o app
-        </a>
-      </div>
-
-      <!-- 4 · Usuários — visual (app) -->
-      <div class="sol-card is-visual tone-purple sol-uvis fi d1">
-        <div class="sol-badge badge-user">
-          <div class="sb-line">João, você economizou <b>R$ 88,02</b></div>
-          <div class="sb-pill"><i class="fa-solid fa-sack-dollar"></i> Saldo R$ 2.400,03</div>
+      <!-- 3 · Usuários — par texto + visual -->
+      <div class="sol-pair fi">
+        <div class="sol-card is-text tone-soft accent-orange sol-utext">
+          <span class="sol-eyebrow"><i class="fa-solid fa-id-card"></i> Para Usuários</span>
+          <h3 class="sol-h3">Pague e gerencie tudo<br>pelo seu celular</h3>
+          <p class="sol-lead">Cadastre seus cartões, gerencie seu saldo e use o ComproPay como ticket alimentação.</p>
+          <ul class="sol-list">
+            <li><i class="fa-solid fa-chevron-right"></i><span>Cadastre cartões e pague em estabelecimentos credenciados</span></li>
+            <li><i class="fa-solid fa-chevron-right"></i><span>Use como ticket alimentação oferecido pela sua empresa</span></li>
+            <li><i class="fa-solid fa-chevron-right"></i><span>Controle gastos e extrato diretamente pelo app</span></li>
+          </ul>
+          <a href="#app" class="sol-btn">
+            <i class="fa-solid fa-wallet"></i> Conhecer o app
+          </a>
         </div>
-        <img src="images/men.png" alt="Usuário ComproPay usando o aplicativo no celular" class="sol-user-photo" loading="lazy" decoding="async">
+
+        <div class="sol-pair-visual fi d1">
+          <div class="sol-card is-visual tone-purple sol-uvis">
+            <div class="sol-badge badge-user">
+              <div class="sb-line">João, você economizou <b>R$ 88,02</b></div>
+              <div class="sb-pill"><i class="fa-solid fa-sack-dollar"></i> Saldo R$ 2.400,03</div>
+            </div>
+            <div class="sol-user-photo-wrap">
+              <img src="images/men.png" alt="Usuário ComproPay usando o aplicativo no celular" class="sol-user-photo" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -392,7 +408,7 @@
                 <div class="cp-card-brand">ComproPay</div>
                 <span class="cp-card-chip"></span>
               </div>
-              <div class="cp-card-tag">Conta digital integrada</div>
+              <div class="cp-card-tag">Carteira digital ComproCard</div>
               <div>
                 <div class="cp-card-number">1234 5678 9012 3456</div>
                 <div class="cp-card-name">Fluxo principal</div>
@@ -642,7 +658,9 @@
       <div class="app-dl-vis fi d2">
         <div class="app-dl-orb app-dl-orb-1"></div>
         <div class="app-dl-orb app-dl-orb-2"></div>
-        <img src="images/woman2.png" alt="Pessoa usando o app ComproPay no celular" class="app-dl-person" loading="lazy" decoding="async">
+        <div class="app-dl-person-wrap">
+          <img src="images/woman2.png" alt="Pessoa usando o app ComproPay no celular" class="app-dl-person" loading="lazy" decoding="async">
+        </div>
         <div class="app-dl-float" aria-hidden="true">
           <div class="app-dl-float-icon"><i class="fa-solid fa-circle-check"></i></div>
           <div>
@@ -833,8 +851,11 @@
       </div>
     </div>
 
-    <div class="f-lgpd">
+    <div class="f-lgpd-head">
       <span class="f-lgpd-label"><i class="fa-solid fa-shield-halved"></i>LGPD - Lei Geral de Proteção de Dados</span>
+    </div>
+
+    <div class="f-lgpd">
       <div class="f-lgpd-btns">
         <a href="https://compropay.com.br/politica-de-privacidade" target="_blank" rel="noopener" class="f-lgpd-btn">
           <i class="fa-solid fa-file-shield"></i>Política de Privacidade
@@ -846,14 +867,13 @@
           <i class="fa-solid fa-scale-balanced"></i>Compliance
         </a>
       </div>
+      <div class="f-apo">
+        <img src="images/APO_Logo_transparencia.png" alt="PCI Security Standards Council - Associate Participating Organization" loading="lazy" decoding="async">
+      </div>
     </div>
 
     <div class="footer-bot">
-      <p class="f-copy">© 2025 ComproPay. Todos os direitos reservados.</p>
-      <div class="f-legal">
-        <a href="https://compropay.com.br/politica-de-privacidade" target="_blank" rel="noopener">Política de Privacidade</a>
-        <a href="https://compropay.com.br/compliance" target="_blank" rel="noopener">Compliance</a>
-      </div>
+      <p class="f-copy">© 2026 ComproPay. Todos os direitos reservados.</p>
     </div>
   </div>
 </footer>
