@@ -704,7 +704,7 @@
 
     /* positions + ambient float — staggered depths, partial overlap of the phone */
     .fc1 { top: 52px;  right: -16px; z-index: 4; animation: fcFloat1 6s   ease-in-out infinite; }
-    .fc2 { bottom: 48px; right: -38px; z-index: 2;
+    .fc2 { display: none; bottom: 48px; right: -38px; z-index: 2;
       background: rgba(255,255,255,.72);
       box-shadow:
         0 20px 42px -16px rgba(35,0,64,.48),
@@ -712,7 +712,7 @@
         inset 0 1px 0 rgba(255,255,255,.7),
         inset 0 0 0 1px rgba(255,255,255,.2);
       animation: fcFloat2 6.8s ease-in-out infinite .9s; }
-    .fc3 { top: 55%;   left: 4%;    z-index: 5;
+    .fc3 { display: none; top: 55%;   left: 4%;    z-index: 5;
       box-shadow:
         0 28px 56px -16px rgba(35,0,64,.58),
         0 8px 20px -6px rgba(35,0,64,.34),
