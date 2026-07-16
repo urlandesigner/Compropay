@@ -1645,7 +1645,7 @@
       position: relative;
     }
     .rox-machine-img {
-      width: min(108%, 700px);
+      width: min(118%, 760px);
       height: auto;
       display: block;
       filter: drop-shadow(0 34px 70px rgba(20, 0, 38, .38));
