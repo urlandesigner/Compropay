@@ -748,7 +748,7 @@
     ================================================================ */
     .for-who { padding: var(--s8) 0; background: linear-gradient(180deg, #FDFCFF 0%, #F9F7FC 100%); }
     .for-who-hd { text-align: center; margin-bottom: 56px; }
-    .for-who-hd .sec-title { max-width: 13ch; margin-left: auto; margin-right: auto; }
+    .for-who-hd .sec-title { max-width: 26ch; margin-left: auto; margin-right: auto; }
     .for-who-hd .sec-desc { margin: 0 auto; max-width: 48ch; }
 
     .sol-grid {
@@ -1489,7 +1489,7 @@
       font-size: clamp(2rem, 3vw, 3rem);
       line-height: 1.02;
       letter-spacing: -.045em;
-      max-width: 14ch;
+      max-width: 24ch;
       text-wrap: balance;
     }
     .testi-hd .sec-desc {
@@ -1648,7 +1648,7 @@
       position: relative;
     }
     .rox-machine-img {
-      width: min(118%, 760px);
+      width: min(140%, 900px);
       height: auto;
       display: block;
       filter: drop-shadow(0 34px 70px rgba(20, 0, 38, .38));
