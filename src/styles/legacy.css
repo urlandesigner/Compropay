@@ -520,7 +520,7 @@
        PHONE MOCKUP
     ================================================================ */
     .hero-vis {
-      position: relative; height: 648px;
+      position: relative; height: 720px;
       display: flex; align-items: center; justify-content: center;
       width: 100%;
     }
@@ -569,8 +569,8 @@
     .hero-phone-img {
       position: relative;
       z-index: 1;
-      height: 592px; width: auto;
-      max-width: min(100%, 372px);
+      height: 660px; width: auto;
+      max-width: min(100%, 415px);
       object-fit: contain;
       animation: phoneFloat 4.5s ease-in-out infinite;
       filter: drop-shadow(0 40px 80px rgba(0,0,0,.4));
