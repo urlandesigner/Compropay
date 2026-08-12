@@ -142,24 +142,13 @@
     }
     .tag-centered { margin: 0 auto 20px; }
 
-    .store-badges { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
-    .store-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(0,0,0,.55);
-      border: 1px solid rgba(255,255,255,.22);
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 9px 16px 9px 13px;
-      color: #fff;
-      text-decoration: none;
-      transition: background .2s ease, transform .2s ease, border-color .2s ease;
+    .store-badges { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
+    .store-badge-link {
+      display: inline-flex; line-height: 0;
+      transition: transform .2s ease, opacity .2s ease;
     }
-    .store-badge:hover { background: rgba(0,0,0,.75); border-color: rgba(255,255,255,.34); transform: translateY(-2px); }
-    .store-badge i { font-size: 1.6rem; line-height: 1; }
-    .store-badge span { display: flex; flex-direction: column; line-height: 1.2; }
-    .store-badge small { font-size: .6rem; letter-spacing: .02em; color: rgba(255,255,255,.72); text-transform: none; }
-    .store-badge strong { font-size: .94rem; font-weight: 700; letter-spacing: .01em; }
+    .store-badge-link:hover { transform: translateY(-2px); opacity: .92; }
+    .store-badge-link img { height: 46px; width: auto; display: block; }
 
     .sec-title { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.02; letter-spacing: -.03em; text-wrap: balance; margin-bottom: 16px; }
     .sec-title-lg { font-size: clamp(2.5rem, 5vw, 4rem); }
