@@ -2301,7 +2301,8 @@
         justify-content: center;
       }
       .hero-btns .btn-pill { padding: 0 24px; }
-      .hero-vis { height: min(52vw, 360px); min-height: 280px; overflow: hidden; }
+      .hero-vis { height: min(52vw, 360px); min-height: 280px; }
+      .hero-vis-fx { transform: scale(.55); }
       .phone { width: 248px; height: 478px; }
       .hero-phone-img { height: min(52vw, 340px); max-height: 360px; }
       .fc1,.fc2,.fc3 { display: none; }
