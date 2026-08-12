@@ -2146,7 +2146,8 @@
       .hero-stat-icon { width: 36px; height: 36px; border-radius: 11px; }
       .tag { margin-bottom: 18px; }
       .hero-btns .btn-pill, .hero-btns .btn { height: 52px; }
-      .hero-vis { height: 580px; }
+      .hero-vis { height: 620px; }
+      .hero-phone-img { height: 600px; }
       .phone { width: 300px; height: 578px; }
     }
 
