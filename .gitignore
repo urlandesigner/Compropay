@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Python (scripts/)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Projetos com build (Next.js e afins): fonte fica versionada, artefato de
+# build local não. O que o Pages serve é a pasta `site/` de cada projeto —
+# o export estático, comitado à parte depois de gerado.
+node_modules/
+.next/
+out/
+.env
+.env.local
+.env.*.local
+.vercel/
+
+# NADA dentro de `<Pasta>/site/` é ignorado de propósito — é o export
+# estático publicado, a única coisa que o GitHub Pages sabe servir.

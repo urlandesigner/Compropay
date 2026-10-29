@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR" data-kit-page="switch">
+<head>
+<script src="../../../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Switch — ComproPay UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script>var KIT_BASE = '../';</script>
+</head>
+<body class="kit">
+<header class="kit-topbar">
+  <div class="kit-topbar__brand"><a href="../index.html" id="kit-home-link">← UI Kit</a></div>
+  <div class="kit-topbar__meta">css/base.css</div>
+</header>
+<div class="kit-layout">
+  <aside class="kit-sidebar">
+    <a class="kit-sidebar__home" id="kit-home-link-row" href="../index.html">Home</a>
+    <input class="kit-search" id="kit-search" type="search" placeholder="Buscar…">
+    <nav id="kit-nav"></nav>
+  </aside>
+  <div class="kit-main">
+    <div class="kit-crumb" id="kit-crumb"></div>
+    <h1>Switch</h1>
+    <p class="kit-lede">Liga/desliga dentro de um banner com rótulo. O rótulo precisa de <code>id</code>, e o botão aponta pra ele com <code>aria-labelledby</code>.</p>
+    <div class="kit-base-class"><b>Classes</b> <code>.banner</code> <code>.banner__title</code> <code>.switch</code></div>
+
+    <div class="kit-group">
+      <h2>Estados</h2>
+      <div class="kit-preview" style="flex-direction:column;align-items:stretch">
+        <div class="banner" style="max-width:320px">
+          <h2 class="banner__title" id="kit-switch-on">Usar saldo para pagar</h2>
+          <button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="kit-switch-on"></button>
+        </div>
+        <span class="kit-variant__label">aria-checked="true"</span>
+        <div class="banner" style="max-width:320px;margin-top:16px">
+          <h2 class="banner__title" id="kit-switch-off">Usar saldo para pagar</h2>
+          <button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="kit-switch-off"></button>
+        </div>
+        <span class="kit-variant__label">aria-checked="false"</span>
+      </div>
+    </div>
+
+    <div class="kit-prevnext" id="kit-prevnext"></div>
+  </div>
+</div>
+<script src="../assets/kit.js"></script>
+</body>
+</html>

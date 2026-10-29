@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Favoritar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt=""><img src="assets/icons/statusbar-wifi.svg" alt=""><svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#000" opacity=".35"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#000" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#000"/></svg></span>
+  </div>
+  <header class="topbar">
+    <a class="topbar__back" href="home-1-cartao.html" aria-label="Voltar"><img src="assets/icons/arrow-left.svg" alt=""></a>
+    <h1 class="topbar__title">Favoritar</h1>
+    <span></span>
+  </header>
+  <div class="favlist">
+    <label class="search" data-component="CampoBusca" data-props="valor, placeholder, onChange" data-states="padrao, preenchido" data-state="padrao" data-ds="search"><img src="assets/icons/search.svg" alt=""><input class="composer__input" id="search" type="search" placeholder="Pesquisar" aria-label="Pesquisar" style="font-family:var(--font-body);font-weight:400;font-size:14px;color:inherit"></label>
+    <section aria-labelledby="t-fav">
+      <h2 class="favlist__heading" id="t-fav">Próximos de mim</h2>
+      <ul class="favlist__items" id="list">
+        <li class="place-row" data-q="@lautri restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-la-nutri.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@lautri</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+          <button class="place-bookmark" type="button" data-state="on" aria-label="Remover dos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="on" data-ds="favorite" data-template><img src="assets/icons/bookmark-on.svg" alt=""></button></li>
+        <li class="place-row" data-q="@subwaypcosta subway" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/avatar-subway.png" alt="">
+          <span class="place__text"><span class="tx__title">@subwaypcosta</span><span class="tx__desc">Subway</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+          <button class="place-bookmark" type="button" data-state="off" aria-label="Adicionar aos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="off" data-ds="favorite" data-template><img src="assets/icons/bookmark-off.svg" alt=""></button></li>
+        <li class="place-row" data-q="@tagline restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-tagline.png" alt="">
+          <span class="place__text"><span class="tx__title">@tagline</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+          <button class="place-bookmark" type="button" data-state="off" aria-label="Adicionar aos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="off" data-ds="favorite" data-template><img src="assets/icons/bookmark-off.svg" alt=""></button></li>
+        <li class="place-row" data-q="@steakbrand restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-steak-brand.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@steakbrand</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+          <button class="place-bookmark" type="button" data-state="off" aria-label="Adicionar aos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="off" data-ds="favorite" data-template><img src="assets/icons/bookmark-off.svg" alt=""></button></li>
+        <li class="place-row" data-q="@coffee.co restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-coffee-co.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@coffee.co</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+          <button class="place-bookmark" type="button" data-state="off" aria-label="Adicionar aos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="off" data-ds="favorite" data-template><img src="assets/icons/bookmark-off.svg" alt=""></button></li>
+        <li class="place-row" data-q="@coffee.co restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-coffee-co.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@coffee.co</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+          <button class="place-bookmark" type="button" data-state="off" aria-label="Adicionar aos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="off" data-ds="favorite" data-template><img src="assets/icons/bookmark-off.svg" alt=""></button></li>
+        <li class="place-row" data-q="@coffee.co restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-coffee-co.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@coffee.co</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+          <button class="place-bookmark" type="button" data-state="off" aria-label="Adicionar aos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="off" data-ds="favorite" data-template><img src="assets/icons/bookmark-off.svg" alt=""></button></li>
+        <li class="place-row" data-q="@coffee.co restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-coffee-co.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@coffee.co</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+          <button class="place-bookmark" type="button" data-state="off" aria-label="Adicionar aos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="off" data-ds="favorite" data-template><img src="assets/icons/bookmark-off.svg" alt=""></button></li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <div class="sheet sheet--confirm" id="confirm-sheet" role="dialog" aria-label="Adicionar aos favoritos" hidden>
+    <div class="sheet__top"><h2 class="sheet__title">Adicionar aos favoritos?</h2><button class="sheet__close" id="confirm-close" type="button" aria-label="Fechar">&times;</button></div>
+    <div class="place-row" style="box-shadow:none;background:var(--color-surface-muted)">
+      <img class="place__avatar" id="confirm-avatar" src="" alt="">
+      <span class="place__text"><span class="tx__title" id="confirm-name"></span><span class="tx__desc" id="confirm-desc"></span><span class="tx__date" id="confirm-loc"></span></span>
+    </div>
+    <div class="sheet__actions">
+      <button class="btn-outline" id="confirm-cancel" type="button">Cancelar</button>
+      <button class="btn-solid" id="confirm-ok" type="button">Favoritar</button>
+    </div>
+    <div class="sheet__handle"></div>
+  </div>
+</main>
+<script>
+  var list = document.getElementById('list');
+  var heading = document.getElementById('t-fav');
+  var search = document.getElementById('search');
+  search.addEventListener('input', function () {
+    var q = search.value.trim().toLowerCase();
+    heading.textContent = q ? 'Resultado da pesquisa' : 'Próximos de mim';
+    [].forEach.call(list.children, function (li) {
+      li.hidden = !!q && li.dataset.q.indexOf(q) === -1;
+    });
+  });
+
+  var scrim = document.getElementById('scrim'), sheet = document.getElementById('confirm-sheet');
+  var pendingBtn = null;
+  function openSheet(btn) {
+    var row = btn.closest('.place-row');
+    document.getElementById('confirm-avatar').src = row.querySelector('.place__avatar').src;
+    document.getElementById('confirm-name').textContent = row.querySelector('.tx__title').textContent;
+    document.getElementById('confirm-desc').textContent = row.querySelector('.tx__desc').textContent;
+    document.getElementById('confirm-loc').textContent = row.querySelector('.tx__date').textContent;
+    pendingBtn = btn;
+    scrim.hidden = false; sheet.hidden = false;
+  }
+  function closeSheet() { scrim.hidden = true; sheet.hidden = true; pendingBtn = null; }
+
+  list.addEventListener('click', function (e) {
+    var btn = e.target.closest('.place-bookmark');
+    if (!btn) return;
+    if (btn.dataset.state === 'on') {
+      btn.dataset.state = 'off'; btn.querySelector('img').src = 'assets/icons/bookmark-off.svg'; btn.setAttribute('aria-label', 'Adicionar aos favoritos');
+    } else {
+      openSheet(btn);
+    }
+  });
+  document.getElementById('confirm-ok').addEventListener('click', function () {
+    if (pendingBtn) { pendingBtn.dataset.state = 'on'; pendingBtn.querySelector('img').src = 'assets/icons/bookmark-on.svg'; pendingBtn.setAttribute('aria-label', 'Remover dos favoritos'); }
+    closeSheet();
+  });
+  document.getElementById('confirm-cancel').addEventListener('click', closeSheet);
+  document.getElementById('confirm-close').addEventListener('click', closeSheet);
+  scrim.addEventListener('click', closeSheet);
+</script>
+</body>
+</html>

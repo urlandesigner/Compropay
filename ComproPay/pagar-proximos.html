@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Próximos de mim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen screen--white">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt=""><img src="assets/icons/statusbar-wifi.svg" alt=""><svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#000" opacity=".35"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#000" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#000"/></svg></span>
+  </div>
+  <header class="topbar">
+    <a class="topbar__back" href="pagar.html" aria-label="Voltar"><img src="assets/icons/arrow-left.svg" alt=""></a>
+    <h1 class="topbar__title">Pagar</h1>
+    <a class="topbar__back" href="pagar-qr.html" aria-label="Ler QR code"><img src="assets/icons/header-qr.svg" alt=""></a>
+  </header>
+  <div class="pay">
+    <label class="search" data-component="CampoBusca" data-props="valor, placeholder, onChange" data-states="padrao, preenchido" data-state="padrao" data-ds="search"><img src="assets/icons/search.svg" alt=""><input class="composer__input" type="search" placeholder="Pesquisar" aria-label="Pesquisar" style="font-family:var(--font-body);font-weight:400;font-size:14px;color:inherit"></label>
+    <section class="section" aria-labelledby="t-px"><h2 class="section__title" id="t-px">Próximos de mim</h2>
+      <ul class="help-list">
+        <li><a class="place" href="pagar-valor.html"><img class="place__avatar" src="assets/img/fav-la-nutri.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@lautri</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+        <li><a class="place" href="pagar-valor.html"><img class="place__avatar" src="assets/img/avatar-subway.png" alt="">
+          <span class="place__text"><span class="tx__title">@subwaypcosta</span><span class="tx__desc">Subway</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+        <li><a class="place" href="pagar-valor.html"><img class="place__avatar" src="assets/img/fav-tagline.png" alt="">
+          <span class="place__text"><span class="tx__title">@tagline</span><span class="tx__desc">Tagline</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+        <li><a class="place" href="pagar-valor.html"><img class="place__avatar" src="assets/img/fav-steak-brand.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@steakbrand</span><span class="tx__desc">Steak Brand</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+        <li><a class="place" href="pagar-valor.html"><img class="place__avatar" src="assets/img/fav-coffee-co.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@coffee.co</span><span class="tx__desc">Coffee.co</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+        <li><a class="place" href="pagar-valor.html"><img class="place__avatar" src="assets/img/fav-coffee-co.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@coffee.co</span><span class="tx__desc">Coffee.co</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+        <li><a class="place" href="pagar-valor.html"><img class="place__avatar" src="assets/img/fav-coffee-co.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@coffee.co</span><span class="tx__desc">Coffee.co</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+        <li><a class="place" href="pagar-valor.html"><img class="place__avatar" src="assets/img/fav-coffee-co.jpg" alt="">
+          <span class="place__text"><span class="tx__title">@coffee.co</span><span class="tx__desc">Coffee.co</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+      </ul>
+    </section>
+  </div>
+</main>
+</body>
+</html>

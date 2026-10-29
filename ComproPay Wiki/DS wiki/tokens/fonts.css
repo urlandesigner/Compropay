@@ -1,0 +1,14 @@
+/* =========================================================================
+   COMPROPAY DESIGN SYSTEM · FONTE — Satoshi (Fontshare, uso livre).
+   Arquivos em tokens/fonts/. Quem consome o DS carrega este arquivo ANTES
+   dos tokens. 600 usa o arquivo do 700 e 800 usa o do 900 (a família não
+   tem esses pesos).
+   ========================================================================= */
+@font-face { font-family: "Satoshi"; font-style: normal; font-weight: 400;
+  font-display: swap; src: url("fonts/Satoshi-400.woff2") format("woff2"); }
+@font-face { font-family: "Satoshi"; font-style: normal; font-weight: 500;
+  font-display: swap; src: url("fonts/Satoshi-500.woff2") format("woff2"); }
+@font-face { font-family: "Satoshi"; font-style: normal; font-weight: 600 700;
+  font-display: swap; src: url("fonts/Satoshi-700.woff2") format("woff2"); }
+@font-face { font-family: "Satoshi"; font-style: normal; font-weight: 800 900;
+  font-display: swap; src: url("fonts/Satoshi-900.woff2") format("woff2"); }

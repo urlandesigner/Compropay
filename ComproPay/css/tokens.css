@@ -1,0 +1,154 @@
+/* Tokens extraídos do Figma "ComproPay 2.0" (página "Novas telas", node 31654:28614) */
+:root {
+  /* Cores */
+  --color-bg: #f6f6f6;
+  --color-surface: #ffffff;
+  --color-surface-soft: #fafafc;
+  --color-border: #ececec;
+  --color-border-brand: #e9d8ff;
+
+  --color-text: #171717;
+  --color-text-strong: #1c1c1c;
+  --color-text-muted: #717171;
+  --color-text-brand-dark: #26063f;
+  --color-greeting: #330752;
+
+  --color-brand: #7c12c8;
+  --color-brand-600: #6610a8;
+  --color-brand-700: #603c8f;
+  --color-brand-800: #450a70;
+  --color-brand-900: #330752;
+  --color-brand-balance-label: #390960;
+
+  --color-action-bg: rgb(51 7 82 / 0.10);
+  --color-action-border: rgb(69 10 112 / 0.15);
+  --color-nav-bg: rgb(51 7 82 / 0.05);
+  --color-nav-item-inactive: rgb(51 7 82 / 0.55);
+  --color-nav-item-active-bg: rgb(255 255 255 / 0.60);
+
+  --color-page-title: #150427;
+  --color-surface-muted: #f2f4f6;
+  --color-text-subtle: #737373;
+  --color-neutral-500: #8e8e8e;
+  --color-overlay: rgb(0 0 0 / 0.35);
+  --color-handle: #e2e4e7;
+
+  --shadow-sm: 0 1px 2px rgb(148 148 148 / 0.25);
+  --shadow-card: 0 2px 4px rgb(148 148 148 / 0.30);
+  --shadow-lg: 0 8px 32px rgb(30 20 50 / 0.20); /* mesmo tom frio-roxeado da sombra do mockup de celular */
+  /* No Figma, essa variável se chama "layout/radius/radius-lg" — manteve o nome local pra não quebrar quem já usa --radius-sm. */
+  --radius-sm: 12px;
+
+  --color-switch-on: #55e061;
+  --color-switch-off: #c9c9ce;
+
+  --color-danger: #dc0000;
+  --color-success-bg: #cbffde;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Escalas primitivas — geradas por HSL a partir do matiz/saturação da marca e dos
+     neutros já extraídos do Figma (--color-neutral-500, --color-text-subtle e --color-text
+     caem quase exatos em Gray/500, /600 e /900). Não trocam nenhum token semântico acima;
+     use-as quando precisar de um tom que ainda não tem nome (ex.: --color-purple-300 num
+     estado hover claro). */
+  --color-gray-50: #f7f7f7;
+  --color-gray-100: #ededed;
+  --color-gray-200: #dbdbdb;
+  --color-gray-300: #c2c2c2;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #808080;
+  --color-gray-600: #6b6b6b;
+  --color-gray-700: #525252;
+  --color-gray-800: #383838;
+  --color-gray-900: #242424;
+  --color-gray-950: #141414;
+
+  --color-purple-50: #f8f5fa;
+  --color-purple-100: #efe5f5;
+  --color-purple-200: #dfc6f1;
+  --color-purple-300: #c997ec;
+  --color-purple-400: #af5de9;
+  --color-purple-500: #9119e6;
+  --color-purple-600: #7a13c3; /* bem perto do --color-brand (#7c12c8) */
+  --color-purple-700: #5d1093;
+  --color-purple-800: #3f0d63;
+  --color-purple-900: #280b3c;
+  --color-purple-950: #160920;
+
+  /* Status — par fundo suave + sólido, mesmo tratamento do Success/Danger que já existiam.
+     Warning e Info são novos: o app ainda não tem tela que os use. */
+  --color-success-50: #f5f9f6;
+  --color-success-100: #e6f4ea;
+  --color-success-600: #22b447;
+  --color-success-700: #1b8836;
+
+  --color-danger-50: #faf5f5;
+  --color-danger-100: #f5e5e5;
+  --color-danger-600: #c31319;
+  --color-danger-700: #931014;
+
+  --color-warning-50: #faf8f5;
+  --color-warning-100: #f6f0e4;
+  --color-warning-600: #c9840e;
+  --color-warning-700: #97640c;
+
+  --color-info-50: #f5f7f9;
+  --color-info-100: #e5edf5;
+  --color-info-600: #1868be;
+  --color-info-700: #145090;
+
+  /* Tipografia */
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* O Figma usa Avenir nos valores e no título. Não há webfont livre: cai para Avenir do sistema. */
+  --font-display: "Avenir Next", "Avenir", "Nunito Sans", var(--font-body);
+
+  --fs-10: 10px;
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-28: 28px; /* Figma: Title/Large */
+  --fs-32: 32px; /* ainda sem uso — fecha a escala pra títulos maiores */
+
+  /* Overline (Figma): fs-10, weight 600, letter-spacing abaixo */
+  --ls-overline: 0.06em;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+  --fw-black: 900;
+
+  /* Espaçamentos */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Raios */
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --screen-width: 430px;
+  --content-width: 390px;
+  --tabbar-height: 68px;
+  --statusbar-height: 62px;
+}

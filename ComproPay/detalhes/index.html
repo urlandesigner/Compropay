@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="../../scripts/portao.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ComproPay · ComproPay Projetos</title>
+<meta name="description" content="Protótipo navegável do app ComproPay: 30 telas mobile, mais o kit de design que sustenta elas." />
+<meta name="theme-color" content="#0B0A0F" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0A0F'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='40' fill='%23A255FD'%3EC%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Fragment+Mono&display=swap" rel="stylesheet" />
+
+<style>
+  /* :root copiado do index.html da raiz do repositório (vindo do works), na hora de subir. Capa que
+     herda a pele de outro catálogo sai com a cara errada sem quebrar nada,
+     e esse erro não aparece em teste. */
+  :root {
+    --papel:      #0B0A0F;
+    --papel-2:    #110E18;
+    --tinta:      #F1EEF6;
+    --apoio:      #948FA3;
+    --apoio-2:    #55505F;
+    --linha:      rgba(241, 238, 246, 0.10);
+    --linha-forte: rgba(241, 238, 246, 0.75);
+    --acento:      #A255FD;
+    --acento-meio: rgba(162, 85, 253, 0.38);
+    --sombra:     0 18px 40px -20px rgba(0, 0, 0, 0.6);
+
+    --serif: "Lora", Georgia, serif;
+    --sans:  "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --mono:  "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --gap: clamp(20px, 4.5vw, 40px);
+  }
+
+  * { box-sizing: border-box; }
+  html { color-scheme: dark; }
+
+  body {
+    margin: 0;
+    background: var(--papel);
+    color: var(--tinta);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 1180px: a medida da página é a mesma em todas as capas. O container largo
+     serve à grade de cartões; a prosa para em 62ch porque a 1180 uma linha
+     passaria de 120 caracteres. */
+  .pagina {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(40px, 7vw, 76px) 16px clamp(60px, 9vw, 110px);
+  }
+
+  .voltar {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--apoio);
+    text-decoration: none;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+  .voltar:hover { color: var(--tinta); }
+
+  .olho {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--apoio);
+    margin: 0 0 16px;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(34px, 6.2vw, 58px);
+    font-weight: 600;
+    letter-spacing: -.015em;
+    line-height: 1.05;
+    margin: 0 0 clamp(22px, 3vw, 32px);
+  }
+  h1 em { font-style: italic; color: var(--acento); }
+
+  .lede { max-width: 62ch; color: var(--tinta); margin: 0 0 18px; }
+  .lede:last-of-type { color: var(--apoio); }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin: clamp(48px, 7vw, 72px) 0 14px;
+  }
+  .sub { max-width: 62ch; color: var(--apoio); margin: 0 0 22px; }
+
+  /* auto-fill e não auto-fit: com auto-fit as trilhas vazias somem e um
+     cartão sozinho estica pela grade inteira. */
+  .versoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+    margin-top: clamp(34px, 5vw, 50px);
+  }
+
+  /* O cartão inteiro é o link, não só o texto do fim: alvo grande e uma
+     única área de clique por peça. */
+  .versao {
+    display: flex;
+    flex-direction: column;
+    background: var(--papel-2);
+    border: 1px solid var(--linha);
+    border-radius: 14px;
+    padding: 24px 24px 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .18s ease, transform .18s ease, box-shadow .24s ease;
+  }
+  .versao:hover,
+  .versao:focus-visible {
+    border-color: var(--acento-meio);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra);
+  }
+  .versao:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+  .versao__tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin: 0 0 12px;
+  }
+  .versao__nome {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+  .versao__desc {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--apoio);
+    margin: 0 0 20px;
+  }
+  /* o link fecha na base do cartão, com os cartões da linha na mesma altura */
+  .versao__abrir {
+    margin-top: auto;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tinta);
+    border-bottom: 1px solid var(--acento-meio);
+    padding-bottom: 2px;
+    align-self: flex-start;
+    transition: color .18s ease, border-color .18s ease;
+  }
+  .versao:hover .versao__abrir,
+  .versao:focus-visible .versao__abrir {
+    color: var(--acento);
+    border-bottom-color: var(--acento);
+  }
+
+  /* Quem pediu menos movimento continua tendo a cor, que é o que informa. */
+  @media (prefers-reduced-motion: reduce) {
+    .versao { transition: border-color .18s ease; }
+    .versao:hover, .versao:focus-visible { transform: none; box-shadow: none; }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+    margin-top: 6px;
+  }
+  th, td {
+    text-align: left;
+    padding: 11px 14px 11px 0;
+    border-bottom: 1px solid var(--linha);
+    vertical-align: top;
+  }
+  th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--apoio);
+    font-weight: 400;
+  }
+  td { color: var(--apoio); }
+  td:first-child { color: var(--tinta); white-space: nowrap; }
+
+  .nota {
+    max-width: 62ch;
+    font-size: 14px;
+    color: var(--apoio);
+    border-left: 2px solid var(--acento-meio);
+    padding-left: 16px;
+    margin: 26px 0 0;
+  }
+
+  footer {
+    margin-top: clamp(60px, 9vw, 96px);
+    padding-top: 22px;
+    border-top: 1px solid var(--linha);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--apoio);
+  }
+
+  @media (max-width: 640px) {
+    .versoes { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="pagina">
+    <a class="voltar" href="../../">← Projetos</a>
+
+    <p class="olho">Protótipo · App de pagamento</p>
+    <h1><em>ComproPay</em></h1>
+
+    <p class="lede">
+      Aqui ficam as entregas de design do ComproPay: atualizações e telas
+      novas do app, e dos outros pedaços do projeto: site, app da
+      maquininha. Cada entrega é um protótipo navegável, pronto pra revisão
+      e handoff.
+    </p>
+
+    <div class="versoes">
+      <a class="versao" href="../app.html">
+        <p class="versao__tag">Comece aqui</p>
+        <h3 class="versao__nome">Protótipo</h3>
+        <p class="versao__desc">
+          As telas dentro de uma moldura de celular, com a lista de todas ao
+          lado. Clique numa tela da lista para trocar o conteúdo da moldura
+          sem sair da página.
+        </p>
+        <span class="versao__abrir">Abrir o app &rarr;</span>
+      </a>
+
+      <a class="versao" href="../handoff/index.html">
+        <p class="versao__tag">As ferramentas</p>
+        <h3 class="versao__nome">Handoff</h3>
+        <p class="versao__desc">
+          As ferramentas em volta da tela. Navegue cada estado e inspecione a
+          peça para ver de onde vem cada valor.
+        </p>
+        <span class="versao__abrir">Abrir o handoff &rarr;</span>
+      </a>
+
+      <a class="versao" href="../ui-kit/index.html">
+        <p class="versao__tag">Por baixo das telas</p>
+        <h3 class="versao__nome">UI Kit</h3>
+        <p class="versao__desc">
+          Cor, tipografia, espaçamento e os componentes que as 30 telas
+          reaproveitam, extraído do Figma e sincronizado com o CSS real
+          do protótipo, não um documento à parte.
+        </p>
+        <span class="versao__abrir">Abrir o kit &rarr;</span>
+      </a>
+    </div>
+
+    <h2>O que está instalado</h2>
+    <p class="sub">As quatro ferramentas do pacote de handoff, e o que cada uma faz neste projeto.</p>
+    <table>
+      <thead><tr><th>Ferramenta</th><th>Neste projeto</th></tr></thead>
+      <tbody>
+        <tr><td>Painel de estados</td><td>Navega as 30 telas por cenário, mais largura do dispositivo (mobile, tablet, desktop ou um número digitado) e tema claro/escuro. Cada tela é um cenário já pronto, não um estado gerado por parâmetro: preenchimento e erro dentro de uma mesma tela, como o formulário do cartão, ainda não têm cenário próprio aqui.</td></tr>
+        <tr><td>Dev mode</td><td>Clique numa peça com o modo Inspecionar ligado e veja o nome, se já existe no UI Kit, de qual token veio cada valor, o CSS real e o contraste medido. Nove componentes estão anotados (tabbar, botão, badge, switch, busca, favoritar, cartão de pagamento, transação e atalho de serviço); o resto da tela aparece sem anotação.</td></tr>
+        <tr><td>Abas de código</td><td>Não entrou nesta rodada.</td></tr>
+        <tr><td>Manual de implementação</td><td>Não entrou nesta rodada.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="nota">A ferramenta não toca no protótipo: ela roda numa página de fora e desenha por cima, num iframe.</p>
+    <p class="nota">Precisa de servidor pra rodar. O protótipo sozinho continua abrindo direto.</p>
+
+    <footer>Urlan Dipre</footer>
+  </div>
+<script src="../../scripts/etapa.js" data-pasta="ComproPay"></script>
+</body>
+</html>

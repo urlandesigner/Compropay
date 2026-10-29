@@ -1,0 +1,94 @@
+/* Dev mode: destaque sobre o iframe + ficha na coluna da direita.
+   Nada aqui entra no documento da tela — é tudo desenhado nesta página,
+   por cima do iframe. */
+
+.f-highlight {
+  position: absolute;
+  border: 1.5px solid var(--f-accent);
+  background: rgba(47, 111, 237, 0.08);
+  pointer-events: none;
+  z-index: 5;
+  border-radius: 2px;
+  display: none;
+}
+.f-highlight.is-on { display: block; }
+
+.f-ficha[hidden] { display: none; }
+.f-ficha { padding: 16px; display: flex; flex-direction: column; gap: 18px; }
+
+.f-ficha__head { display: flex; flex-direction: column; gap: 4px; }
+.f-ficha__nome { font-size: 15px; font-weight: 700; }
+.f-ficha__origem {
+  display: inline-flex; align-self: flex-start; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 700; letter-spacing: .02em; padding: 2px 8px;
+  border-radius: 999px;
+}
+.f-ficha__origem--sistema { background: rgba(47,111,237,.14); color: var(--f-accent); }
+.f-ficha__origem--local { background: rgba(194,59,59,.14); color: var(--f-danger); }
+.f-ficha__origem--herdado { background: var(--f-bg); color: var(--f-text-muted); }
+
+.f-ficha__caminho { display: flex; flex-wrap: wrap; gap: 2px; font-size: 11.5px; }
+.f-ficha__caminho button {
+  background: none; border: none; color: var(--f-text-muted); cursor: pointer;
+  padding: 2px 4px; border-radius: 4px; font: inherit;
+}
+.f-ficha__caminho button:hover { background: var(--f-bg); color: var(--f-text); }
+.f-ficha__caminho button.is-current { color: var(--f-text); font-weight: 700; }
+.f-ficha__caminho span.f-sep { color: var(--f-border); }
+
+.f-sec { display: flex; flex-direction: column; gap: 8px; }
+.f-sec__title {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 0; font-size: 11px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--f-text-muted);
+}
+.f-sec__copy {
+  background: none; border: none; cursor: pointer; color: var(--f-text-muted);
+  font-size: 12px; padding: 0; line-height: 1;
+}
+.f-sec__copy:hover { color: var(--f-accent); }
+
+.f-sec__vazia { font-size: 12px; color: var(--f-text-muted); font-style: italic; margin: 0; }
+
+.f-ds-aviso {
+  font-size: 12px; line-height: 1.5; background: rgba(47,111,237,.1);
+  border: 1px solid rgba(47,111,237,.25); border-radius: 8px; padding: 8px 10px;
+  color: var(--f-text);
+}
+.f-ds-aviso code { font-family: var(--f-mono); font-size: 11.5px; }
+
+.f-kv { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; font-size: 12px; }
+.f-kv dt { color: var(--f-text-muted); }
+.f-kv dd { margin: 0; font-family: var(--f-mono); word-break: break-word; }
+.f-kv dd button.f-copy-val {
+  all: unset; cursor: pointer; font: inherit; color: inherit; border-bottom: 1px dashed var(--f-border);
+}
+.f-kv dd button.f-copy-val:hover { border-bottom-color: var(--f-accent); color: var(--f-accent); }
+.f-kv dd.is-copied::after { content: " ✓ copiado"; color: var(--f-ok); font-family: var(--f-sans); font-size: 10.5px; }
+
+.f-states { display: flex; flex-wrap: wrap; gap: 6px; }
+.f-state-chip {
+  font-size: 11px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--f-border);
+  color: var(--f-text-muted);
+}
+.f-state-chip.is-current { border-color: var(--f-accent); color: var(--f-accent); font-weight: 700; }
+
+.f-contrast { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.f-contrast__swatches { display: flex; }
+.f-contrast__sw { width: 18px; height: 18px; border: 1px solid var(--f-border); margin-left: -6px; border-radius: 4px; }
+.f-contrast__ratio { font-family: var(--f-mono); font-weight: 700; }
+.f-contrast__badge { font-size: 10.5px; font-weight: 700; padding: 1px 6px; border-radius: 999px; }
+.f-contrast__badge--pass { background: rgba(31,139,76,.15); color: var(--f-ok); }
+.f-contrast__badge--fail { background: rgba(194,59,59,.15); color: var(--f-danger); }
+
+.f-css-card { border: 1px solid var(--f-border); border-radius: 8px; overflow: hidden; }
+.f-css-card__head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 10px; background: var(--f-bg); font-size: 11px; color: var(--f-text-muted);
+  font-family: var(--f-mono);
+}
+.f-css-card pre {
+  margin: 0; padding: 10px; font-family: var(--f-mono); font-size: 11px; line-height: 1.6;
+  white-space: pre-wrap; word-break: break-word; background: var(--f-bg-2);
+}
+.f-css-more { font-size: 11px; color: var(--f-text-muted); margin: 0; }

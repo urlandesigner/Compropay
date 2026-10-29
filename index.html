@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="scripts/portao.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ComproPay · Projetos</title>
+<meta name="description" content="Índice dos projetos da ComproPay: app, site institucional e central de ajuda." />
+<meta name="theme-color" content="#0B0A0F" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0A0F'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='40' fill='%23A255FD'%3EU%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Fragment+Mono&display=swap" rel="stylesheet" />
+
+<!--
+  ÍNDICE DO REPOSITÓRIO — não é um projeto, é o catálogo que os guarda.
+
+  Os tokens, a moldura e as fontes daqui são a fonte do 404 e das capas de
+  projeto, que copiam de lá. Paleta da UD Labs.
+
+  O catálogo guarda só os projetos da ComproPay. Nasceu do andaime do
+  `works` (urlandesigner/works) e segue o mesmo jeito: sem filtro de
+  "projeto", só designer e busca livre.
+
+  A ordem é por atualização, mais recente primeiro. Num catálogo que cresce,
+  quem chega procura o que acabou de mudar — a ordem alfabética vive no array,
+  a cronológica na tela.
+
+  PARA ADICIONAR UM PROJETO: um objeto em PROJETOS, no <script> do fim — de
+  preferência via `python3 scripts/novo-projeto.py registrar`, que também
+  atualiza o README e valida o designer contra o filtro. Filtro, busca,
+  contagem e estado vazio se ajustam sozinhos.
+
+  PORTÃO: `scripts/portao.js`, incluído aqui como o primeiro item do
+  <head>. É o MESMO arquivo que toda outra página do repo inclui — uma
+  senha única, compartilhada com a ComproPay, protege o site inteiro, não só
+  esta tela. Detalhes, limites e como trocar a senha estão comentados no
+  próprio arquivo; não duplicar essa explicação aqui.
+-->
+
+<style>
+  :root {
+    /* Paleta da UD Labs. Estes tokens são a fonte das capas de projeto:
+       capa que copia a pele de outra herda a cor do catálogo dela, e esse
+       erro não quebra nada, só sai com a cara errada.
+
+       --acento é o roxo claro da marca (#A255FD), não o roxo cheio
+       (#7120D1): o cheio dá 2.66:1 sobre o fundo e reprova em AA como
+       texto. Ele serve como preenchimento, com tinta clara em cima. */
+    --papel:      #0B0A0F;
+    --papel-2:    #110E18;
+    --tinta:      #F1EEF6;
+    --apoio:      #948FA3;
+    /* --apoio-2 é só ORNAMENTO (numeral, ícone, chevron) — não carrega texto
+       que informa, esse usa --apoio. */
+    --apoio-2:    #55505F;
+    --linha:      rgba(241, 238, 246, 0.10);
+    --linha-forte: rgba(241, 238, 246, 0.75);
+    --acento:      #A255FD;
+    --acento-meio: rgba(162, 85, 253, 0.38);
+    --sombra:     0 18px 40px -20px rgba(0, 0, 0, 0.6);
+
+    --serif: "Lora", Georgia, serif;
+    --sans:  "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --mono:  "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --gap: clamp(20px, 4.5vw, 40px);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { color-scheme: dark; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--papel);
+    color: var(--tinta);
+    font: 400 16px/1.55 var(--sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Um sopro de luz no alto — vinho, não branco: no escuro um glow neutro
+     lê como tela quebrada; um tingido de leve na cor de acento lê como
+     atmosfera de propósito. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(70rem 30rem at 50% -12%, rgba(162, 85, 253, 0.10), transparent 70%);
+  }
+
+  .pagina {
+    position: relative;
+    max-width: 1104px;
+    margin: 0 auto;
+    padding: clamp(48px, 10vh, 112px) var(--gap) 72px;
+  }
+
+  ::selection { background: var(--acento); color: var(--papel); }
+
+  /* ---------- masthead ---------- */
+
+  .kicker {
+    font: 400 11px/1 var(--mono);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--apoio);
+    margin: 0 0 26px;
+  }
+  .kicker b {
+    font-weight: 400;
+    color: var(--acento);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 7vw, 74px);
+    font-weight: 560;
+    font-variation-settings: "opsz" 120;
+    letter-spacing: -0.015em;
+    line-height: 1;
+    margin: 0;
+  }
+
+  /* O total como expoente do título: o catálogo anuncia o próprio tamanho. */
+  h1 sup {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 450;
+    font-size: 0.3em;
+    color: var(--acento);
+    margin-left: 0.18em;
+    vertical-align: 1.5em;
+    letter-spacing: 0;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 430;
+    font-size: clamp(17px, 2vw, 20px);
+    font-variation-settings: "opsz" 22;
+    color: var(--apoio);
+    max-width: 48ch;
+    margin: 20px 0 0;
+  }
+
+  /* ---------- mesa de trabalho: busca + filtro ----------
+     Fica presa no topo porque o catálogo vai crescer; o fundo é o próprio
+     papel, para o bloco pesar o mínimo quando grudar. */
+  .mesa {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) auto auto auto;
+    align-items: end;
+    gap: 10px 26px;
+    margin-top: clamp(40px, 7vh, 64px);
+    padding: 18px 0 0;
+    background: var(--papel); /* fallback: sem ele, navegador sem color-mix() descarta a linha de baixo e a mesa fica transparente */
+    background: color-mix(in srgb, var(--papel) 90%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1.5px solid var(--linha-forte);
+  }
+
+  .busca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid transparent;
+  }
+  .busca svg { flex: none; color: var(--apoio-2); }
+  .busca input {
+    width: 100%;
+    border: 0;
+    background: none;
+    font: 400 16px/1.3 var(--sans);
+    color: var(--tinta);
+    padding: 2px 0;
+    outline: none; /* o indicador de foco vive no .busca, via :focus-within */
+    caret-color: var(--acento);
+  }
+  .busca input::placeholder { color: var(--apoio); }
+  .busca input::-webkit-search-cancel-button { -webkit-appearance: none; }
+  .busca kbd {
+    flex: none;
+    font: 400 10px/1 var(--mono);
+    color: var(--apoio);
+    border: 1px solid var(--linha);
+    border-radius: 4px;
+    padding: 3px 6px 2px;
+  }
+  @media (hover: none) { .busca kbd { display: none; } }
+
+  .campo { display: flex; flex-direction: column; gap: 6px; }
+  .campo > span {
+    font: 400 10px/1 var(--mono);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--apoio);
+  }
+
+  /* select nativo de propósito: teclado, leitor de tela e a roda do celular
+     vêm de graça. A casca é só um sublinhado. */
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    font: 500 14px/1 var(--sans);
+    color: var(--tinta);
+    background: transparent
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='6' viewBox='0 0 9 6'%3E%3Cpath d='M1 1l3.5 3.5L8 1' stroke='%23a89e8f' stroke-width='1.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+      no-repeat right 2px center;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    padding: 6px 20px 12px 0;
+    cursor: pointer;
+    transition: border-color 140ms ease, color 140ms ease;
+  }
+  select:hover { border-bottom-color: var(--linha); }
+  select[data-ativo="true"] {
+    color: var(--acento);
+    border-bottom-color: var(--acento);
+  }
+  /* Depois do data-ativo de propósito: mesma especificidade, e o foco tem
+     que aparecer TAMBÉM no select já filtrado (sublinhado vinho -> tinta). */
+  select:focus-visible { outline: none; border-bottom-color: var(--tinta); }
+
+  .mesa-fim {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 12px;
+    justify-self: end;
+  }
+
+  .contagem {
+    font: 400 11px/1 var(--mono);
+    color: var(--apoio);
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .limpar {
+    font: 500 12.5px/1 var(--sans);
+    color: var(--acento);
+    background: none;
+    border: 0;
+    padding: 4px 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .limpar:hover { color: var(--tinta); }
+  .limpar:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+  .limpar[hidden] { display: none; }
+
+  /* ---------- as fichas ---------- */
+
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: clamp(24px, 4vh, 36px) 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    /* fichas da mesma linha, mesma altura — o pé alinha pelo stretch do grid */
+    align-items: stretch;
+  }
+  @media (max-width: 980px) { ol { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { ol { grid-template-columns: 1fr; } }
+
+  .item[hidden] { display: none; }
+
+  .cartao {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 22px 22px 20px;
+    background: var(--papel-2);
+    border: 1px solid var(--linha);
+    border-radius: 10px;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 200ms ease, transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 240ms ease;
+  }
+  .cartao:hover,
+  .cartao:focus-visible {
+    border-color: var(--acento-meio);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra);
+  }
+  .cartao:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cartao, .cartao:hover, .cartao:focus-visible { transform: none; }
+  }
+
+  .alto {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 450;
+    font-size: 17px;
+    color: var(--apoio-2);
+    font-variant-numeric: tabular-nums;
+    transition: color 160ms ease;
+  }
+  .cartao:hover .num, .cartao:focus-visible .num { color: var(--acento); }
+
+  .nome {
+    font-family: var(--serif);
+    font-size: 23px;
+    font-weight: 520;
+    font-variation-settings: "opsz" 40;
+    letter-spacing: -0.008em;
+    line-height: 1.14;
+    padding-bottom: 3px;
+    align-self: start;
+  }
+  /* text-decoration, nao background-image: nome que quebra em duas linhas
+     ganha sublinhado nas duas — o truque do background so pinta a ultima */
+  .cartao:hover .nome, .cartao:focus-visible .nome {
+    text-decoration: underline;
+    text-decoration-color: var(--acento);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 5px;
+  }
+
+  /* SELO DA ETAPA — no alto, ao lado do de projeto onde ele existe.
+     NEUTRO, e nao no vinho da casa: ali ja ha um selo vinho, e dois selos de
+     mesma cor lado a lado competem em vez de dividirem o trabalho. O de
+     projeto responde "de quem e" e chama; o de etapa responde "em que pe
+     esta" e classifica. A cor da etapa fica na regua, embaixo. */
+  .selos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+  }
+  .etapa-selo {
+    flex: none;
+    font: 400 9.5px/1 var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--apoio);
+    border: 1px solid var(--linha);
+    border-radius: 999px;
+    padding: 5px 9px 4px;
+    white-space: nowrap;
+  }
+  /* ---------- etapa ----------
+     SEIS SEGMENTOS, e nao seis rotulos: o nome das seis etapas no cartao
+     roubaria a linha do titulo. A regua diz "quanto andou" de relance, e a
+     palavra embaixo diz onde parou.
+
+     A DATA NAO E ENFEITE. Etapa nao erra no dia em que se escreve, erra
+     sozinha com o tempo: "Prototipar" parado desde agosto continua dizendo
+     "Prototipar". Com "desde 13/08" ao lado, parado se denuncia. */
+  .etapa {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 16px;
+  }
+  .regua {
+    display: flex;
+    gap: 3px;
+  }
+  .regua i {
+    flex: 1;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--linha);
+  }
+  .regua i[data-feita] { background: var(--apoio-2); }
+  .regua i[data-aqui] { background: var(--acento); }
+
+  .desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--apoio);
+    margin-top: 8px;
+  }
+
+  /* O pé cola embaixo: com fichas da mesma altura na linha, designer e data
+     formam uma régua contínua atravessando a grade. */
+  .pe {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 22px;
+  }
+  .quem {
+    font: 400 10.5px/1.5 var(--mono);
+    color: var(--apoio);
+  }
+  .quem time { color: var(--apoio); }
+  .quem .sep { color: var(--apoio); margin: 0 4px; }
+
+  .seta {
+    flex: none;
+    color: var(--acento);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 200ms ease, transform 280ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .cartao:hover .seta, .cartao:focus-visible .seta {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  @media (hover: none) {
+    .seta { opacity: 1; transform: none; }
+  }
+
+  /* ---------- vazio ---------- */
+
+  .vazio {
+    padding: 72px 0;
+    text-align: center;
+  }
+  .vazio p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 21px;
+    font-weight: 440;
+    color: var(--apoio);
+    margin: 0 0 18px;
+  }
+  .vazio strong { color: var(--tinta); font-weight: 520; }
+
+  /* ---------- colofão ---------- */
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px 32px;
+    flex-wrap: wrap;
+    margin-top: clamp(56px, 10vh, 96px);
+    padding-top: 18px;
+    border-top: 1px solid var(--linha);
+    font: 400 11px/1.7 var(--mono);
+    color: var(--apoio);
+  }
+  footer code { font-family: inherit; color: var(--tinta); }
+
+  /* ---------- entrada ---------- */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .anima {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: subir 640ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    }
+    .d1 { animation-delay: 40ms; }
+    .d2 { animation-delay: 110ms; }
+    .d3 { animation-delay: 180ms; }
+    .d4 { animation-delay: 250ms; }
+    @keyframes subir { to { opacity: 1; transform: none; } }
+  }
+
+  /* ---------- estreito ---------- */
+
+  @media (max-width: 720px) {
+    /* Sem sticky no estreito: a mesa inteira ocupa um terço da tela, e barra
+       fixa desse tamanho vira teto, não ferramenta. */
+    .mesa {
+      position: static;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "busca busca" "etap desi" "fim fim";
+      gap: 6px 20px;
+    }
+    /* nth-of-type conta todos os <label>, e o primeiro é a busca —
+       por isso os campos começam no 2º, não no 1º */
+    .busca { grid-area: busca; border-bottom: 1px solid var(--linha); }
+    .campo:nth-of-type(2) { grid-area: etap; }
+    .campo:nth-of-type(3) { grid-area: desi; }
+    .mesa-fim { grid-area: fim; justify-self: start; padding: 6px 0 12px; }
+    /* 16px: abaixo disso o iOS dá zoom quando o select recebe foco */
+    select { width: 100%; font-size: 16px; }
+  }
+
+  /* No fim de propósito: o mobile redefine a borda da .busca via shorthand,
+     e esta regra precisa vencer por ordem para o foco aparecer lá também. */
+  .busca:focus-within { border-bottom-color: var(--acento); }
+</style>
+</head>
+
+<body>
+  <div class="pagina">
+    <header>
+      <p class="kicker anima d1"><b>ComproPay</b> · Urlan Dipre</p>
+      <h1 class="anima d2">Projetos<sup id="total"></sup></h1>
+      <p class="lede anima d3">
+        App, site e central de ajuda da ComproPay, num lugar só.
+      </p>
+    </header>
+
+    <form class="mesa anima d4" role="search" aria-label="Buscar e filtrar projetos" onsubmit="return false">
+      <label class="busca">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <input id="f-busca" type="search" placeholder="Buscar peça ou designer" autocomplete="off" aria-label="Buscar projetos" />
+        <kbd aria-hidden="true">/</kbd>
+      </label>
+
+      <!-- As opções nascem do etapas.json, e não escritas aqui: o fluxo mora num
+           arquivo só, e uma lista repetida no markup seria a segunda verdade
+           sobre quantas etapas existem. -->
+      <label class="campo" id="campo-etapa" hidden>
+        <span>Etapa</span>
+        <select id="f-etapa" aria-label="Filtrar por etapa">
+          <option value="">Todas</option>
+        </select>
+      </label>
+
+      <label class="campo">
+        <span>Designer</span>
+        <select id="f-designer" aria-label="Filtrar por designer">
+          <option value="">Todos</option>
+          <option value="Urlan">Urlan</option>
+        </select>
+      </label>
+
+      <div class="mesa-fim">
+        <!-- aria-live: quem usa leitor de tela precisa saber que a lista
+             mudou, já que filtrar não move o foco -->
+        <p class="contagem" id="contagem" aria-live="polite"></p>
+        <button class="limpar" id="limpar" type="button" hidden>Limpar</button>
+      </div>
+    </form>
+
+    <ol id="lista"></ol>
+
+    <div class="vazio" id="vazio" hidden>
+      <p id="vazio-filtro">Nada por aqui com <strong id="vazio-criterio"></strong>.</p>
+      <p id="vazio-catalogo" hidden>Nenhum projeto publicado ainda.</p>
+      <button class="limpar" id="vazio-limpar" type="button" onclick="limparTudo()">Limpar busca e filtro</button>
+    </div>
+
+    <footer>
+      <span>Repositório e site públicos</span>
+    </footer>
+  </div>
+
+<script>
+/* ==================================================================
+   REGISTRO DOS PROJETOS — a única coisa a editar para adicionar um.
+   `scripts/novo-projeto.py registrar` faz isso por você, e também
+   atualiza o README e valida o designer contra o filtro.
+
+   designers: QUEM ATUOU, e não quem registrou — uma lista, porque
+              projeto de duas mãos tinha de escolher um nome e o outro
+              sumia do filtro. Cada nome casa com um <option>. Lista
+              vazia quando a autoria ainda não foi confirmada.
+   ================================================================== */
+const PROJETOS = [
+  {
+    nome: "ComproPay Wiki",
+    desc: "Central de ajuda do app com 26 respostas, busca por palavra e filtro por categoria, uma página para cada pergunta",
+    designers: ["Urlan"],
+    atualizado: "28/10/2026",
+    href: "ComproPay%20Wiki/detalhes/",
+  },
+  {
+    nome: "ComproPay, telas do app",
+    desc: "Protótipo navegável do app de pagamento, 30 telas mobile com cartões, receber, favoritos, login e o UI kit que sustenta tudo",
+    designers: ["Urlan"],
+    atualizado: "26/10/2026",
+    href: "ComproPay/detalhes/",
+  },
+  {
+    nome: "Site institucional da ComproPay",
+    desc: "Landing one-page da carteira digital, com as trilhas de lojista e de usuário final e formulário de qualificação",
+    designers: ["Urlan"],
+    atualizado: "23/10/2026",
+    href: "ComproPay%20Site/site/",
+  },
+];
+
+const SETA = '<svg class="seta" width="17" height="16" viewBox="0 0 17 16" fill="none" aria-hidden="true"><path d="M3 8h11M9.5 3.5L14 8l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+const lista = document.getElementById("lista");
+const vazio = document.getElementById("vazio");
+const vazioCriterio = document.getElementById("vazio-criterio");
+const vazioFiltro = document.getElementById("vazio-filtro");
+const vazioCatalogo = document.getElementById("vazio-catalogo");
+const vazioLimpar = document.getElementById("vazio-limpar");
+const contagem = document.getElementById("contagem");
+const fBusca = document.getElementById("f-busca");
+const fEtapa = document.getElementById("f-etapa");
+const campoEtapa = document.getElementById("campo-etapa");
+const fDesigner = document.getElementById("f-designer");
+const btnLimpar = document.getElementById("limpar");
+
+function escapar(s) {
+  return String(s).replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+/* Busca sem acento: "protótipo" e "prototipo" são a mesma coisa. */
+function chato(s) {
+  return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+}
+
+/* A ordem da tela é cronológica — o mais recente no topo, porque num catálogo
+   que cresce se procura o que acabou de mudar. A alfabética vive no array. */
+function chaveData(ddmmaaaa) {
+  const [d, m, a] = ddmmaaaa.split("/").map(Number);
+  return a * 10000 + m * 100 + d;
+}
+const ORDENADOS = PROJETOS.map((p, i) => ({ ...p, i }))
+  .sort((x, y) => chaveData(y.atualizado) - chaveData(x.atualizado) || x.i - y.i);
+
+document.getElementById("total").textContent = "·" + PROJETOS.length;
+
+/* Render uma vez; filtrar depois só liga e desliga `hidden`. */
+/* `|Urlan|Fulano|` e nao `Urlan, Fulano`: o filtro compara um nome inteiro
+   entre barras, entao ninguem casa por pedaco de outro nome. */
+const cerca = (ns) => `|${ns.join("|")}|`;
+/* O `datetime` exige ISO. Com `01/10/2026` ali dentro o atributo e invalido e
+   a data nao e legivel por maquina — o texto visivel continua em dd/mm. */
+const iso = (d) => { const [x, m2, a] = d.split("/"); return `${a}-${m2}-${x}`; };
+
+lista.innerHTML = ORDENADOS.map((p, i) => `
+  <li class="item"
+      data-pasta="${escapar(decodeURIComponent(p.href.replace(/\/$/, "").split("/")[0]))}"
+      data-etapa=""
+      data-designer="${escapar(cerca(p.designers))}"
+      data-busca="${escapar(chato([p.nome, p.desc, p.designers.join(" ")].join(" ")))}">
+    <a class="cartao" href="${escapar(p.href)}">
+      <span class="alto">
+        <span class="num" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
+        <span class="selos">
+          <span class="etapa-selo" hidden></span>
+        </span>
+      </span>
+      <span class="nome">${escapar(p.nome)}</span>
+      <span class="desc">${escapar(p.desc)}</span>
+      <span class="etapa" hidden></span>
+      <span class="pe">
+        <span class="quem">${escapar(p.designers.length ? p.designers.join(" · ") : "a confirmar")}<span class="sep">·</span><time datetime="${escapar(iso(p.atualizado))}">${escapar(p.atualizado)}</time></span>
+        ${SETA}
+      </span>
+    </a>
+  </li>`).join("");
+
+const itens = [...lista.querySelectorAll(".item")];
+
+/* OPCAO QUE NAO ACHA NADA NAO FICA NA LISTA. O filtro oferecia quatro
+   designers com um so atras de tudo — escolher qualquer um dos outros tres
+   caia direto no estado vazio, e o estado vazio ali nao e resposta, e um beco.
+   As opcoes continuam escritas no HTML porque `novo-projeto.py` le dali para
+   validar o que pode entrar: some da tela de quem filtra, segue valendo para
+   quem registra. */
+for (const op of fDesigner.options) {
+  if (!op.value) continue;
+  op.hidden = !itens.some((li) => li.dataset.designer.includes(`|${op.value}|`));
+}
+
+/* Entrada em cascata, uma vez só — filtrar é instantâneo, sem re-animação:
+   resposta imediata parece mais rápida do que coreografia repetida. */
+if (matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+  itens.forEach((li, i) => {
+    li.classList.add("anima");
+    li.style.animationDelay = `${290 + Math.min(i, 11) * 55}ms`;
+  });
+}
+
+function aplicar({ atualizarUrl = true } = {}) {
+  const q = chato(fBusca.value.trim());
+  const etap = fEtapa.value;
+  const desi = fDesigner.value;
+
+  let visiveis = 0;
+  itens.forEach((li) => {
+    const ok =
+      (!q || li.dataset.busca.includes(q)) &&
+      (!etap || li.dataset.etapa === etap) &&
+      (!desi || li.dataset.designer.includes(`|${desi}|`));
+    li.hidden = !ok;
+    if (ok) visiveis++;
+  });
+
+  const filtrando = q || etap || desi;
+  contagem.textContent = filtrando
+    ? `${visiveis} de ${itens.length}`
+    : `${itens.length} ${itens.length === 1 ? "peça" : "peças"}`;
+  btnLimpar.hidden = !filtrando;
+
+  fEtapa.dataset.ativo = String(!!etap);
+  fDesigner.dataset.ativo = String(!!desi);
+
+  vazio.hidden = visiveis > 0;
+  if (!visiveis) {
+    /* Catalogo vazio nao e o mesmo que filtro sem resultado: sem esta
+       distincao o primeiro acesso do repositorio lia "Nada por aqui com ."
+       e oferecia limpar um filtro que ninguem tinha posto. */
+    const semCatalogo = itens.length === 0;
+    vazioCatalogo.hidden = !semCatalogo;
+    vazioFiltro.hidden = semCatalogo;
+    vazioLimpar.hidden = semCatalogo;
+    const partes = [];
+    if (q) partes.push(`“${fBusca.value.trim()}”`);
+    if (etap) partes.push(fEtapa.selectedOptions[0].textContent);
+    if (desi) partes.push(desi);
+    vazioCriterio.textContent = partes.join(" + ");
+  }
+
+  // filtro compartilhável: a URL carrega o estado, porque metade da utilidade
+  // de um filtro num time é mandar o link já filtrado
+  if (atualizarUrl) {
+    const ps = new URLSearchParams();
+    if (fBusca.value.trim()) ps.set("q", fBusca.value.trim());
+    if (etap) ps.set("etapa", etap);
+    if (desi) ps.set("designer", desi);
+    history.replaceState(null, "", ps.size ? `?${ps}` : location.pathname);
+  }
+}
+
+function limparTudo() {
+  fBusca.value = "";
+  fEtapa.value = "";
+  fDesigner.value = "";
+  aplicar();
+  fBusca.focus();
+}
+
+fBusca.addEventListener("input", () => aplicar());
+fEtapa.addEventListener("change", () => aplicar());
+fDesigner.addEventListener("change", () => aplicar());
+btnLimpar.addEventListener("click", limparTudo);
+
+/* Teclado: `/` cai na busca de onde estiver; Esc limpa; ↓↑ andam pelas fichas. */
+document.addEventListener("keydown", (e) => {
+  const emCampo = /^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName);
+
+  if (e.key === "/" && !emCampo) {
+    e.preventDefault();
+    fBusca.focus();
+    fBusca.select();
+    return;
+  }
+  if (e.key === "Escape" && document.activeElement === fBusca) {
+    if (fBusca.value) { fBusca.value = ""; aplicar(); }
+    else fBusca.blur();
+    return;
+  }
+
+  if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if (emCampo && document.activeElement !== fBusca) return;
+
+  const links = itens.filter((li) => !li.hidden).map((li) => li.querySelector("a"));
+  if (!links.length) return;
+  const pos = links.indexOf(document.activeElement);
+  const naBusca = document.activeElement === fBusca;
+
+  // fora da busca e fora da lista, seta é rolagem da página — não é nossa
+  if (!naBusca && pos === -1) return;
+
+  let alvo;
+  if (naBusca) {
+    if (e.key === "ArrowUp") return;
+    alvo = links[0];
+  } else {
+    alvo = links[pos + (e.key === "ArrowDown" ? 1 : -1)];
+  }
+  if (alvo) { e.preventDefault(); alvo.focus(); }
+  else if (pos === 0 && e.key === "ArrowUp") { e.preventDefault(); fBusca.focus(); }
+});
+
+/* Prefetch no hover: quando o clique vier, a página já chegou. */
+const prefeitos = new Set();
+lista.addEventListener("pointerenter", (e) => {
+  const a = e.target.closest && e.target.closest("a");
+  if (!a || prefeitos.has(a.href)) return;
+  prefeitos.add(a.href);
+  const l = document.createElement("link");
+  l.rel = "prefetch";
+  l.href = a.href;
+  document.head.appendChild(l);
+}, true);
+
+/* Estado inicial vindo da URL */
+/* A ETAPA CHEGA DEPOIS, e de proposito. Ela mora no etapas.json porque a capa
+   de cada projeto le do mesmo arquivo — etapa escrita em sete lugares envelhece
+   em seis. Se o fetch falhar, o cartao fica como estava e o filtro nao aparece:
+   a pagina nunca depende dele para existir.
+
+   Projeto sem linha no JSON nao mostra etapa nenhuma. Melhor vazio do que
+   chute — selo com a palavra errada parece dado e nao e. */
+fetch("etapas.json")
+  .then((r) => (r.ok ? r.json() : Promise.reject()))
+  .then((d) => {
+    const ondeNoFluxo = new Map(d.fluxo.map((e, i) => [e.id, i]));
+    let algum = false;
+
+    for (const li of itens) {
+      const reg = d.projetos[li.dataset.pasta];
+      if (!reg || !ondeNoFluxo.has(reg.etapa)) continue;
+      algum = true;
+      li.dataset.etapa = reg.etapa;
+      const aqui = ondeNoFluxo.get(reg.etapa);
+      const e = d.fluxo[aqui];
+      const cx = li.querySelector(".etapa");
+      cx.innerHTML =
+        `<span class="regua" role="img" aria-label="Etapa ${aqui + 1} de ${d.fluxo.length}: ${escapar(e.rotulo)}">`
+        + d.fluxo.map((_, i) =>
+            `<i${i < aqui ? " data-feita" : ""}${i === aqui ? " data-aqui" : ""}></i>`).join("")
+        /* SEM A DATA AQUI. Ela e o ponto do campo na capa, mas no cartao o pe
+           ja mostra "Urlan · 01/10/2026" dois centimetros abaixo — a mesma
+           data duas vezes no mesmo cartao le como erro, nao como reforco.
+
+           E SEM O NOME DA ETAPA, que subiu para o alto do cartao. Solto sob a
+           regua ele ficava orfao: nem titulo, nem rodape, nem selo — uma
+           palavra no meio do cartao. La em cima ele vira o que sempre foi,
+           uma etiqueta de estado. */
+        + `</span>`;
+      cx.hidden = false;
+      const selo = li.querySelector(".etapa-selo");
+      selo.textContent = e.rotulo;
+      selo.hidden = false;
+      li.dataset.busca += " " + chato(e.rotulo);
+    }
+
+    /* Filtro so existe se houver o que filtrar: com zero projetos marcados ele
+       seria um campo que so leva ao estado vazio. */
+    if (!algum) return;
+    for (const e of d.fluxo) {
+      if (!itens.some((li) => li.dataset.etapa === e.id)) continue;
+      fEtapa.append(new Option(e.rotulo, e.id));
+    }
+    campoEtapa.hidden = false;
+    const daUrl = new URLSearchParams(location.search).get("etapa");
+    if ([...fEtapa.options].some((o) => o.value === daUrl)) {
+      fEtapa.value = daUrl;
+      aplicar({ atualizarUrl: false });
+    }
+  })
+  .catch(() => {});
+
+const params = new URLSearchParams(location.search);
+fBusca.value = params.get("q") || "";
+if ([...fDesigner.options].some((o) => o.value === params.get("designer")))
+  fDesigner.value = params.get("designer");
+
+aplicar({ atualizarUrl: false });
+</script>
+</body>
+</html>

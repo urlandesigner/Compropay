@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!--
+  404 DO REPOSITÓRIO INTEIRO.
+
+  O GitHub Pages só usa o 404.html da RAIZ do site, para qualquer endereço
+  errado em qualquer pasta — o 404 de um projeto (ex.: <Pasta>/site/404.html)
+  nunca é servido sozinho. Este arquivo faz duas coisas:
+
+  1. Se o endereço errado é de um projeto que tem 404 própria, leva para ela.
+     Procura, nesta ordem, <Pasta>/site/404.html (projetos com build) e
+     <Pasta>/404.html. Projeto novo com 404 própria entra sozinho, sem
+     mexer aqui.
+  2. Se não, mostra uma 404 geral, no visual do índice, com link para ele.
+
+  Como este arquivo aparece em qualquer profundidade de pasta, nada aqui usa
+  caminho relativo: a raiz é calculada do endereço (/compropay/ no
+  Pages, / num servidor local na raiz do repositório).
+
+  O portão (scripts/portao.js) entra como em toda página do repositório:
+  primeiro item do <head>, bloqueante — escrito por document.write porque o
+  caminho depende da raiz calculada.
+-->
+<script>
+  (function () {
+    var prefixo = "/compropay/";
+    window.RAIZ_REPO = location.pathname.indexOf(prefixo) === 0 ? prefixo : "/";
+    // O atributo é montado em partes de propósito: escrito inteiro, o
+    // `novo-projeto.py verificar` lê o texto como link e acusa link quebrado.
+    var atributo = "sr" + "c";
+    document.write("<script " + atributo + '="' + window.RAIZ_REPO + 'scripts/portao.js"><\/script>');
+  })();
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Página não encontrada · ComproPay</title>
+<meta name="theme-color" content="#0B0A0F" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0A0F'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='40' fill='%23A255FD'%3EU%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Fragment+Mono&display=swap" rel="stylesheet" />
+
+<style>
+  /* Tokens copiados do index.html da raiz — se mudarem lá, mudam aqui. */
+  :root {
+    --papel:      #0B0A0F;
+    --papel-2:    #110E18;
+    --tinta:      #F1EEF6;
+    --apoio:      #948FA3;
+    --linha:      rgba(241, 238, 246, 0.10);
+    --linha-forte: rgba(241, 238, 246, 0.75);
+    --acento:      #A255FD;
+
+    --serif: "Lora", Georgia, serif;
+    --sans:  "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --mono:  "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --gap: clamp(20px, 4.5vw, 40px);
+  }
+
+  * { box-sizing: border-box; }
+  html { color-scheme: dark; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--papel);
+    color: var(--tinta);
+    font: 400 16px/1.55 var(--sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(70rem 30rem at 50% -12%, rgba(162, 85, 253, 0.10), transparent 70%);
+  }
+
+  .pagina {
+    position: relative;
+    max-width: 1104px;
+    margin: 0 auto;
+    padding: clamp(48px, 10vh, 112px) var(--gap) 72px;
+  }
+
+  /* Enquanto procura a 404 do projeto, não mostra a geral — evita piscar a
+     página errada antes de levar para a certa. */
+  .procurando .pagina { visibility: hidden; }
+
+  .kicker {
+    font: 400 11px/1 var(--mono);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--apoio);
+    margin: 0 0 26px;
+  }
+  .kicker b { font-weight: 400; color: var(--acento); }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 7vw, 74px);
+    font-weight: 560;
+    font-variation-settings: "opsz" 120;
+    letter-spacing: -0.015em;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .lede {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 430;
+    font-size: clamp(17px, 2vw, 20px);
+    font-variation-settings: "opsz" 22;
+    color: var(--apoio);
+    max-width: 48ch;
+    margin: 20px 0 0;
+  }
+
+  .endereco {
+    margin: 40px 0 0;
+    padding: 14px 16px;
+    max-width: 640px;
+    border: 1px solid var(--linha);
+    border-radius: 10px;
+    background: var(--papel-2);
+    font: 400 13px/1.5 var(--mono);
+    color: var(--apoio);
+    overflow-wrap: anywhere;
+  }
+  .endereco span { color: var(--tinta); }
+
+  .acoes { margin: 32px 0 0; display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .acao {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid var(--linha);
+    border-radius: 999px;
+    color: var(--tinta);
+    text-decoration: none;
+    font-weight: 500;
+    transition: border-color 0.2s ease;
+  }
+  .acao:hover { border-color: var(--linha-forte); }
+  .acao:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+  .acao svg { flex: none; }
+</style>
+</head>
+<body>
+  <script>
+    // Antes de pintar: se houver 404 do projeto, esconde a geral enquanto procura.
+    document.body.classList.add("procurando");
+  </script>
+  <div class="pagina">
+    <header>
+      <p class="kicker"><b>ComproPay</b> · Erro 404</p>
+      <h1>Página não encontrada</h1>
+      <p class="lede">O endereço pode ter mudado ou estar digitado errado.</p>
+    </header>
+
+    <p class="endereco">Endereço procurado: <span id="endereco"></span></p>
+
+    <div class="acoes">
+      <a class="acao" id="voltar-indice" href="/compropay/">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M9 3 4.5 7.5 9 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Ir para o índice
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var raiz = window.RAIZ_REPO || "/";
+      document.getElementById("voltar-indice").setAttribute("href", raiz);
+      document.getElementById("endereco").textContent = decodeURI(location.pathname);
+
+      function mostrarGeral() {
+        document.body.classList.remove("procurando");
+      }
+
+      // Primeira pasta depois da raiz = o projeto.
+      var resto = location.pathname.slice(raiz.length);
+      var pasta = resto.split("/")[0];
+      if (!pasta || pasta === "404.html") return mostrarGeral();
+
+      var candidatos = [raiz + pasta + "/site/404.html", raiz + pasta + "/404.html"];
+      // Se a busca demorar, mostra a geral em vez de deixar a tela vazia.
+      var desistir = setTimeout(mostrarGeral, 2500);
+
+      (function tentar(i) {
+        if (i >= candidatos.length) {
+          clearTimeout(desistir);
+          return mostrarGeral();
+        }
+        fetch(candidatos[i], { method: "HEAD" })
+          .then(function (r) {
+            // Pasta sem 404 própria: o Pages responde 404 (com esta página).
+            if (r.ok) location.replace(candidatos[i]);
+            else tentar(i + 1);
+          })
+          .catch(function () { tentar(i + 1); });
+      })(0);
+    })();
+  </script>
+</body>
+</html>

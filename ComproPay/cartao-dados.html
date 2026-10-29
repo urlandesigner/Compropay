@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Novo cartão · dados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt=""><img src="assets/icons/statusbar-wifi.svg" alt=""><svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#000" opacity=".35"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#000" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#000"/></svg></span>
+  </div>
+  <header class="topbar">
+    <a class="topbar__back" href="cartao-arte.html" aria-label="Voltar"><img src="assets/icons/arrow-left.svg" alt=""></a>
+    <h1 class="topbar__title">Novo cartão</h1>
+    <span></span>
+  </header>
+  <div class="newcard">
+    <div class="cardform-preview">
+      <div class="cardform-preview__row">
+        <p class="cardform-preview__label">Número do cartão</p>
+        <p class="cardform-preview__value" id="preview-numero">0000 0000 0000 0000</p>
+      </div>
+      <div class="cardform-preview__row">
+        <p class="cardform-preview__label">Nome</p>
+        <p class="cardform-preview__value" id="preview-nome">Nome no cartão</p>
+      </div>
+    </div>
+    <form class="cardform" id="cardform">
+      <div class="cardform__field">
+        <label class="cardform__label" for="f-numero">Número</label>
+        <input class="cardform__input" id="f-numero" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000">
+      </div>
+      <div class="cardform__field">
+        <label class="cardform__label" for="f-nome">Nome</label>
+        <input class="cardform__input" id="f-nome" placeholder="José Matias Silva">
+      </div>
+      <div class="cardform__row">
+        <div class="cardform__field">
+          <label class="cardform__label" for="f-venc">Vencimento</label>
+          <input class="cardform__input" id="f-venc" inputmode="numeric" maxlength="5" placeholder="11/31">
+        </div>
+        <div class="cardform__field">
+          <label class="cardform__label" for="f-cvv">CVV</label>
+          <input class="cardform__input" id="f-cvv" inputmode="numeric" maxlength="3" placeholder="933">
+        </div>
+      </div>
+      <label class="cardform__check">
+        <input type="checkbox" checked>
+        <span class="cardform__check-box"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l2.5 2.5L11 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span>Esse é meu cartão principal</span>
+      </label>
+    </form>
+  </div>
+  <div class="newcard-cta">
+    <a class="btn-cta" href="cartao-confirmar.html" data-component="BotaoPrimario" data-props="texto, onClick, desabilitado" data-states="padrao, desabilitado" data-state="padrao" data-ds="button">Continuar</a>
+  </div>
+</main>
+<script>
+  function groupNumber(v) { return v.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim(); }
+  var numero = document.getElementById('f-numero'), nome = document.getElementById('f-nome');
+  var pNumero = document.getElementById('preview-numero'), pNome = document.getElementById('preview-nome');
+  numero.addEventListener('input', function () {
+    numero.value = groupNumber(numero.value);
+    pNumero.textContent = numero.value || '0000 0000 0000 0000';
+  });
+  nome.addEventListener('input', function () { pNome.textContent = nome.value || 'Nome no cartão'; });
+  document.getElementById('f-venc').addEventListener('input', function (e) {
+    var v = e.target.value.replace(/\D/g, '').slice(0, 4);
+    e.target.value = v.length > 2 ? v.slice(0, 2) + '/' + v.slice(2) : v;
+  });
+</script>
+</body>
+</html>

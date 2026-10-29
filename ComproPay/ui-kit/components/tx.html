@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR" data-kit-page="tx">
+<head>
+<script src="../../../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transaction row — ComproPay UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script>var KIT_BASE = '../';</script>
+</head>
+<body class="kit">
+<header class="kit-topbar">
+  <div class="kit-topbar__brand"><a href="../index.html" id="kit-home-link">← UI Kit</a></div>
+  <div class="kit-topbar__meta">css/base.css</div>
+</header>
+<div class="kit-layout">
+  <aside class="kit-sidebar">
+    <a class="kit-sidebar__home" id="kit-home-link-row" href="../index.html">Home</a>
+    <input class="kit-search" id="kit-search" type="search" placeholder="Buscar…">
+    <nav id="kit-nav"></nav>
+  </aside>
+  <div class="kit-main">
+    <div class="kit-crumb" id="kit-crumb"></div>
+    <h1>Transaction row</h1>
+    <p class="kit-lede">Linha do extrato. O <code>.tx__desc</code> (cashback ganho) é opcional — sem ele, o valor fica numa linha separada, alinhado à direita.</p>
+    <div class="kit-base-class"><b>Classes</b> <code>.tx-list</code> <code>.tx</code> <code>.tx__link</code></div>
+
+    <div class="kit-group">
+      <h2>Variantes</h2>
+      <div class="kit-preview" style="display:block">
+        <ul class="tx-list" style="padding:0">
+          <li class="tx"><img class="tx__avatar" src="../../assets/img/fav-la-nutri.jpg" alt="">
+            <div class="tx__main">
+              <h2 class="tx__title">Você pagou @lautri</h2>
+              <div class="tx__row"><p class="tx__desc">Você ganhou R$0,48 para utilizar nas próximas compras</p><span class="tx__amount">- R$48,00</span></div>
+              <p class="tx__date">2 semanas atrás</p>
+            </div>
+            <a class="tx__link" href="#"><span class="sr-only">Ver transação</span></a>
+          </li>
+        </ul>
+        <span class="kit-variant__label">com cashback (.tx__desc)</span>
+        <ul class="tx-list" style="padding:0;margin-top:12px">
+          <li class="tx"><img class="tx__avatar" src="../../assets/img/fav-tagline.png" alt="">
+            <div class="tx__main">
+              <h2 class="tx__title">Você pagou @tagline</h2>
+              <p class="tx__date">2 semanas atrás</p>
+            </div>
+            <span class="tx__amount">- R$98,00</span>
+            <a class="tx__link" href="#"><span class="sr-only">Ver transação</span></a>
+          </li>
+        </ul>
+        <span class="kit-variant__label">sem cashback — valor alinhado à direita</span>
+      </div>
+    </div>
+
+    <div class="kit-prevnext" id="kit-prevnext"></div>
+  </div>
+</div>
+<script src="../assets/kit.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Cartões</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt=""><img src="assets/icons/statusbar-wifi.svg" alt=""><svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#000" opacity=".35"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#000" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#000"/></svg></span>
+  </div>
+  <header class="topbar">
+    <span class="topbar__back" hidden></span>
+    <h1 class="topbar__title">Cartões</h1>
+    <span></span>
+  </header>
+  <div class="cards-page">
+    <div class="banner">
+      <h2 class="banner__title" id="t-saldo">Usar saldo para pagar</h2>
+      <button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="t-saldo" onclick="this.setAttribute('aria-checked', this.getAttribute('aria-checked') !== 'true')" data-component="Switch" data-props="rotulo, checked, onChange" data-states="off, on" data-state="on" data-ds="switch"></button>
+    </div>
+    <ul class="card-list">
+      <li><article class="card card--lg" style="background-image:url(assets/img/card-alimentacao-lg.png)" data-component="CartaoPagamento" data-props="arte, categoria, saldo, numero, bloqueado" data-states="padrao, bloqueado" data-state="padrao" data-ds="card" data-template>
+        <div class="card__top"><span class="card__chip">Alimentação</span><a class="link-more" href="cartao-gerenciar.html" style="color:#fff">Gerenciar <img src="assets/icons/chevron-white.svg" alt=""></a></div>
+        <div class="card__balance">
+          <div><div class="card__balance-label">Saldo do cartão</div><div class="card__balance-value">R$300,00</div></div>
+          <div class="card__status"><span>Principal</span><span class="card__number">•••• 8393</span></div>
+        </div>
+      </article></li>
+      <li><article class="card card--lg" style="background-image:url(assets/img/card-transporte-lg.png)" data-component="CartaoPagamento" data-props="arte, categoria, saldo, numero, bloqueado" data-states="padrao, bloqueado" data-state="padrao" data-ds="card" data-template>
+        <div class="card__top"><span class="card__chip">Transporte</span><a class="link-more" href="cartao-gerenciar.html" style="color:#fff">Gerenciar <img src="assets/icons/chevron-white.svg" alt=""></a></div>
+        <div class="card__balance">
+          <div><div class="card__balance-label">Saldo do cartão</div><div class="card__balance-value">R$200,00</div></div>
+          <div class="card__status"><span class="card__status-row"><img src="assets/icons/lock.svg" alt="">Bloqueado</span><span class="card__number">•••• 6399</span></div>
+        </div>
+      </article></li>
+    </ul>
+    <a class="btn-add" href="cartao-arte.html"><img src="assets/icons/plus-circle.svg" alt="">Adicionar cartão</a>
+  </div>
+  <nav class="tabbar" aria-label="Principal" data-component="Tabbar" data-props="itemAtivo" data-states="padrao" data-state="padrao" data-ds="tabbar">
+    <div class="tabbar__group">
+      <a class="tabbar__item" href="home-1-cartao.html"><img src="assets/icons/nav-inicio-off.svg" alt="">Início</a>
+      <a class="tabbar__item" href="extrato.html"><img src="assets/icons/nav-extrato.svg" alt="">Extrato</a>
+    </div>
+    <div class="tabbar__group">
+      <a class="tabbar__item" href="cartoes.html" aria-current="page"><img src="assets/icons/nav-cartoes-on.svg" alt="">Cartões</a>
+      <a class="tabbar__item" href="ajuda.html"><img src="assets/icons/nav-ajuda.svg" alt="">Ajuda</a>
+    </div>
+    <a class="tabbar__pay" href="pagar.html"><img src="assets/icons/nav-pagar.svg" alt="">Pagar</a>
+  </nav>
+</main>
+</body>
+</html>

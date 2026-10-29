@@ -1,0 +1,32 @@
+/* =========================================================================
+   COMPROPAY DESIGN SYSTEM · ÍCONES
+   Depende de: tokens/
+   ========================================================================= */
+.cp-icon{
+  width:var(--cp-icon-size, 20px);
+  height:var(--cp-icon-size, 20px);
+  flex:none;
+  display:inline-block;
+  vertical-align:middle;
+  /* O ícone não tem token de cor: herda a do texto. A declaração fica
+     explícita porque ESTA folha carrega depois das folhas das peças —
+     uma regra de classe única no próprio ícone lá atrás perde para esta, com
+     a mesma especificidade. Quem precisa pintar um ícone pinta o pai, ou usa
+     seletor de descendente (`.bloco .cp-icon`). */
+  color:currentColor;
+}
+.cp-icon--sm{--cp-icon-size:var(--cp-icon-sm)}
+.cp-icon--md{--cp-icon-size:var(--cp-icon-md)}
+.cp-icon--lg{--cp-icon-size:var(--cp-icon-lg)}
+.cp-icon--xl{--cp-icon-size:var(--cp-icon-xl)}
+
+/* ícone acompanhando texto num botão: alinha pelo baseline óptico */
+.cp-btn .cp-icon{margin-block:-2px}
+
+/* Modo de alto contraste do Windows. O navegador troca toda cor por uma
+   paleta do sistema, mas `currentColor` num SVG inline nem sempre acompanha —
+   o ícone some dentro do botão. `forced-color-adjust:auto` devolve o controle
+   ao sistema, e o ícone reaparece na cor do texto ao lado. */
+@media (forced-colors: active){
+  .cp-icon{forced-color-adjust:auto}
+}

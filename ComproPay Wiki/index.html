@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ComproPay Ajuda</title>
+  <meta name="description" content="Dúvidas frequentes, tutoriais e guias sobre o app e os sistemas da ComproPay.">
+  <!-- Design system da ComproPay (pasta "DS wiki"): fonte, tokens e componentes -->
+  <link rel="stylesheet" href="DS%20wiki/tokens/fonts.css">
+  <link rel="stylesheet" href="DS%20wiki/dist/cp-tokens.css">
+  <link rel="stylesheet" href="DS%20wiki/dist/cp-components.css">
+  <link rel="stylesheet" href="DS%20wiki/icons/cp-icons.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <a class="cp-skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__brand" href="./" aria-label="ComproPay Ajuda — página inicial">
+        <picture>
+          <source media="(max-width: 600px)" srcset="assets/logo-icone.svg">
+          <img src="assets/logo-horizontal.svg" alt="ComproPay" width="1347" height="250">
+        </picture>
+      </a>
+      <!-- <nav class="site-header__nav" aria-label="Principal"> links das seções entram aqui </nav> -->
+      <a class="cp-btn cp-btn--primary" href="https://www.compropay.com.br/store.html" target="_blank" rel="noopener">Baixe o app</a>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+    <section class="faq-hero">
+      <div class="cp-page">
+        <h1>Como podemos ajudar?</h1>
+        <form class="faq-search" role="search" onsubmit="return false">
+          <div class="cp-field">
+            <div class="cp-field__box">
+              <svg class="cp-icon cp-icon--md" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-search"/></svg>
+              <input class="cp-input" id="faq-busca" type="search" placeholder=" " autocomplete="off" aria-controls="faq-lista">
+              <label class="cp-field__label" for="faq-busca">Buscar uma dúvida</label>
+              <span class="faq-atalho" id="faq-atalho" aria-hidden="true"><kbd>Ctrl</kbd> <kbd>K</kbd></span>
+            </div>
+          </div>
+        </form>
+        <!-- Sugestões: termos que existem nas respostas. Trocar à vontade. -->
+        <p class="faq-sugestoes"><span class="faq-sugestoes__rotulo">Sugestões:</span>
+          <a class="cp-link" href="?q=boleto" data-sugestao="boleto">Boleto</a>
+          <a class="cp-link" href="?q=senha" data-sugestao="senha">Senha</a>
+          <a class="cp-link" href="?q=saldo" data-sugestao="saldo">Saldo</a>
+          <a class="cp-link" href="?q=estacionamento" data-sugestao="estacionamento">Estacionamento</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="cp-page faq-corpo">
+      <!-- Atualizadas recentemente: gerada por tools/gerar-perguntas.py a partir de data-atualizado
+           (em conteudo/perguntas.html). Sem nenhuma data, a seção não aparece. -->
+      <section class="faq-novidades" id="faq-novidades" aria-labelledby="faq-novidades-titulo" hidden>
+        <h2 id="faq-novidades-titulo" class="bloco-titulo">Atualizadas recentemente</h2>
+        <ul class="lista-novidades">
+          <!-- RECENTES:INICIO -->
+
+          <!-- RECENTES:FIM -->
+        </ul>
+      </section>
+
+      <!-- Categorias: o data-cat de cada botão é o data-categoria das perguntas -->
+      <div class="category-filter" role="group" aria-label="Filtrar por categoria">
+        <button type="button" class="cp-chip" data-cat="" aria-pressed="true">Todas</button>
+        <button type="button" class="cp-chip" data-cat="outros" aria-pressed="false">Outros</button>
+        <button type="button" class="cp-chip" data-cat="cadastros" aria-pressed="false">Cadastros</button>
+        <button type="button" class="cp-chip" data-cat="consultas" aria-pressed="false">Consultas</button>
+        <button type="button" class="cp-chip" data-cat="adicionar-dinheiro" aria-pressed="false">Adicionar dinheiro na carteira</button>
+        <button type="button" class="cp-chip" data-cat="retirar-dinheiro" aria-pressed="false">Retirar dinheiro da carteira</button>
+        <button type="button" class="cp-chip" data-cat="seguranca" aria-pressed="false">Segurança</button>
+        <button type="button" class="cp-chip" data-cat="editar-perfil" aria-pressed="false">Editar Perfil</button>
+        <button type="button" class="cp-chip" data-cat="transacoes" aria-pressed="false">Transações</button>
+        <button type="button" class="cp-chip" data-cat="oab-pay" aria-pressed="false">OAB.Pay</button>
+        <button type="button" class="cp-chip" data-cat="estacionamento" aria-pressed="false">Estacionamento</button>
+      </div>
+
+      <p class="cp-sr-only" id="faq-anuncio" role="status" aria-live="polite"></p>
+      <p id="faq-contador" class="faq-contador" role="status" aria-live="polite"></p>
+
+      <!-- As perguntas moram em conteudo/perguntas.html. A lista abaixo é gerada por tools/gerar-perguntas.py. -->
+      <div class="cp-panel faq-painel">
+        <ul class="question-list" id="faq-lista">
+          <!-- LISTA:INICIO (gerada por tools/gerar-perguntas.py, não edite) -->
+          <li id="como-se-cadastrar-no-app-compropay" data-categoria="cadastros" data-busca="Como se cadastrar no app ComproPay? É muito simples!! Se você ainda não tem o app ComproPay baixado, basta clicar no link b.link/compropay para fazer o download! Caso já tenha o app em seu celular, basta seguir o passo a passo abaixo, ou assistir ao vídeo, para se cadastrar: 1- Abra o app e clique em “ CRIAR NOVA CONTA ” e selecione “ Pessoa física ”. 2- Insira seu nome completo, CPF, e-mail, apelido e data de nascimento. 3- Leia com atenção os Termos de Uso e clique no quadradinho confirmando que você leu e o aceitou. Agora clique em “ CONTINUE ”. 4- Preencha os dados com seu endereço de residência e clique novamente em “ CONTINUE ”. 5- Agora é só aguardar o SMS de confirmação que enviamos para seu celular, preencher o código no app e pronto! Agora você faz parte da família ComproPay, seja bem-vindo!">
+            <a class="faq-item" href="perguntas/como-se-cadastrar-no-app-compropay.html"><span class="faq-q"><span class="faq-q__titulo">Como se cadastrar no app ComproPay?</span><span class="cp-badge cp-badge--soft">Cadastros</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-cadastrar-um-cartao-comprocard" data-categoria="cadastros" data-busca="Como cadastrar um Cartão Comprocard? Para cadastrar um Cartão Comprocard no App ComproPay é muito fácil, basta seguir o passo a passo abaixo ou assistir ao vídeo: 1- Primeiramente, na página inicial do App ComproPay, clique em “ Meus Cartões ”. 2- Feito isso, clique em “ ADICIONAR CARTÃO ”. 3- Agora clique na opção para selecionar a bandeira e selecione “ Comprocard ”. 4- Em seguida, basta informar os dados de seu Cartão Comprocard, os dados do titular do cartão e depois o endereço do titular. 5- Agora clique em “ SALVAR CARTÃO ” e pronto!! Você está pronto(a) para usar seu Cartão Comprocard para fazer compras no App ComproPay!">
+            <a class="faq-item" href="perguntas/como-cadastrar-um-cartao-comprocard.html"><span class="faq-q"><span class="faq-q__titulo">Como cadastrar um Cartão Comprocard?</span><span class="cp-badge cp-badge--soft">Cadastros</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-cadastrar-um-cartao-de-credito" data-categoria="cadastros" data-busca="Como cadastrar um Cartão de Crédito? Ainda com dúvida de como cadastrar um cartão de crédito no App ComproPay? Não tem problema, basta seguir o passo a passo abaixo ou assistir ao vídeo que você aprende rapidinho! 1- Primeiramente, na página inicial do App ComproPay, clique em “ Meus Cartões ”. 2- Feito isso, clique em “ ADICIONAR CARTÃO ”. 3- Agora clique na opção para selecionar a bandeira e selecione a operadora do seu cartão de crédito. 4- Em seguida, basta informar os dados de seu Cartão de Crédito, os dados do titular do cartão e depois o endereço do titular. 5- Agora clique em “ SALVAR CARTÃO ” e pronto!! Você está pronto(a) para usar seu Cartão de Crédito para fazer compras, pagar amigos e muito mais!">
+            <a class="faq-item" href="perguntas/como-cadastrar-um-cartao-de-credito.html"><span class="faq-q"><span class="faq-q__titulo">Como cadastrar um Cartão de Crédito?</span><span class="cp-badge cp-badge--soft">Cadastros</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-consultar-o-saldo-de-seus-cartoes-comprocard" data-categoria="consultas" data-busca="Como consultar o saldo de seus Cartões Comprocard? “E na hora de consultar o saldo do meu Cartão Comprocard, como faz?” Caso já tenha seu cartão cadastrado, a consulta do seu saldo é muito simples, basta seguir o passo a passo abaixo ou assistir ao vídeo. Caso ainda não tenha cadastrado seu Cartão Comprocard, sugiro que volte para a página anterior, lá você vai encontrar um tutorial, como esse aqui, te ensinando a fazer o cadastro do cartão! 1- Primeiramente, na página inicial do App ComproPay, clique em “ Meus Cartões ”. 2- Feito isso, uma tela completinha com as informações do saldo de seu cartão cadastrado já aparece! Viu como é fácil, agora você pode controlar o seu saldo com maior facilidade!">
+            <a class="faq-item" href="perguntas/como-consultar-o-saldo-de-seus-cartoes-comprocard.html"><span class="faq-q"><span class="faq-q__titulo">Como consultar o saldo de seus Cartões Comprocard?</span><span class="cp-badge cp-badge--soft">Consultas</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-consultar-a-rede-credenciada-compropay-e-comprocard" data-categoria="consultas" data-busca="Como consultar a rede credenciada ComproPay e Comprocard? Para consultar a rede credenciada Comprocard no app ComproPay é muito fácil, basta seguir o passo a passo abaixo ou assistir ao vídeo: 1- Primeiramente, na página inicial do app ComproPay, clique em “ REDE CREDENCIADA ”. 2- Feito isso, clique no segmento que deseja buscar. 3- Em seguida você verá uma lista com todos os nossos estabelecimentos credenciados e poderá filtrar na busca por nome, cidade ou bairro. 4- Você também pode ligar para o estabelecimento diretamente no App ComproPay, ou ver sua localização clicando no botão “ Ver no Mapa ”. Ao clicar nessa opção, você será direcionado para o aplicativo “mapas” de sua preferência e poderá criar uma rota até o estabelecimento desejado! Viu como é fácil e prático?">
+            <a class="faq-item" href="perguntas/como-consultar-a-rede-credenciada-compropay-e-comprocard.html"><span class="faq-q"><span class="faq-q__titulo">Como consultar a rede credenciada ComproPay e Comprocard?</span><span class="cp-badge cp-badge--soft">Consultas</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-adicionar-dinheiro-via-boleto" data-categoria="adicionar-dinheiro" data-busca="Como adicionar dinheiro via boleto? Para adicionar dinheiro via boleto em sua carteira ComproPay é muito fácil, basta seguir o passo a passo abaixo ou assistir ao vídeo: 1- Primeiramente, na página inicial do App ComproPay, clique em “ ADICIONAR ”. 2- Feito isso, clique em “ Boleto bancário ”. 3- Agora clique na opção “ DIGITE O VALOR ” e informe o valor desejado para a recarga via boleto. 4- Em seguida, basta clicar no botão “ CONFIRMAR ” para gerar o boleto com o valor desejado. 5- Pronto!! Agora você já pode realizar o pagamento, copiando o código ou realizando o download do boleto para impressão! Agora você pode usar o saldo adicionado para realizar suas transações no App ComproPay e aproveitar todos os nossos benefícios!">
+            <a class="faq-item" href="perguntas/como-adicionar-dinheiro-via-boleto.html"><span class="faq-q"><span class="faq-q__titulo">Como adicionar dinheiro via boleto?</span><span class="cp-badge cp-badge--soft">Adicionar dinheiro na carteira</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-adicionar-dinheiro-via-ted-ou-doc" data-categoria="adicionar-dinheiro" data-busca="Como adicionar dinheiro via TED ou DOC? Para adicionar dinheiro via TED ou DOC em sua carteira ComproPay é muito fácil, basta seguir o passo a passo abaixo ou assistir ao vídeo: 1- Primeiramente, na página inicial do App ComproPay, clique em “ ADICIONAR ”. 2- Feito isso, clique em “ Transferência Bancária ”. 3- Agora na tela com todos os dados da conta bancária ComproPay, clique em “ copiar ” para salvar as informações para área de transferência. 4- Em seguida, basta ir no aplicativo do seu banco, preencher com os dados copiados e realizar a transferência para sua carteira ComproPay! Pronto, agora você pode usufruir do seu saldo no app ComproPay da maneira que desejar!">
+            <a class="faq-item" href="perguntas/como-adicionar-dinheiro-via-ted-ou-doc.html"><span class="faq-q"><span class="faq-q__titulo">Como adicionar dinheiro via TED ou DOC?</span><span class="cp-badge cp-badge--soft">Adicionar dinheiro na carteira</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-adicionar-dinheiro-via-cartao-comprocard" data-categoria="adicionar-dinheiro" data-busca="Como adicionar dinheiro via Cartão Comprocard? Para adicionar dinheiro via cartão Comprocard em sua carteira ComproPay é muito fácil, basta seguir o passo a passo abaixo ou assistir ao vídeo: 1- Primeiramente, na página inicial do app ComproPay, clique em “ Adicionar ”. 2- Feito isso, clique em “ Cartão Comprocard ”. 3- Agora selecione o cartão Comprocard que deseja utilizar para adicionar dinheiro na sua carteira digital. 4- Em seguida, basta clicar em “ DIGITE O VALOR ” e informar o valor desejado para a transferência. 5- Clique em “ CONFIRMAR ” para realizar a operação. Pronto! Seu saldo já está na carteira digital e o comprovante aparecerá na sua tela.">
+            <a class="faq-item" href="perguntas/como-adicionar-dinheiro-via-cartao-comprocard.html"><span class="faq-q"><span class="faq-q__titulo">Como adicionar dinheiro via Cartão Comprocard?</span><span class="cp-badge cp-badge--soft">Adicionar dinheiro na carteira</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-retirar-dinheiro-da-carteira-digital" data-categoria="retirar-dinheiro" data-busca="Como retirar dinheiro da carteira digital? Poxa, já está saindo? Sem problemas, é muito fácil retirar dinheiro de sua carteira digital no app ComproPay! Atualmente você pode retirar via transferência bancária, para isso, basta seguir o passo a passo abaixo: 1- Primeiramente, na página inicial do app ComproPay, clique em “ RETIRAR ”. 2- Feito isso, clique em “ ADICIONAR CONTA ”. 3- Agora clique em “ ENTENDI ” para avançar ao cadastro. 4- Em seguida, basta informar os dados de sua conta bancária e confirme clicando no botão “SALVAR ”. 5- Agora clique em “ OK ” para confirmar a conta salva com sucesso. 6- Pronto!! Agora você só precisa informar o valor que deseja transferir e selecionar a conta bancária cadastrada para a retirada, clique em “ CONTINUE ” para avançar o procedimento. 7- Na tela com seus dados bancários, clique em “ CONFIRMAR ” para realizar a retirada. 8- Para finalizar, confirme a solicitação clicando no botão “ OK ” na mensagem que aparecerá em sua tela.">
+            <a class="faq-item" href="perguntas/como-retirar-dinheiro-da-carteira-digital.html"><span class="faq-q"><span class="faq-q__titulo">Como retirar dinheiro da carteira digital?</span><span class="cp-badge cp-badge--soft">Retirar dinheiro da carteira</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-bloquear-e-desbloquear-seus-cartoes-comprocard" data-categoria="seguranca" data-busca="Como bloquear e desbloquear seus Cartões Comprocard? No App ComproPay, sua segurança é prioridade ! Por isso, com apenas alguns cliques você consegue bloquear e desbloquear seu Cartão Comprocard! Olha como é fácil: 1- Primeiramente, na página inicial do App ComproPay, clique em “ Meus Cartões ”. 2- Feito isso, para efetuar o bloqueio do seu cartão clique nos três pontos localizado na parte superior direita da tela. 3- Agora clique na opção “ BLOQUEAR ” para travar o cartão escolhido. 4- Em seguida, basta clicar em “ BLOQUEAR CARTÃO ” para confirmar o bloqueio. 5- Agora, caso queira desbloquear algum cartão, vá até a página “ MEUS CARTÕES ” clique novamente nos três pontos no cartão Comprocard que deseja realizar o desbloqueio, e em seguida basta clicar em “ DESBLOQUEAR ” para habilitar o cartão desejado. 6- Pronto!! Agora basta confirmar o desbloqueio clicando em “ DESBLOQUEAR CARTÃO ”.">
+            <a class="faq-item" href="perguntas/como-bloquear-e-desbloquear-seus-cartoes-comprocard.html"><span class="faq-q"><span class="faq-q__titulo">Como bloquear e desbloquear seus Cartões Comprocard?</span><span class="cp-badge cp-badge--soft">Segurança</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-alterar-um-e-mail-cadastrado" data-categoria="editar-perfil" data-busca="Como alterar um e-mail cadastrado? Cadastrou sua conta no App ComproPay com o e-mail errado? Ou então apenas mudou de e-mail? Não se preocupe, é muito fácil corrigir seu endereço de e-mail, basta seguir o passo a passo abaixo ou assistir ao vídeo: 1- Primeiramente, na página inicial do App ComproPay, clique no ícone [ícone — imagem original indisponível] localizado no canto superior esquerdo de sua tela. 2- Feito isso, clique em “ MINHA CONTA ”. 3- Agora clique na opção “ EDITAR ” no campo de texto do seu e-mail. 4- Em seguida, basta informar seu novo e-mail desejado e clique em “ SALVAR ” para confirmar a alteração realizada. 5- Pronto!! Agora basta clicar em “ ENTENDI ” para avançar, lembrando que após o salvamento do novo e-mail será enviado um link para seu e-mail cadastrado com o passo a passo para concluir a operação.">
+            <a class="faq-item" href="perguntas/como-alterar-um-e-mail-cadastrado.html"><span class="faq-q"><span class="faq-q__titulo">Como alterar um e-mail cadastrado?</span><span class="cp-badge cp-badge--soft">Editar Perfil</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-realizar-uma-cobranca" data-categoria="transacoes" data-busca="Como realizar uma cobrança? Para realizar uma cobrança no app ComproPay é muito fácil, basta seguir o passo a passo abaixo ou assistir ao vídeo: 1- Primeiramente, na página inicial do app ComproPay, clique em “ COBRAR ”. 2- Feito isso, clique em “ QUANTO VOCÊ QUER COBRAR? ”. 3- Agora informe o valor que deseja ser cobrado. 4- Em seguida, basta clicar em “ ENVIAR COBRANÇA ” para efetuar o pedido. 5- Ao efetuar o pedido será gerado um QR code com o valor a receber que pode ser compartilhado clicando em “COMPARTILHAR”.">
+            <a class="faq-item" href="perguntas/como-realizar-uma-cobranca.html"><span class="faq-q"><span class="faq-q__titulo">Como realizar uma cobrança?</span><span class="cp-badge cp-badge--soft">Transações</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-recuperar-senha-da-conta-compropay" data-categoria="seguranca" data-busca="Como recuperar senha da conta ComproPay? Esqueceu sua senha para entrar no App ComproPay? Não se preocupe, isso acontece! Para recuperar uma senha perdida é muito fácil, basta seguir o passo a passo abaixo: 1- Primeiramente, na página de login do app ComproPay, clique em “ ACESSAR CONTA ”. 2- Na sequência, clique em “ ESQUECEU SUA SENHA? ”. 3- Agora basta informar seu CPF/CNPJ para que seja enviado um link de redefinição de senha para seu e-mail cadastrado. 4- Em seguida, clique no botão “ CONTINUE ” para avançar o procedimento. 5- Pronto!! Para finalizar clique no botão “ OK ” para confirmar o e-mail em que foi enviado o link de redefinição.">
+            <a class="faq-item" href="perguntas/como-recuperar-senha-da-conta-compropay.html"><span class="faq-q"><span class="faq-q__titulo">Como recuperar senha da conta ComproPay?</span><span class="cp-badge cp-badge--soft">Segurança</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-cadastrar-uma-conta-bancaria" data-categoria="cadastros" data-busca="Como cadastrar uma conta bancária? Para cadastrar uma conta bancária no app ComproPay é muito fácil, basta seguir o passo a passo abaixo: 1- Primeiramente, na página inicial do app ComproPay, clique em “ RETIRAR ”. 2- Feito isso, clique em “ ADICIONAR CONTA ” para avançar e depois clique em “ ENTENDI ”. 3- Agora clique na opção “ SELECIONE ” para escolher o banco de sua preferência. 4- Em seguida, basta informar os dados de sua conta bancária e clicar em “ SALVAR ”. 5- Para finalizar o cadastro basta clicar em “ OK ” para confirmar o salvamento de sua conta bancária. Parabéns, agora você poderá realizar transações entre o app ComproPay e seu Banco de forma segura!">
+            <a class="faq-item" href="perguntas/como-cadastrar-uma-conta-bancaria.html"><span class="faq-q"><span class="faq-q__titulo">Como cadastrar uma conta bancária?</span><span class="cp-badge cp-badge--soft">Cadastros</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="quais-bandeiras-de-cartao-sao-aceitas-pela-compropay" data-categoria="consultas" data-busca="Quais bandeiras de cartão são aceitas pela ComproPay? No App ComproPay você consegue cadastrar qualquer uma das principais bandeiras de cartão! Para consultar quais as bandeiras são aceitas é muito fácil, basta seguir o passo a passo abaixo: 1- Primeiramente, na página inicial do app ComproPay, clique em “ Meus Cartões ”. 2- Feito isso, clique em “ ADICIONAR CARTÃO ”. 3- Agora clique na opção “ SELECIONE ” para selecionar a bandeira. 4- Em seguida, o app irá mostrar na tela todas as bandeiras disponíveis.">
+            <a class="faq-item" href="perguntas/quais-bandeiras-de-cartao-sao-aceitas-pela-compropay.html"><span class="faq-q"><span class="faq-q__titulo">Quais bandeiras de cartão são aceitas pela ComproPay?</span><span class="cp-badge cp-badge--soft">Consultas</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="quais-bancos-sao-aceitos-pelo-compropay" data-categoria="consultas" data-busca="Quais bancos são aceitos pelo ComproPay? Para consultar quais bancos são aceitos pelo app ComproPay é muito fácil, basta seguir o passo a passo abaixo: 1- Primeiramente, na página inicial do app ComproPay, clique em “ RETIRAR ”. 2- Feito isso, clique em “ ADICIONAR CONTA ”. 3- Agora clique na opção “ ENTENDI ” para confirmar e avançar. 4- Em seguida, basta clicar em “ SELECIONE ” para listar todos os bancos disponíveis, agora é só escolher o de sua preferência.">
+            <a class="faq-item" href="perguntas/quais-bancos-sao-aceitos-pelo-compropay.html"><span class="faq-q"><span class="faq-q__titulo">Quais bancos são aceitos pelo ComproPay?</span><span class="cp-badge cp-badge--soft">Consultas</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-efetuar-um-pagamento-via-qrcode" data-categoria="transacoes" data-busca="Como efetuar um pagamento via QRCode? Para efetuar um pagamento via QRCode no app ComproPay é muito fácil, basta seguir o passo a passo abaixo: 1- Primeiramente, na página inicial do app ComproPay, clique em “ PAGAR ”. 2- Feito isso, clique no símbolo do QRCode para efetuar o scan. 3- Agora alinhe as bordas roxas do quadrado com o QRCode que deseja realizar o pagamento. 4- Em seguida, basta informar o valor a ser pago e a forma de pagamento. 5- Para finalizar a operação clique em “ PAGAR ”.">
+            <a class="faq-item" href="perguntas/como-efetuar-um-pagamento-via-qrcode.html"><span class="faq-q"><span class="faq-q__titulo">Como efetuar um pagamento via QRCode?</span><span class="cp-badge cp-badge--soft">Transações</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-sacar-dinheiro-de-seu-cartao-comprocard" data-categoria="retirar-dinheiro" data-busca="Como sacar dinheiro de seu Cartão Comprocard? Para sacar dinheiro de seu Cartão Comprocard, primeiramente você vai precisar adicionar saldo na carteira digital ComproPay utilizando o cartão desejado. Caso tenha alguma dúvida basta clicar aqui para acessar o tutorial! Feito isso, vamos para o saque! É muito fácil, é só seguir o passo a passo abaixo ou assistir ao vídeo: 1- Primeiramente, na página inicial do app ComproPay, clique em “ RETIRAR ”. 2- Feito isso, clique em “ ADICIONAR CONTA ”. 3- Agora clique em “ ENTENDI ” para avançar ao cadastro. 4- Em seguida, basta informar os dados de sua conta bancária e confirme clicando no botão “SALVAR ”. 5- Agora clique em “ OK ” para confirmar a conta salva com sucesso. 6- Pronto!! Agora você só precisa informar o valor que deseja transferir e selecionar a conta bancária cadastrada para a retirada, clique em “ CONTINUE ” para avançar o procedimento. 7- Na tela com seus dados bancários, clique em “ CONFIRMAR ” para realizar a retirada. 8- Para finalizar, confirme a solicitação clicando no botão “ OK ” na mensagem que aparecerá em sua tela.">
+            <a class="faq-item" href="perguntas/como-sacar-dinheiro-de-seu-cartao-comprocard.html"><span class="faq-q"><span class="faq-q__titulo">Como sacar dinheiro de seu Cartão Comprocard?</span><span class="cp-badge cp-badge--soft">Retirar dinheiro da carteira</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-me-cadastrar-para-o-modulo-oab-pay" data-categoria="oab-pay" data-busca="Como me cadastrar para o módulo OAB.Pay? Se você é advogado inscrito na OAB-ES, você tem acesso exclusivo ao módulo OAB.Pay, para ganhar cashbacks e abater os valores de sua anuidade! Para se cadastrar é muito simples, basta seguir o passo a passo abaixo: 1- Abra o app ComproPay e clique em “ CRIAR NOVA CONTA ” e selecione “ Pessoa física ”. 2- Insira seu nome completo, CPF, e-mail, apelido e data de nascimento. 3- Leia com atenção os Termos de Uso e clique no quadradinho confirmando que você leu e o aceitou. Agora clique em “ CONTINUE ”. 4- Preencha os dados com seu endereço de residência e clique novamente em “ CONTINUE ”. 5- Agora é só aguardar o SMS de confirmação que enviamos para seu celular, preencher o código no app. Agora você criou sua conta no App ComproPay ! 6- Para finalizar, clique no módulo OAB.Pay e digite seu número de inscrição na OAB-ES e pronto!!! Agora você faz parte do exclusivo módulo OAB.Pay e já pode começar a ganhar cashbacks rumo à anuidade zero!!">
+            <a class="faq-item" href="perguntas/como-me-cadastrar-para-o-modulo-oab-pay.html"><span class="faq-q"><span class="faq-q__titulo">Como me cadastrar para o módulo OAB.Pay?</span><span class="cp-badge cp-badge--soft">OAB.Pay</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-ganhar-cashback-para-o-programa-anuidade-zero-oab-pay" data-categoria="oab-pay" data-busca="Como ganhar cashback para o Programa Anuidade Zero OAB.Pay? Olá! Primeiramente, gostaríamos de saber se você já se cadastrou no módulo OAB.Pay . Se ainda não tiver se cadastrado, tem um tutorial te explicando como se cadastrar. Caso já esteja tudo ok, basta seguir o passo a passo abaixo para começar a ganhar cashbacks rumo à anuidade zero! 1- Acesse o módulo OAB.Pay e vá na aba “CASHBACK” para conferir toda a rede credenciada oferecendo cashback especial para advogados da OAB-ES. 2- Feito isso, volte para o menu principal e clique em “PAGAR” 3- Agora basta realizar seu pagamento para um dos estabelecimentos que oferecem cashback para o Programa Anuidade Zero OAB.Pay e pronto!! 4- Após confirmada a transação, uma mensagem irá aparecer em sua tela informando que você já recebeu o cashback! 5- Ao acessar novamente o módulo OAB.Pay , você poderá conferir a transação realizada na aba “ATIVIDADES” e o valor recebido de volta já estará contabilizado no “SALDO CASHBACK” e será destinado automaticamente ao abatimento da anuidade da OAB-ES! Viu como é fácil? Agora você pode começar sua jornada rumo à anuidade zero!">
+            <a class="faq-item" href="perguntas/como-ganhar-cashback-para-o-programa-anuidade-zero-oab-pay.html"><span class="faq-q"><span class="faq-q__titulo">Como ganhar cashback para o Programa Anuidade Zero OAB.Pay?</span><span class="cp-badge cp-badge--soft">OAB.Pay</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-pagar-meu-ticket-de-estacionamento-do-shopping-vitoria" data-categoria="estacionamento" data-busca="Como pagar meu ticket de estacionamento do Shopping Vitória? Para realizar o pagamento do ticket de estacionamento do Shopping Vitória é muito fácil! Basta seguir o passo a passo abaixo: 1- Na tela principal do App ComproPay clique no ícone de QR Code no canto superior de sua tela; 2- Feito isso, basta ler o código de barras de seu ticket, isso mesmo, o código de barras , não o QR Code. 3- Agora é só selecionar a forma de pagamento, confirmar e… pronto!! Viu como é fácil e prático? Agora você consegue pagar o estacionamento do Shopping Vitória sem filas ou dinheiro físico!">
+            <a class="faq-item" href="perguntas/como-pagar-meu-ticket-de-estacionamento-do-shopping-vitoria.html"><span class="faq-q"><span class="faq-q__titulo">Como pagar meu ticket de estacionamento do Shopping Vitória?</span><span class="cp-badge cp-badge--soft">Estacionamento</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="consigo-sacar-o-saldo-de-meu-cartao-comprocard" data-categoria="consultas" data-busca="Consigo sacar o saldo de meu Cartão Comprocard? Isso depende de qual Cartão Comprocard. Os Cartões Alimentação e Refeição seguem as regras do Programa de Alimentação do Trabalhador (PAT), seja para compras usando o cartão físico ou em compras através da carteira digital, ou seja, seu uso é exclusivo para fins alimentícios, em supermercados e restaurantes por exemplo, não sendo possível sacar o valor ou realizar outras transações. O Cartão Combustível Comprocard também possui regras específicas para compras relacionadas às frotas de sua empresa, como combustível e pedágio. Agora os Cartões Presente, Premiação e Adiantamento Salarial da Comprocard podem ser cadastrados no app ComproPay e seu saldo pode ser usado tanto na rede credenciada, quanto para saque e para outras transações, como recargas e pagamento de boletos! Além disso, você tem muitas outras vantagens cadastrando seus cartões em nossa carteira digital, como por exemplo poder ganhar cashbacks exclusivos em nossa rede de estabelecimentos credenciados. Os cashbacks valem para todos os cartões , seja Comprocard, VISA, Mastercard ou outras bandeiras!">
+            <a class="faq-item" href="perguntas/consigo-sacar-o-saldo-de-meu-cartao-comprocard.html"><span class="faq-q"><span class="faq-q__titulo">Consigo sacar o saldo de meu Cartão Comprocard?</span><span class="cp-badge cp-badge--soft">Consultas</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-pagar-o-estacionamento-rotativo-de-vitoria" data-categoria="estacionamento" data-busca="Como Pagar o Estacionamento Rotativo de Vitória? Agora você pode pagar o Estacionamento Rotativo de Vitória pelo seu celular de maneira fácil e prática com o seu ComproPay! Vale lembrar que também, de forma inovadora, você consegue pagar a notificação caso um guardinha tenha te multado. Veja como é fácil: 1- Primeiramente, ao abrir o ComproPay, toque no ícone que já tem a forma de um veículo, com o nome ROTATIVO VITÓRIA. 2- Depois, basta entrar com os dados do seu carro, clicando em ADICIONAR PLACA. 3- Agora é só dar um apelido ao seu veículo para que essa informação fique registrada para futuros usos do Rotativo, depois digite sua placa e aperte o botão CONFIRMAR. 4- Agora basta selecionar o bairro de Vitória que você estacionou o seu carro, o tempo que deseja pagar e pronto! Viu como é fácil? Agora você nunca mais vai levar aquelas multinhas chatas. Mas se por acaso você tiver algum débito pendente, este será sinalizado pelo próprio App ComproPay e você poderá pagá-lo digitalmente, sem dor de cabeça!">
+            <a class="faq-item" href="perguntas/como-pagar-o-estacionamento-rotativo-de-vitoria.html"><span class="faq-q"><span class="faq-q__titulo">Como Pagar o Estacionamento Rotativo de Vitória?</span><span class="cp-badge cp-badge--soft">Estacionamento</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-avaliar-o-aplicativo-compropay" data-categoria="outros" data-busca="Como Avaliar o Aplicativo ComproPay? A gente gosta de tecnologia, mas valoriza muito as pessoas! É por isso que sua avaliação no App é muito importante. E claro, essa também é uma oportunidade pra que a gente sempre deixe o ComproPay com mais benefícios e vantagens pra você. Então vamos lá: 1 - Para avaliar o ComproPay, clique no Menu &quot;Perfil do Usuário&quot;. Agora na tela de &quot;Perfil do Usuário&quot;, role a tela para baixo até encontrar a opção avaliar o aplicativo. 2 - Clique na opção avaliar o aplicativo para ser redirecionado automaticamente para a loja de Apps do seu smartphone. 3 - Ao entrar na loja de Apps, role a tela para baixo até encontrar as &quot;Estrelas de Classificação&quot;. 4 - Nessa etapa, basta clicar lateralmente na quantidade de estrelas que deseja avaliar o ComproPay. 5 - Ao efetuar a avaliação, você receberá uma confirmação e será redirecionado automaticamente para a área de comentários. 6 - Na área de comentários, clique no &quot;Título&quot; para inserir o título de sua avaliação, clique em &quot;Avaliação&quot; para inserir o comentário completo que deseja e depois é só clicar em &quot;Enviar&quot; para finalizar o processo de avaliação para receber a confirmação. Pronto, viu como é simples? Ao receber a mensagem de enviado, sua avaliação foi concluída com sucesso. O ComproPay agradece a você pela sua classificação e claro, é importante dizer que estamos sempre trabalhando sem parar para tornar o seu Super App de Vantagens favorito cada vez mais fácil, seguro e cheio de novidades pra você!">
+            <a class="faq-item" href="perguntas/como-avaliar-o-aplicativo-compropay.html"><span class="faq-q"><span class="faq-q__titulo">Como Avaliar o Aplicativo ComproPay?</span><span class="cp-badge cp-badge--soft">Outros</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-cadastrar-digital-ou-face-id-para-usar-nas-transacoes" data-categoria="cadastros" data-busca="Como Cadastrar Digital ou FACE ID Para Usar nas Transações? Para cadastrar a sua digital ou o seu rosto, também conhecido como Face ID e poder realizar transações de forma rápida e segura, é simples: 1 - Clique no Menu &quot;Perfil do Usuário&quot; no canto superior esquerdo da tela principal do App. 2 - Clique na opção Face ID, Touch ID ou Usar Digital, para fazer a ativação. 3 - Em seguida, digite sua senha de 6 dígitos do App ComproPay e clique no botão &quot;Confirmar&quot; para ativar a função. 4 - Após a confirmação com sua senha, seu aparelho fará uma solicitação de reconhecimento facial ou digital e pronto! Agora você pode realizar transações no App ComproPay usando sua digital ou Face ID. ComproPay, a maneira mais fácil e segura de comprar ou vender!">
+            <a class="faq-item" href="perguntas/como-cadastrar-digital-ou-face-id-para-usar-nas-transacoes.html"><span class="faq-q"><span class="faq-q__titulo">Como Cadastrar Digital ou FACE ID Para Usar nas Transações?</span><span class="cp-badge cp-badge--soft">Cadastros</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <li id="como-conferir-transacoes-realizadas" data-categoria="consultas" data-busca="Como Conferir Transações Realizadas? Mantenha o controle de sua movimentação no App ComproPay de maneira simples e objetiva. Para conferir uma transação realizada é muito simples. 1 - Clique na aba atividades no canto inferior esquerdo. 2 - Em seguida, na tela de atividades, clique na transação que deseja obter mais informações. 3 - Clique em &quot;Ver Recibo&quot; para ter a visualização completa de sua transação. Pronto! Agora você consegue visualizar todas as informações de suas transações de maneira rápida e prática! Viu como é simples? ComproPay é a maneira mais fácil e segura de comprar e vender.">
+            <a class="faq-item" href="perguntas/como-conferir-transacoes-realizadas.html"><span class="faq-q"><span class="faq-q__titulo">Como Conferir Transações Realizadas?</span><span class="cp-badge cp-badge--soft">Consultas</span></span><svg class="cp-icon cp-icon--md faq-item__seta" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-chevron-right"/></svg></a>
+          </li>
+          <!-- LISTA:FIM -->
+        </ul>
+        <div class="faq-mais" id="faq-mais-caixa" hidden><button type="button" class="cp-btn cp-btn--secondary" id="faq-mais">Ver todas as perguntas</button></div>
+        <div id="faq-vazio" class="question-list__empty" role="status" hidden>
+          <p class="question-list__empty-titulo">Não encontramos nada para <strong id="faq-vazio-termo"></strong>.</p>
+          <p>Confira a escrita ou tente uma palavra mais simples.</p>
+          <p>Ainda sem resposta? <a class="cp-link" data-whatsapp-link href="#faq-suporte">Fale com a gente</a>.</p>
+        </div>
+      </div>
+
+      <!-- Canal de atendimento. O número do WhatsApp fica em assets/config.js. Vazio = botão desativado. -->
+      <section class="cp-panel faq-suporte" id="faq-suporte" aria-labelledby="faq-suporte-titulo">
+        <h2 id="faq-suporte-titulo" class="faq-suporte__titulo">Não achou sua dúvida?</h2>
+        <p class="faq-suporte__texto">Nossa equipe responde pelo WhatsApp. Conte o que aconteceu e, se puder, mande um print da tela.</p>
+        <a class="cp-btn cp-btn--primary" data-whatsapp-link href="#faq-suporte" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <p class="faq-suporte__aviso" data-whatsapp-aviso hidden>Número do WhatsApp ainda não configurado.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="cp-footer">
+    <div class="cp-footer__inner">
+
+      <div class="cp-footer__top">
+        <div class="cp-footer__brand">
+          <a class="cp-footer__logo" href="https://www.compropay.com.br" aria-label="ComproPay — site institucional"><span class="cp-logo cp-logo--md"><img src="assets/logo-horizontal.svg" alt="ComproPay" width="1347" height="250"></span></a>
+          <p class="cp-footer__tag">Benefícios corporativos, carteira digital e pagamentos em um só lugar.</p>
+        </div>
+        <div class="cp-footer__col">
+          <h2 class="cp-footer__coltitle">Ajuda</h2>
+          <div class="cp-footer__collist"><ul>
+            <li><a href="https://www.compropay.com.br/store.html" target="_blank" rel="noopener">Baixe o app</a></li>
+          </ul></div>
+        </div>
+        <div class="cp-footer__col">
+          <h2 class="cp-footer__coltitle">Institucional</h2>
+          <div class="cp-footer__collist"><ul>
+            <li><a href="https://www.compropay.com.br" target="_blank" rel="noopener">Site da ComproPay</a></li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="cp-footer__legal">
+        <p class="cp-footer__legallabel"><svg class="cp-icon cp-icon--sm" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-shield-check"/></svg>LGPD &mdash; Lei Geral de Proteção de Dados</p>
+        <ul class="cp-footer__pills">
+          <li><a class="cp-footer__pill" href="https://compropay.com.br/politica-de-privacidade" target="_blank" rel="noopener"><svg class="cp-icon" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-lock"/></svg>Política de Privacidade</a></li>
+          <li><a class="cp-footer__pill" href="https://compropay.com.br/formulario-lgpd" target="_blank" rel="noopener"><svg class="cp-icon" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-mail"/></svg>Formulário &mdash; LGPD</a></li>
+          <li><a class="cp-footer__pill" href="https://compropay.com.br/compliance" target="_blank" rel="noopener"><svg class="cp-icon" aria-hidden="true"><use href="DS%20wiki/icons/cp-icons.svg#cp-check"/></svg>Compliance</a></li>
+        </ul>
+      </div>
+
+      <div class="cp-footer__bottom"><p>&copy; 2026 ComproPay. Todos os direitos reservados.</p></div>
+    </div>
+  </footer>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/faq.js" defer></script>
+  <script src="assets/ajuda.js" defer></script>
+</body>
+</html>

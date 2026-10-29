@@ -1,0 +1,162 @@
+/* Cola entre o design system e a página. Só layout e espaçamento,
+   e só com tokens --cp-*; a aparência dos componentes é do DS. */
+body { margin: 0; display: flex; flex-direction: column; min-height: 100vh; background: var(--cp-bg-page); color: var(--cp-text-primary); font-family: var(--cp-font-family-base); font-size: var(--cp-type-body-size); line-height: var(--cp-type-body-line); -webkit-font-smoothing: antialiased; }
+.cp-chip { font-family: inherit; }
+
+.site-header { border-bottom: 1px solid var(--cp-border-subtle); background: var(--cp-surface); }
+.site-header__inner { max-width: var(--cp-container-max); margin-inline: auto; padding: var(--cp-space-4) var(--cp-space-5); display: flex; align-items: center; justify-content: space-between; gap: var(--cp-space-6); }
+.site-header__brand { display: flex; align-items: center; }
+.site-header__brand img { display: block; height: var(--cp-space-8); width: auto; }
+.site-header__nav { display: flex; gap: var(--cp-space-5); }
+.site-header__nav a { color: var(--cp-text-primary); text-decoration: none; }
+
+
+/* Vídeo dentro da resposta: 16:9, ocupa a largura do corpo do acordeão. */
+.faq-video { aspect-ratio: 16 / 9; margin-block: var(--cp-space-4); border-radius: var(--cp-radius-md); overflow: hidden; background: var(--cp-gray-100); }
+.faq-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* As respostas vieram com parágrafos de espaço em branco como separador; eles saíram, o espaço vem daqui. */
+
+main { flex: 1; }
+main:focus { outline: none; } /* recebe foco só pelo "Pular para o conteúdo" */
+
+/* Faixa de topo: título e busca sobre o tom mais claro da primária. */
+.faq-hero { background: var(--cp-primary-50); border-bottom: var(--cp-border-hairline) solid var(--cp-primary-100); padding-block: var(--cp-space-12) var(--cp-space-10); text-align: center; }
+.faq-hero h1 { margin: 0; font-size: var(--cp-type-h2-size); font-weight: var(--cp-font-weight-bold); }
+.faq-search { max-width: 36rem; margin: var(--cp-space-6) auto 0; text-align: left; }
+
+.faq-corpo { padding-block: var(--cp-space-8) var(--cp-space-16); }
+
+/* Filtro: quebra em linhas no desktop; no celular vira uma fileira só, com rolagem lateral. */
+.category-filter { display: flex; flex-wrap: wrap; gap: var(--cp-space-2); max-width: 48rem; margin-inline: auto; }
+@media (max-width: 767.98px) {
+  .category-filter { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: var(--cp-space-2); margin-inline: calc(var(--cp-page-gutter) * -1); padding-inline: var(--cp-page-gutter); }
+  .category-filter .cp-chip { flex: 0 0 auto; scroll-snap-align: start; }
+}
+
+.faq-contador { max-width: 48rem; margin: var(--cp-space-5) auto var(--cp-space-3); text-align: left; color: var(--cp-text-secondary); font-size: var(--cp-type-body-sm-size); }
+
+/* A lista mora num painel do DS; a largura de leitura é menor que a do header. */
+.faq-painel { max-width: 48rem; margin-inline: auto; padding-block: var(--cp-space-2); }
+.faq-q { display: grid; gap: var(--cp-space-1); justify-items: start; padding-inline-end: var(--cp-space-4); }
+.question-list { margin: 0; padding: 0; list-style: none; }
+.question-list li[hidden] { display: none; }
+.question-list li + li { border-block-start: var(--cp-border-hairline) solid var(--cp-border-subtle); }
+.faq-item { display: flex; align-items: center; justify-content: space-between; gap: var(--cp-space-4); padding-block: var(--cp-space-4); color: var(--cp-text-primary); text-decoration: none; }
+/* Hover só com mouse: no toque ele "gruda" depois do clique. */
+@media (hover: hover) and (pointer: fine) {
+  .faq-item:hover .faq-q__titulo { color: var(--cp-primary-700); }
+  .faq-item:hover .faq-item__seta { color: var(--cp-primary-700); transform: translateX(var(--cp-space-1)); }
+}
+.faq-item__seta { flex: 0 0 auto; color: var(--cp-text-muted); }
+.faq-q__titulo { transition: color var(--cp-transition-control); }
+@media (prefers-reduced-motion: no-preference) { .faq-item__seta { transition: transform var(--cp-transition-control), color var(--cp-transition-control); } }
+.question-list__empty { margin: var(--cp-space-6) 0; text-align: center; color: var(--cp-text-secondary); }
+
+.faq-rodape-logo { display: block; height: var(--cp-space-8); width: auto; }
+
+/* Títulos de bloco (novidades, relacionadas). */
+.bloco-titulo { margin: 0 0 var(--cp-space-3); font-size: var(--cp-type-h4-size); font-weight: var(--cp-font-weight-bold); }
+.lista-links { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--cp-space-3) var(--cp-space-6); }
+@media (min-width: 768px) { .lista-links { grid-template-columns: 1fr 1fr; } }
+
+/* Trecho achado pela busca. */
+.faq-q__titulo mark { background: var(--cp-primary-100); color: inherit; border-radius: var(--cp-radius-sm); padding-inline: var(--cp-space-1); }
+
+/* "Isso ajudou?" no fim da resposta. */
+.faq-feedback { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cp-space-3); margin-top: var(--cp-space-5); padding-top: var(--cp-space-4); border-top: var(--cp-border-hairline) solid var(--cp-border-subtle); }
+.faq-feedback__rotulo { color: var(--cp-text-secondary); font-size: var(--cp-type-body-sm-size); }
+.faq-feedback__troca { background: none; border: 0; padding: 0; font: inherit; font-size: var(--cp-type-body-sm-size); cursor: pointer; margin-inline-start: auto; }
+
+/* Nada encontrado. */
+.question-list__empty-titulo { font-size: var(--cp-type-body-lg-size); }
+
+/* Canal de atendimento, na largura de leitura da lista. */
+.faq-suporte { max-width: 48rem; margin: var(--cp-space-8) auto 0; padding: var(--cp-space-8) var(--cp-space-6); text-align: center; display: grid; justify-items: center; gap: var(--cp-space-3); }
+.faq-suporte__titulo { margin: 0; font-size: var(--cp-type-h3-size); font-weight: var(--cp-font-weight-bold); }
+.faq-suporte__texto { margin: 0; max-width: 32rem; color: var(--cp-text-secondary); }
+.faq-suporte__aviso { margin: 0; color: var(--cp-text-secondary); font-size: var(--cp-type-body-sm-size); }
+[data-whatsapp-link][aria-disabled="true"] { opacity: var(--cp-opacity-disabled); cursor: not-allowed; pointer-events: none; }
+
+/* Novidades (some enquanto a lista estiver vazia). */
+.faq-novidades { max-width: 48rem; margin: 0 auto var(--cp-space-8); }
+.faq-novidades[hidden] { display: none; }
+.lista-novidades { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--cp-space-3); }
+.lista-novidades li { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cp-space-2) var(--cp-space-3); }
+.lista-novidades time { color: var(--cp-text-secondary); font-size: var(--cp-type-body-sm-size); margin-inline-start: auto; }
+
+
+/* Página de uma pergunta. */
+.pergunta { max-width: 48rem; padding-block: var(--cp-space-6) var(--cp-space-16); }
+.pergunta .cp-crumb { margin-bottom: var(--cp-space-6); }
+.pergunta__selos { display: flex; flex-wrap: wrap; gap: var(--cp-space-2); margin: 0 0 var(--cp-space-3); }
+.pergunta__selos .cp-badge { text-decoration: none; }
+.pergunta__titulo { margin: 0 0 var(--cp-space-2); font-size: var(--cp-type-h2-size); font-weight: var(--cp-font-weight-bold); }
+.pergunta__meta { margin: 0 0 var(--cp-space-4); color: var(--cp-text-secondary); font-size: var(--cp-type-body-sm-size); }
+.pergunta__corpo { margin-top: var(--cp-space-6); }
+.pergunta__corpo p { margin: 0 0 var(--cp-space-3); }
+.pergunta__passos { margin: var(--cp-space-4) 0; padding-inline-start: var(--cp-space-6); display: grid; gap: var(--cp-space-3); }
+.pergunta__passos li { padding-inline-start: var(--cp-space-2); }
+.pergunta__passos li::marker { color: var(--cp-primary-700); font-weight: var(--cp-font-weight-bold); }
+.pergunta__relacionadas { margin-top: var(--cp-space-10); }
+.pergunta__voltar { margin: var(--cp-space-8) 0 0; text-align: center; }
+.pergunta .faq-suporte { margin-top: var(--cp-space-10); }
+
+/* Busca: atalho de teclado (só onde há teclado) e sugestões. */
+.faq-search .cp-field__box { position: relative; }
+.faq-atalho { display: none; position: absolute; inset-inline-end: var(--cp-space-4); top: 50%; transform: translateY(-50%); pointer-events: none; }
+@media (hover: hover) and (min-width: 768px) {
+  .faq-atalho { display: inline-flex; gap: var(--cp-space-1); }
+  .faq-search .cp-input:focus ~ .faq-atalho,
+  .faq-search .cp-input:not(:placeholder-shown) ~ .faq-atalho { display: none; }
+}
+.faq-atalho kbd { font: inherit; font-size: var(--cp-type-caption-size); color: var(--cp-text-secondary); background: var(--cp-bg-muted); border: var(--cp-border-hairline) solid var(--cp-border-subtle); border-radius: var(--cp-radius-sm); padding: 0 var(--cp-space-2); }
+.faq-sugestoes { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--cp-space-2); margin: var(--cp-space-4) 0 0; }
+.faq-sugestoes__rotulo { color: var(--cp-text-secondary); font-size: var(--cp-type-body-sm-size); }
+
+/* Sugestões de busca: links discretos, para não parecerem categoria. */
+.faq-sugestoes { gap: var(--cp-space-2) var(--cp-space-4); }
+.faq-sugestoes .cp-link { font-size: var(--cp-type-body-sm-size); }
+
+/* Selo de categoria: some quando a lista já está filtrada por uma categoria. */
+.sem-selo .cp-badge { display: none; }
+
+/* "Ver todas": fecha a lista curta. */
+.faq-mais { display: flex; justify-content: center; margin-top: var(--cp-space-4); }
+.faq-mais[hidden] { display: none; }
+
+/* Sem o contador entre eles, a lista precisa do próprio respiro. */
+.faq-painel { margin-top: var(--cp-space-6); }
+
+/* Perguntas relacionadas: cartões do DS (painel) que levam à resposta. */
+.relacionadas { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: var(--cp-space-4); }
+.cartao-relacionada { display: flex; flex-direction: column; justify-content: space-between; gap: var(--cp-space-4); height: 100%; text-decoration: none; color: inherit; }
+.cartao-relacionada__titulo { font-weight: var(--cp-font-weight-semibold); line-height: var(--cp-line-height-snug); }
+.cartao-relacionada__acao { display: inline-flex; align-items: center; gap: var(--cp-space-2); color: var(--cp-primary-700); font-size: var(--cp-type-body-sm-size); font-weight: var(--cp-font-weight-medium); }
+.cartao-relacionada__acao .cp-icon { transition: transform var(--cp-transition-control); }
+.cartao-relacionada { transition: border-color var(--cp-transition-control); }
+@media (hover: hover) and (pointer: fine) {
+  .cartao-relacionada:hover { border-color: var(--cp-primary-700); }
+  .cartao-relacionada:hover .cp-icon { transform: translateX(var(--cp-space-1)); }
+}
+.cartao-relacionada:focus-visible { outline: var(--cp-focus-width) solid var(--cp-focus-color); outline-offset: var(--cp-focus-offset); }
+
+/* "Ver todas": as perguntas que aparecem entram com fade e uma subida curta, uma após a outra.
+   Só ao expandir (a classe é posta pelo faq.js): filtro e busca são frequentes e ficam instantâneos. */
+@media (prefers-reduced-motion: no-preference) {
+  .question-list.faq-expandindo li { transition: opacity var(--cp-duration-base) var(--cp-ease-enter), transform var(--cp-duration-base) var(--cp-ease-enter); }
+  @starting-style { .question-list.faq-expandindo li { opacity: 0; transform: translateY(var(--cp-space-2)); } }
+}
+
+/* "Isso ajudou?": a mensagem entra com fade em vez de trocar seca. */
+@media (prefers-reduced-motion: no-preference) {
+  .faq-feedback__msg { transition: opacity var(--cp-duration-base) var(--cp-ease-enter); }
+  @starting-style { .faq-feedback__msg { opacity: 0; } }
+}
+
+/* Vídeo: a caixa cinza dá lugar ao player com fade. O faq/ajuda.js põe .faq-video--espera e tira ao carregar
+   (com prazo máximo, para o vídeo nunca ficar escondido). */
+.faq-video iframe { transition: opacity var(--cp-duration-slow) var(--cp-ease-enter); }
+.faq-video--espera iframe { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .faq-video--espera iframe { opacity: 1; } }
+

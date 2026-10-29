@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR" data-kit-page="favorite">
+<head>
+<script src="../../../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Favorite — ComproPay UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script>var KIT_BASE = '../';</script>
+</head>
+<body class="kit">
+<header class="kit-topbar">
+  <div class="kit-topbar__brand"><a href="../index.html" id="kit-home-link">← UI Kit</a></div>
+  <div class="kit-topbar__meta">css/base.css</div>
+</header>
+<div class="kit-layout">
+  <aside class="kit-sidebar">
+    <a class="kit-sidebar__home" id="kit-home-link-row" href="../index.html">Home</a>
+    <input class="kit-search" id="kit-search" type="search" placeholder="Buscar…">
+    <nav id="kit-nav"></nav>
+  </aside>
+  <div class="kit-main">
+    <div class="kit-crumb" id="kit-crumb"></div>
+    <h1>Favorite</h1>
+    <p class="kit-lede">Atalho circular de 64px com legenda embaixo. O primeiro item da lista é sempre o "Novo".</p>
+    <div class="kit-base-class"><b>Classes</b> <code>.favorite</code> <code>.favorite--new</code></div>
+
+    <div class="kit-group">
+      <h2>Variantes</h2>
+      <div class="kit-preview">
+        <div class="kit-variant">
+          <a class="favorite favorite--new" href="#"><span class="favorite__thumb"><img src="../../assets/icons/favorite-new.svg" alt=""></span>Novo</a>
+          <span class="kit-variant__label">.favorite--new — sempre o primeiro</span>
+        </div>
+        <div class="kit-variant">
+          <a class="favorite" href="#"><img class="favorite__thumb" src="../../assets/img/fav-la-nutri.jpg" alt="">La Nutri</a>
+          <span class="kit-variant__label">.favorite — com foto</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-prevnext" id="kit-prevnext"></div>
+  </div>
+</div>
+<script src="../assets/kit.js"></script>
+</body>
+</html>
