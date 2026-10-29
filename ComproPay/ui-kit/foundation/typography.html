@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR" data-kit-page="typography">
+<head>
+<script src="../../../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typography — ComproPay UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script>var KIT_BASE = '../';</script>
+</head>
+<body class="kit">
+<header class="kit-topbar">
+  <div class="kit-topbar__brand"><a href="../index.html" id="kit-home-link">← UI Kit</a></div>
+  <div class="kit-topbar__meta">css/tokens.css</div>
+</header>
+<div class="kit-layout">
+  <aside class="kit-sidebar">
+    <a class="kit-sidebar__home" id="kit-home-link-row" href="../index.html">Home</a>
+    <input class="kit-search" id="kit-search" type="search" placeholder="Buscar…">
+    <nav id="kit-nav"></nav>
+  </aside>
+  <div class="kit-main">
+    <div class="kit-crumb" id="kit-crumb"></div>
+    <h1>Typography</h1>
+    <p class="kit-lede"><code>--font-display</code> (Avenir Next) pra títulos e valores em destaque · <code>--font-body</code> (Inter) pro resto do texto. Fechei a escala de tamanho (18/28/32) e a de peso (completei o <code>--fw-extrabold</code> que faltava).</p>
+    <div class="kit-legend"><span><i class="use"></i> em uso numa tela</span><span><i class="new"></i> novo — gerado pra fechar a escala</span></div>
+
+    <div class="kit-group">
+      <h2>Famílias</h2>
+      <div class="kit-type-row">
+        <span class="kit-type-row__sample" style="font-family:var(--font-display);font-weight:900;font-size:24px">ComproPay Aa</span>
+        <span class="kit-type-row__meta">--font-display · Avenir Next</span>
+      </div>
+      <div class="kit-type-row">
+        <span class="kit-type-row__sample" style="font-family:var(--font-body);font-size:16px">ComproPay Aa — texto corrido</span>
+        <span class="kit-type-row__meta">--font-body · Inter</span>
+      </div>
+    </div>
+
+    <div class="kit-group">
+      <h2>Escala</h2>
+      <div id="type-scale"></div>
+    </div>
+
+    <div class="kit-group">
+      <h2>Pesos</h2>
+      <p class="kit-lede" style="margin:0 0 16px">Os 7 pesos abaixo já estão todos em uso real no CSS — nenhum é hipotético. <code>--fw-extrabold</code> (800) só ganhou nome agora: já existia solto em 5 lugares, sem token.</p>
+      <div id="weight-scale"></div>
+      <div class="kit-note">⚠️ <strong>Nunca use <code>--fw-black</code> (900) num valor numérico</strong> (preço, saldo) com <code>--font-display</code> — dígitos ficam desproporcionalmente grossos nesse peso, mesmo quando um título ao lado com o mesmo peso parece normal. Para valores em R$, use <code>--fw-bold</code> (700). <code>--fw-black</code> fica reservado pra títulos curtos e botões.</div>
+    </div>
+
+    <div class="kit-prevnext" id="kit-prevnext"></div>
+  </div>
+</div>
+<script src="../assets/kit.js"></script>
+<script>
+  var TYPE_SCALE = [
+    ['--fs-10', '10px · Overline (600, letter-spacing .06em)'],
+    ['--fs-11', '11px'], ['--fs-12', '12px'], ['--fs-13', '13px'], ['--fs-14', '14px'],
+    ['--fs-16', '16px'], ['--fs-18', '18px', 1], ['--fs-20', '20px'], ['--fs-24', '24px'],
+    ['--fs-28', '28px · Figma "Title/Large"', 1], ['--fs-32', '32px · ainda sem uso', 1]
+  ];
+  var typeEl = document.getElementById('type-scale');
+  TYPE_SCALE.forEach(function (it) {
+    var row = document.createElement('div'); row.className = 'kit-type-row';
+    row.innerHTML =
+      (it[2] ? '<span class="kit-pill kit-pill--new" style="position:static;margin-right:8px">novo</span>' : '') +
+      '<span class="kit-type-row__sample" style="font-size:var(' + it[0] + ')">ComproPay — Aa 09</span>' +
+      '<span class="kit-type-row__meta">' + it[0] + ' · ' + it[1] + '</span>';
+    typeEl.appendChild(row);
+  });
+
+  var WEIGHT_SCALE = [
+    ['--fw-light', 300], ['--fw-regular', 400], ['--fw-medium', 500],
+    ['--fw-semibold', 600], ['--fw-bold', 700], ['--fw-extrabold', 800, 1], ['--fw-black', 900]
+  ];
+  var weightEl = document.getElementById('weight-scale');
+  WEIGHT_SCALE.forEach(function (it) {
+    var row = document.createElement('div'); row.className = 'kit-type-row';
+    row.innerHTML =
+      (it[2] ? '<span class="kit-pill kit-pill--new" style="position:static;margin-right:8px">novo</span>' : '') +
+      '<span class="kit-type-row__sample" style="font-weight:var(' + it[0] + ')">ComproPay — Aa 09</span>' +
+      '<span class="kit-type-row__meta">' + it[0] + ' · ' + it[1] + '</span>';
+    weightEl.appendChild(row);
+  });
+</script>
+</body>
+</html>

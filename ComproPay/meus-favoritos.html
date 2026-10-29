@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Meus favoritos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt=""><img src="assets/icons/statusbar-wifi.svg" alt=""><svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#000" opacity=".35"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#000" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#000"/></svg></span>
+  </div>
+  <header class="topbar">
+    <a class="topbar__back" href="home-1-cartao.html" aria-label="Voltar"><img src="assets/icons/arrow-left.svg" alt=""></a>
+    <h1 class="topbar__title">Meus favoritos</h1>
+    <a class="topbar__back" href="favoritar.html" aria-label="Adicionar favorito"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#7C12C8" stroke-width="1.6"/><path d="M12 8v8M8 12h8" stroke="#7C12C8" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+  </header>
+  <div class="favlist">
+    <label class="search" data-component="CampoBusca" data-props="valor, placeholder, onChange" data-states="padrao, preenchido" data-state="padrao" data-ds="search"><img src="assets/icons/search.svg" alt=""><input class="composer__input" id="search" type="search" placeholder="Pesquisar" aria-label="Pesquisar" style="font-family:var(--font-body);font-weight:400;font-size:14px;color:inherit"></label>
+    <ul class="favlist__items" id="list">
+      <li class="place-row" data-q="@lautri restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-la-nutri.jpg" alt="">
+        <span class="place__text"><span class="tx__title">@lautri</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+        <button class="place-bookmark" type="button" aria-label="Remover dos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="on" data-ds="favorite" data-template><img src="assets/icons/bookmark-on.svg" alt=""></button></li>
+      <li class="place-row" data-q="@subwaypcosta subway" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/avatar-subway.png" alt="">
+        <span class="place__text"><span class="tx__title">@subwaypcosta</span><span class="tx__desc">Subway</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+        <button class="place-bookmark" type="button" aria-label="Remover dos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="on" data-ds="favorite" data-template><img src="assets/icons/bookmark-on.svg" alt=""></button></li>
+      <li class="place-row" data-q="@tagline restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-tagline.png" alt="">
+        <span class="place__text"><span class="tx__title">@tagline</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+        <button class="place-bookmark" type="button" aria-label="Remover dos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="on" data-ds="favorite" data-template><img src="assets/icons/bookmark-on.svg" alt=""></button></li>
+      <li class="place-row" data-q="@steakbrand restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-steak-brand.jpg" alt="">
+        <span class="place__text"><span class="tx__title">@steakbrand</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+        <button class="place-bookmark" type="button" aria-label="Remover dos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="on" data-ds="favorite" data-template><img src="assets/icons/bookmark-on.svg" alt=""></button></li>
+      <li class="place-row" data-q="@coffee.co restaurante la nutri" data-component="ItemFavorito" data-props="avatar, nome, descricao, endereco, onRemover" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="place__avatar" src="assets/img/fav-coffee-co.jpg" alt="">
+        <span class="place__text"><span class="tx__title">@coffee.co</span><span class="tx__desc">Restaurante La Nutri</span><span class="tx__date">Praia de Itapatica - Vila Velha - ES</span></span>
+        <button class="place-bookmark" type="button" aria-label="Remover dos favoritos" data-component="BotaoFavoritar" data-props="favoritado, onClick" data-states="off, on" data-state="on" data-ds="favorite" data-template><img src="assets/icons/bookmark-on.svg" alt=""></button></li>
+    </ul>
+  </div>
+</main>
+<script>
+  var list = document.getElementById('list');
+  document.getElementById('search').addEventListener('input', function () {
+    var q = this.value.trim().toLowerCase();
+    [].forEach.call(list.children, function (li) { li.hidden = !!q && li.dataset.q.indexOf(q) === -1; });
+  });
+  list.addEventListener('click', function (e) {
+    var btn = e.target.closest('.place-bookmark');
+    if (!btn) return;
+    btn.closest('.place-row').style.opacity = '0';
+    setTimeout(function () { btn.closest('.place-row').remove(); }, 150);
+  });
+</script>
+</body>
+</html>

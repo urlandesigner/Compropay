@@ -1,0 +1,1121 @@
+/* =========================================================================
+   COMPROPAY DESIGN SYSTEM · BUNDLE
+   Gerado a partir de tokens/. Não edite este arquivo — edite a fonte e
+   regenere com ./build.sh
+   ========================================================================= */
+
+/* =========================================================================
+   COMPROPAY DESIGN SYSTEM · CAMADA 0 — PRIMITIVOS
+   -------------------------------------------------------------------------
+   Vocabulário bruto. NENHUM componente deve consumir estes tokens direto.
+   Componentes consomem a camada 1 (01-semantic.css).
+
+   Rampas de cor geradas por script e validadas em contraste WCAG 2.1.
+   Os comentários de contraste são medidos, não estimados.
+   ========================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------
+     COR · NEUTRO — a primária é o 950 (#1E1E1F); os outros dez degraus
+     herdam o matiz dela (240°, sat 1.6%)
+     Substitui a mistura atual de Tailwind zinc + gray + cinzas avulsos.
+     --------------------------------------------------------------------- */
+  --cp-gray-50: #FAFAFA;          /*  1.04:1 vs branco · --   */
+  --cp-gray-100: #F5F5F5;         /*  1.09:1 vs branco · --   */
+  --cp-gray-200: #EAEAEA;         /*  1.20:1 vs branco · --   */
+  --cp-gray-300: #DADADB;         /*  1.40:1 vs branco · --   */
+  --cp-gray-400: #B1B1B4;         /*  2.14:1 vs branco · --  · piso para texto: NÃO usar */
+  --cp-gray-500: #8A8A8E;         /*  3.44:1 vs branco · UI  · só ícone/borda, nunca texto */
+  --cp-gray-600: #6D6D71;         /*  5.15:1 vs branco · AA  · PISO DE TEXTO */
+  --cp-gray-700: #535356;         /*  7.67:1 vs branco · AAA  */
+  --cp-gray-800: #3A3A3C;         /* 11.35:1 vs branco · AAA  */
+  --cp-gray-900: #272728;         /* 14.92:1 vs branco · AAA  */
+  --cp-gray-950: #1E1E1F;         /* 16.66:1 vs branco · AAA · texto principal (neutro escuro) */
+
+  /* ---------------------------------------------------------------------
+     COR · PRIMÁRIA (roxo) — a cor da marca ComproPay: #7C12C8 é o 700.
+     Ação (botão primário), link, foco de destaque e marcação. Os outros
+     dez degraus herdam o matiz dele (277°); contrastes medidos sobre branco.
+     --------------------------------------------------------------------- */
+  --cp-primary-50: #FBF8FD;    /*  1.05:1 vs branco · --  */
+  --cp-primary-100: #F8F2FC;   /*  1.10:1 vs branco · --  */
+  --cp-primary-200: #EEE1F8;   /*  1.25:1 vs branco · --  */
+  --cp-primary-300: #E2C9F5;   /*  1.51:1 vs branco · --  */
+  --cp-primary-400: #C588F0;   /*  2.58:1 vs branco · --  */
+  --cp-primary-500: #AA49EF;   /*  4.28:1 vs branco · UI  · só UI/large  */
+  --cp-primary-600: #9A28EC;   /*  5.40:1 vs branco · AA  · texto sobre claro  */
+  --cp-primary-700: #7C12C8;   /*  7.56:1 vs branco · AAA · PRIMÁRIA DA MARCA (#7C12C8)  */
+  --cp-primary-800: #5A0D92;   /* 11.01:1 vs branco · AAA · hover  */
+  --cp-primary-900: #400966;   /* 14.49:1 vs branco · AAA · active  */
+  --cp-primary-950: #31074F;   /* 16.48:1 vs branco · AAA  */
+
+  /* ---------------------------------------------------------------------
+     COR · SECUNDÁRIA (laranja) — acento. #F99901 é o 500 e é a cor de marca:
+     REPROVA como texto sobre claro (2.19:1) e passa sobre escuro (7.60:1 sobre
+     o grafite). Para texto sobre claro, use o 700.
+     --------------------------------------------------------------------- */
+  --cp-secondary-50: #FDFBF9;       /*  1.03:1 vs branco · --  */
+  --cp-secondary-100: #FBF7EF;      /*  1.07:1 vs branco · --  */
+  --cp-secondary-200: #F9ECD7;      /*  1.17:1 vs branco · --  */
+  --cp-secondary-300: #F8DDB4;      /*  1.31:1 vs branco · --  */
+  --cp-secondary-400: #FAB74D;      /*  1.76:1 vs branco · --  */
+  --cp-secondary-500: #F99901;      /*  2.19:1 vs branco · MARCA · só sobre escuro  */
+  --cp-secondary-600: #C57900;      /*  3.44:1 vs branco · UI  · só UI/large  */
+  --cp-secondary-700: #935A00;      /*  5.67:1 vs branco · AA  · texto sobre claro  */
+  --cp-secondary-800: #653E00;      /*  9.37:1 vs branco · AAA  */
+  --cp-secondary-900: #432900;      /* 13.50:1 vs branco · AAA  */
+  --cp-secondary-950: #342000;      /* 15.53:1 vs branco · AAA  */
+
+  /* ---------------------------------------------------------------------
+     COR · ESTADO — onze tons por família, no mesmo desenho das rampas de
+     marca. Geradas por tools/rampa-estado.py (OKLCH, matiz do 600).
+     O 50 (superfície) e o 600 (texto e traço) são as âncoras: já eram
+     consumidos pela camada semântica e ficaram exatos. 500 é o primeiro
+     tom que serve de UI (≥3:1); do 700 em diante, AAA.
+     --------------------------------------------------------------------- */
+  /* SUCESSO */
+  --cp-success-50:    #EAF6EC;  /*  1.11:1 vs branco · -- · SUPERFÍCIE */
+  --cp-success-100:   #D7F1DB;  /*  1.20:1 vs branco · -- */
+  --cp-success-200:   #BEE5C4;  /*  1.38:1 vs branco · -- */
+  --cp-success-300:   #99D1A2;  /*  1.75:1 vs branco · -- */
+  --cp-success-400:   #63B171;  /*  2.61:1 vs branco · -- */
+  --cp-success-500:   #3B994E;  /*  3.59:1 vs branco · UI */
+  --cp-success-600:   #1F7A34;  /*  5.40:1 vs branco · AA · TEXTO E TRAÇO */
+  --cp-success-700:   #005A1D;  /*  8.47:1 vs branco · AAA */
+  --cp-success-800:   #024114;  /* 11.87:1 vs branco · AAA */
+  --cp-success-900:   #00310C;  /* 14.54:1 vs branco · AAA */
+  --cp-success-950:   #03260A;  /* 16.34:1 vs branco · AAA */
+
+  /* ATENÇÃO */
+  --cp-warning-50:    #FBF3E3;  /*  1.10:1 vs branco · -- · SUPERFÍCIE */
+  --cp-warning-100:   #F5E9D3;  /*  1.20:1 vs branco · -- */
+  --cp-warning-200:   #EDD9B8;  /*  1.38:1 vs branco · -- */
+  --cp-warning-300:   #DDC091;  /*  1.75:1 vs branco · -- */
+  --cp-warning-400:   #C49A58;  /*  2.59:1 vs branco · -- */
+  --cp-warning-500:   #B07D2D;  /*  3.61:1 vs branco · UI */
+  --cp-warning-600:   #8A5A00;  /*  5.93:1 vs branco · AA · TEXTO E TRAÇO */
+  --cp-warning-700:   #6A4504;  /*  8.52:1 vs branco · AAA */
+  --cp-warning-800:   #4F3201;  /* 11.74:1 vs branco · AAA */
+  --cp-warning-900:   #3B2401;  /* 14.60:1 vs branco · AAA */
+  --cp-warning-950:   #2F1B00;  /* 16.44:1 vs branco · AAA */
+
+  /* ERRO */
+  --cp-danger-50:     #FBEAE9;  /*  1.16:1 vs branco · -- · SUPERFÍCIE */
+  --cp-danger-100:    #FFE4E3;  /*  1.20:1 vs branco · -- */
+  --cp-danger-200:    #FFD1CD;  /*  1.38:1 vs branco · -- */
+  --cp-danger-300:    #FFB0A8;  /*  1.75:1 vs branco · -- */
+  --cp-danger-400:    #FB796F;  /*  2.60:1 vs branco · -- */
+  --cp-danger-500:    #E95449;  /*  3.60:1 vs branco · UI */
+  --cp-danger-600:    #B3261E;  /*  6.54:1 vs branco · AA · TEXTO E TRAÇO */
+  --cp-danger-700:    #981712;  /*  8.51:1 vs branco · AAA */
+  --cp-danger-800:    #740806;  /* 11.80:1 vs branco · AAA */
+  --cp-danger-900:    #550A07;  /* 14.66:1 vs branco · AAA */
+  --cp-danger-950:    #420A07;  /* 16.43:1 vs branco · AAA */
+
+  /* INFORMAÇÃO */
+  --cp-info-50:       #E9F1FA;  /*  1.14:1 vs branco · -- · SUPERFÍCIE */
+  --cp-info-100:      #DCECFF;  /*  1.20:1 vs branco · -- */
+  --cp-info-200:      #C2DEFE;  /*  1.38:1 vs branco · -- */
+  --cp-info-300:      #9BC7FB;  /*  1.76:1 vs branco · -- */
+  --cp-info-400:      #67A4EA;  /*  2.60:1 vs branco · -- */
+  --cp-info-500:      #4289D9;  /*  3.61:1 vs branco · UI */
+  --cp-info-600:      #1B5FA8;  /*  6.46:1 vs branco · AA · TEXTO E TRAÇO */
+  --cp-info-700:      #0D4D8E;  /*  8.50:1 vs branco · AAA */
+  --cp-info-800:      #03386C;  /* 11.76:1 vs branco · AAA */
+  --cp-info-900:      #05294F;  /* 14.62:1 vs branco · AAA */
+  --cp-info-950:      #06203D;  /* 16.38:1 vs branco · AAA */
+
+  --cp-white: #FFFFFF;
+  --cp-black: #000000;
+
+  /* ---------------------------------------------------------------------
+     TIPOGRAFIA — família única (decisão: Grotesca única).
+     A distinção vem de escala, peso e tracking, não de troca de fonte.
+     --------------------------------------------------------------------- */
+  --cp-font-sans: "Satoshi", "DM Sans", ui-sans-serif, system-ui,
+                  -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --cp-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* escala — 11 degraus. A loja hoje tem 20 tamanhos, incluindo 11.2px e 14.4px */
+  --cp-font-size-2xs: 0.6875rem;   /* 11px */
+  --cp-font-size-xs:  0.8125rem;   /* 13px */
+  --cp-font-size-sm:  0.875rem;    /* 14px */
+  --cp-font-size-md:  1rem;        /* 16px — base */
+  --cp-font-size-lg:  1.125rem;    /* 18px */
+  --cp-font-size-xl:  1.25rem;     /* 20px */
+  --cp-font-size-2xl: 1.5rem;      /* 24px */
+  --cp-font-size-3xl: 2rem;        /* 32px */
+  /* Os três maiores são fluidos. Em 320px o 5xl fixo em 48px media 309px de
+     largura numa caixa de 288 — a palavra não cabia. Abaixo de 4xl a escala é
+     fixa: texto de leitura não deve mudar de tamanho com a janela. */
+  --cp-font-size-4xl: clamp(2rem, 1.60rem + 2.00vw, 2.5rem);   /* 32 → 40px */
+  --cp-font-size-5xl: clamp(2.25rem, 1.60rem + 3.20vw, 3rem);  /* 36 → 48px */
+  --cp-font-size-6xl: clamp(2.75rem, 1.80rem + 4.80vw, 4rem);  /* 44 → 64px */
+
+  --cp-font-weight-regular:  400;
+  --cp-font-weight-medium:   500;
+  --cp-font-weight-semibold: 600;
+  --cp-font-weight-bold:     700;
+  --cp-font-weight-extrabold:800;
+
+  --cp-line-height-none:    1;      /* so glifo: selo, contador, x de fechar — nao texto corrido */
+  --cp-line-height-tight:   1.05;
+  --cp-line-height-snug:    1.15;
+  --cp-line-height-base:    1.35;
+  --cp-line-height-relaxed: 1.55;
+  --cp-line-height-loose:   1.7;
+
+  /* tracking aperta conforme o tamanho cresce — vetor de distinção nº 1 */
+  --cp-tracking-tightest: -0.035em;
+  --cp-tracking-tighter:  -0.025em;
+  --cp-tracking-tight:    -0.015em;
+  --cp-tracking-normal:   0;
+  --cp-tracking-wide:     0.04em;
+  --cp-tracking-wider:    0.12em;   /* overline em caixa alta */
+
+  /* ---------------------------------------------------------------------
+     ESPAÇO — base 4px
+     --------------------------------------------------------------------- */
+  --cp-space-0:  0;
+  --cp-space-1:  0.25rem;   /*   4px */
+  --cp-space-2:  0.5rem;    /*   8px */
+  --cp-space-3:  0.75rem;   /*  12px */
+  --cp-space-4:  1rem;      /*  16px */
+  --cp-space-5:  1.25rem;   /*  20px */
+  --cp-space-6:  1.5rem;    /*  24px */
+  --cp-space-8:  2rem;      /*  32px */
+  --cp-space-10: 2.5rem;    /*  40px */
+  --cp-space-12: 3rem;      /*  48px */
+  --cp-space-16: 4rem;      /*  64px */
+  --cp-space-20: 5rem;      /*  80px */
+  --cp-space-24: 6rem;      /*  96px */
+  --cp-space-32: 8rem;      /* 128px */
+
+  /* ---------------------------------------------------------------------
+     RAIO — 8 valores. A loja hoje tem 12 (9999/22/20/16/12/10/8/6/4/2/50%/100)
+     `2xl` e `3xl` sao RESERVADOS desde 0.13: entraram sem consumidor, para
+     superficie grande (modal, gaveta que sobe no celular, cartao de largura
+     cheia). Quem for o primeiro a usar cria o nome de uso na camada 1 —
+     `--cp-radius-sheet`, por exemplo — e nao o numero direto.
+     --------------------------------------------------------------------- */
+  --cp-radius-none: 0;
+  --cp-radius-sm:   4px;
+  --cp-radius-md:   8px;
+  --cp-radius-lg:   12px;    /* padrão da direção escolhida */
+  --cp-radius-xl:   16px;
+  --cp-radius-2xl:  20px;    /* reservado — sem uso ainda */
+  --cp-radius-3xl:  24px;    /* reservado — sem uso ainda */
+  --cp-radius-full: 9999px;
+
+  /* ---------------------------------------------------------------------
+     ELEVAÇÃO — sombra em grafite, nunca preto puro
+     --------------------------------------------------------------------- */
+  --cp-shadow-none: none;
+  --cp-shadow-xs: 0 1px 2px rgba(30,30,31,.06);
+  --cp-shadow-sm: 0 2px 4px rgba(30,30,31,.07), 0 1px 2px rgba(30,30,31,.05);
+  --cp-shadow-md: 0 4px 12px rgba(30,30,31,.08), 0 2px 4px rgba(30,30,31,.05);
+  --cp-shadow-lg: 0 12px 28px rgba(30,30,31,.11), 0 4px 8px rgba(30,30,31,.06);
+  --cp-shadow-xl: 0 24px 56px rgba(30,30,31,.14);
+  /* Sombra de TEXTO sobre mídia — outra família: não eleva uma caixa, destaca
+     uma palavra de um fundo que ninguém controla. A legenda do vídeo escrevia
+     `rgba(0,0,0,.6)` à mão, e preto puro contradiz a regra desta seção. */
+  --cp-shadow-text: 0 1px 3px rgba(30,30,31,.6);
+
+  /* ---------------------------------------------------------------------
+     LARGURA DE BORDA — três valores. A loja hoje pratica 0.5, 1, 1.5, 2 e 3px
+     em lugares diferentes para dizer a mesma coisa: "há uma linha aqui".
+     --------------------------------------------------------------------- */
+  --cp-border-width-0:    0;
+  --cp-border-width-hair: 1px;
+  --cp-border-width-thick: 2px;
+
+  /* ---------------------------------------------------------------------
+     OPACIDADE — degraus nomeados pelo papel, não pelo número. Opacidade solta
+     é o jeito mais fácil de reprovar contraste sem perceber: 60% de um texto
+     que passava em 5.15:1 cai para 2.9:1 e ninguém mede.
+     --------------------------------------------------------------------- */
+  --cp-opacity-0:        0;
+  --cp-opacity-disabled: .45;   /* só em superfície/ícone, nunca em texto */
+  --cp-opacity-muted:    .65;
+  --cp-opacity-scrim:    .55;   /* o véu atrás de modal e gaveta */
+  --cp-opacity-full:     1;
+
+  /* ---------------------------------------------------------------------
+     DESFOQUE — vidro atrás de barra fixa. Sempre com cor de fundo sólida por
+     baixo: `backdrop-filter` não é suportado em todo lugar, e sem a cor a
+     barra fica transparente onde ele falha.
+     --------------------------------------------------------------------- */
+  --cp-blur-sm: 4px;
+  --cp-blur-md: 12px;
+  --cp-blur-lg: 24px;
+
+  /* ---------------------------------------------------------------------
+     PROPORÇÃO DE MÍDIA — reservar a caixa antes da imagem chegar é o que
+     impede o salto de layout (CLS). O catálogo ComproPay é fotografado em 1:1;
+     banner e vídeo vertical têm proporção própria.
+     --------------------------------------------------------------------- */
+  --cp-aspect-square:    1 / 1;
+  --cp-aspect-portrait:  4 / 5;
+  --cp-aspect-landscape: 16 / 9;
+  --cp-aspect-vertical:  9 / 16;   /* TikTok/Reels — o carrossel de vídeo */
+  --cp-aspect-wide:      16 / 5;   /* arte de campanha, desktop (1200x375, 1600x501) */
+  --cp-aspect-tall:      2 / 3;    /* arte de campanha, celular (400x600 a 750x1095) */
+
+  /* ---------------------------------------------------------------------
+     MEDIDA DE LEITURA — largura em caracteres. Linha longa demais faz o olho
+     perder o começo da próxima; curta demais quebra o ritmo.
+     --------------------------------------------------------------------- */
+  --cp-measure-narrow: 45ch;
+  --cp-measure-base:   65ch;
+  --cp-measure-wide:   80ch;
+
+  /* ---------------------------------------------------------------------
+     ALTURA DE CONTROLE — o `sm` é 36px e NÃO é alvo de toque válido sozinho:
+     só vale dentro de uma área clicável maior (célula de tabela, item de
+     lista). Controle solto usa `md` ou maior. Ver --cp-target-min.
+     --------------------------------------------------------------------- */
+  --cp-control-height-sm: 36px;
+  --cp-control-height-md: 44px;   /* = --cp-target-min */
+  --cp-control-height-lg: 52px;
+
+  /* ---------------------------------------------------------------------
+     TAMANHO DE ÍCONE — viviam soltos em icons/cp-icons.css, fora de
+     qualquer escala. Grade de desenho é 24×24; os degraus são recortes dela.
+     --------------------------------------------------------------------- */
+  --cp-icon-sm: 16px;
+  --cp-icon-md: 20px;
+  --cp-icon-lg: 24px;
+  --cp-icon-xl: 32px;
+
+  /* ---------------------------------------------------------------------
+     MOVIMENTO
+     --------------------------------------------------------------------- */
+  --cp-duration-instant: 0ms;
+  --cp-duration-fast:    120ms;
+  --cp-duration-base:    180ms;
+  --cp-duration-slow:    280ms;
+  --cp-duration-slower:  420ms;
+
+  --cp-ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --cp-ease-enter:    cubic-bezier(0, 0, 0, 1);
+  --cp-ease-exit:     cubic-bezier(.3, 0, 1, 1);
+
+  /* ---------------------------------------------------------------------
+     LAYOUT
+     --------------------------------------------------------------------- */
+  --cp-container-max: 1200px;   /* mantém a largura que a loja já pratica */
+
+  /* Breakpoints de PÁGINA. Referência de projeto, não de runtime: `@media` não
+     lê custom property, então estes valores existem para serem escritos à mão
+     e conferidos — inclusive por test/validate.mjs, que reprova quem divergir.
+     Pontos de quebra de COMPONENTE (520, 560, 860, 900) são outra coisa: nascem
+     da largura em que aquele conteúdo específico quebra, não da tela. Ficam
+     fora desta escala de propósito.
+
+     O DEGRAU PERTENCE AO LADO DE CIMA. `min-width` leva o número redondo e
+     `max-width` recua 0,02px: `(max-width:767.98px)` e `(min-width:768px)`.
+     Escrito com o mesmo número dos dois lados, em exatamente 768px as duas
+     regras valem ao mesmo tempo — a goteira de desktop convivia com a barra
+     de celular. Recuar 1px inteiro em vez de 0,02 abre o problema oposto: um
+     buraco onde nenhuma das duas vale, e larguras fracionárias existem de
+     verdade (zoom do navegador, tela hidpi). test/validate.mjs confere. */
+  --cp-breakpoint-sm: 480px;
+  --cp-breakpoint-md: 768px;
+  --cp-breakpoint-lg: 1024px;
+  --cp-breakpoint-xl: 1280px;
+
+  --cp-z-base:     0;
+  --cp-z-dropdown: 1000;
+  --cp-z-sticky:   1100;
+  --cp-z-overlay:  1200;
+  --cp-z-modal:    1300;
+  --cp-z-toast:    1400;
+  --cp-z-tooltip:  1500;
+}
+
+/* =========================================================================
+   COMPROPAY DESIGN SYSTEM · CAMADA 1 — SEMÂNTICOS
+
+   ATÉ ONDE VAI A REGRA (revisado após as telas-prova):
+
+     COR  — regra dura. Componente NUNCA usa var(--cp-gray-*) e afins.
+            Cor carrega significado de marca; sem esta camada, trocar a
+            identidade vira caça a hex espalhado.
+
+     ESPAÇO, PESO, TRACKING — uso direto do primitivo é permitido.
+            As telas-prova mostraram 75 usos diretos: a escala de 4px já é
+            a intenção, e um alias semântico por caso só cria indireção
+            sem informação. Os aliases de espaço que existiram aqui estão
+            marcados como obsoletos (DDR-004) e saem em 1.0 — use o primitivo.
+   -------------------------------------------------------------------------
+   A intenção, não o valor. Esta é a ÚNICA camada que um componente consome
+   e a única que alguém precisa ler para entender o sistema.
+
+   Trocar a identidade da marca = trocar as referências aqui. Uma linha.
+   ========================================================================= */
+
+:root {
+  /* =====================================================================
+     ESQUEMA DE COR — a única propriedade real desta camada, e ela precisa
+     estar aqui.
+
+     O sistema é claro por decisão: as três rampas foram medidas contra
+     branco e nenhuma paleta escura foi produzida. Sem esta linha, um
+     aparelho em modo escuro faz o navegador escurecer por conta própria o
+     que ele controla — `<input>`, `<select>`, `<textarea>`, a barra de
+     rolagem e o `::backdrop` do `<dialog>`. O resultado é um campo de
+     formulário grafite dentro de um card branco, com texto claro que
+     ninguém mediu, no meio de uma página que continua clara.
+
+     Declarar `light` não impede um tema escuro futuro: quando houver
+     paleta escura medida, ela vira `light dark` mais um bloco de
+     `@media (prefers-color-scheme: dark)` redefinindo os semânticos abaixo.
+     ===================================================================== */
+  color-scheme: light;
+
+  /* =====================================================================
+     SUPERFÍCIE E FUNDO
+     ===================================================================== */
+  --cp-bg-page:        var(--cp-white);
+  --cp-bg-subtle:      var(--cp-gray-50);
+  --cp-bg-muted:       var(--cp-gray-100);
+  --cp-bg-inverse:     var(--cp-gray-950);
+  /* Superfície de marca, escura (o rodapé). Degradê do 950 da rampa primária
+     para um tom 28% mais escuro dele mesmo; sem cor nova, só derivada. */
+  --cp-bg-brand-dark:  linear-gradient(var(--cp-primary-950),
+                         color-mix(in srgb, var(--cp-primary-950) 72%, var(--cp-black)));
+  /* Preenchimento translúcido sobre superfície escura: pílulas e chips. */
+  --cp-fill-on-dark:        color-mix(in srgb, var(--cp-white) 5%, transparent);
+  --cp-fill-on-dark-hover:  color-mix(in srgb, var(--cp-white) 12%, transparent);
+
+  --cp-surface:        var(--cp-white);
+  --cp-surface-raised: var(--cp-white);
+  /* Superficie levantada DENTRO de um painel escuro — a pilula de contagem e
+     o chip nao escolhido do bloco de quiz. Mede 1.47:1 contra o painel, e
+     isso e de proposito: ela levanta a peca sem virar segunda cor. Vale para
+     rotulo (o texto branco em cima mede 11.35:1) e NAO vale como unica
+     fronteira de controle — a WCAG 1.4.11 quer 3:1 ali, e por isso o chip
+     ganha `--cp-border-inverse-strong` por cima deste fundo. */
+  --cp-surface-inverse-raised: var(--cp-gray-800);
+  --cp-surface-sunken: var(--cp-gray-50);
+  --cp-surface-overlay: rgba(30, 30, 31, .55);
+  /* Veu sobre foto que ninguem controla. Sem ele, texto branco sobre imagem
+     clara e aposta — e contraste sobre imagem nao da para medir. O par
+     `strong`/`none` existe porque gradiente precisa dos dois lados, e
+     `transparent` em alguns motores desbota para cinza no meio do caminho. */
+  /* Tinta base sobre foto. Nao existe para dar contraste — existe para tirar o
+     branco puro e unificar imagens que ninguem controla, sem esconder o
+     produto. Quem carrega o contraste e a faixa forte atras do texto; as duas
+     compoem .77, e e esse numero que foi medido. */
+  --cp-scrim-none:   rgba(30, 30, 31, 0);
+  /* A CURVA DA QUEDA — quatro degraus do mesmo cinza.
+
+     `strong` e `soft` empilhados dão o platô .77 e são a receita antiga; o que
+     eles não dão é o CAMINHO até lá. Duas rampas lineares somadas fazem uma
+     curva de quatro trechos cujo último encosta no platô num canto: a
+     inclinação cai de golpe para zero. Medido no banco de prova, o pico batia
+     7,2 milésimos de alfa por pixel exatamente nessa junta — era ela que se
+     via como emenda atravessando a foto do hero.
+
+     Estes quatro degraus são a smoothstep (3x²−2x³) amostrada nos quartos:
+     .120, .385, .650 e o platô .77. Montados em UM gradiente pelo componente,
+     a inclinação nasce baixa, cresce no meio e volta a baixa ao encostar no
+     platô. Nenhum canto em ponta. Medido: pico de 3,9 milésimos por pixel numa
+     queda de 17rem — 0,50 nível de luminância por pixel sobre foto média,
+     abaixo do teto de 0,7 que o cartão de oferta documenta.
+
+     São DEGRAUS e não um gradiente pronto porque o gradiente pronto não
+     funciona: `var()` dentro de um token declarado no `:root` é substituído no
+     `:root`, e ali `--cp-veil-fall` não existe — a curva nascia com o padrão
+     e ocupava a caixa inteira. Onde a queda cai é geometria, e geometria só o
+     componente sabe. A camada 1 entrega a tinta; a posição é do componente.
+
+     E é UMA camada só, não duas. Pintar queda e platô como dois planos de
+     fundo dá defeito nas duas formas de encaixar: 1px de sobra soma os dois
+     véus (.95 contra .77 dos vizinhos, risco escuro) e encaixe exato deixa o
+     arredondamento de subpixel abrir uma linha clara de 1px. Junta que não
+     existe é a única que não erra — por isso o último degrau é o platô, e cor
+     de última parada se estende sozinha até o fim da caixa. */
+  --cp-scrim-curve-1: rgba(30, 30, 31, .12);
+  --cp-scrim-curve-2: rgba(30, 30, 31, .385);
+  --cp-scrim-curve-3: rgba(30, 30, 31, .65);
+  --cp-scrim-full:    rgba(30, 30, 31, .77);
+  /* A MESMA curva, mais leve, para a variante com blur.
+
+     .77 é o número do véu padrão. Medindo, ele é mais conservador do que
+     precisa: o pior caso possível é foto branca chapada atrás do texto, e para
+     essa foto o mínimo de 4,5:1 é .61. .65 cobre o pior caso com folga — 5,2:1
+     sobre branco puro, e medido nas três fotos reais do hero dá 5,4:1, 7,0:1 e
+     7,8:1.
+
+     O QUE O BLUR FAZ, e não é o que parecia. A primeira medição prometia muito
+     mais: com .45 e blur a primeira foto dava 4,95:1 contra 4,25:1 sem. Medindo
+     as outras duas, .45 reprovava — 2,96:1 e 4,29:1 — porque a segunda foto tem
+     fundo estourado bem atrás do texto (luminância 249 depois de borrada), e
+     borrar quase-branco continua quase-branco: não há vizinhança escura para o
+     borrão puxar.
+
+     Refeita a conta em .65, o blur contribui quase nada para contraste: 7,75:1
+     com e 6,98:1 sem na primeira foto, e EMPATE nas outras duas. O blur ajuda
+     contra brilho ESPECULAR — pontinho claro isolado, que ele dissolve na
+     média — e não ajuda nada contra área clara grande, que é o caso comum.
+     Então o blur aqui é decisão de aparência, não mecanismo de legibilidade,
+     e é assim que ele deve ser vendido.
+
+     Por que .65 fica preso à variante com blur em vez de virar o padrão: sobre
+     foto NÍTIDA e cheia de detalhe, .65 passa no medidor e ainda assim deixa o
+     texto em cima de ruído visual. Baixar o véu do sistema inteiro com base
+     nestas três fotos seria generalizar de uma amostra. Fica escopado, e a
+     checagem `o véu leve só existe onde há blur` segura o escopo. */
+  --cp-scrim-lite-curve-1: rgba(30, 30, 31, .101);
+  --cp-scrim-lite-curve-2: rgba(30, 30, 31, .325);
+  --cp-scrim-lite-curve-3: rgba(30, 30, 31, .549);
+  --cp-scrim-lite:         rgba(30, 30, 31, .65);
+  /* Superfície que flutua SOBRE mídia — o botão de play do carrossel de vídeo.
+     Precisa de alfa: sólida ela vira um disco branco cego sobre a foto; sem
+     nenhuma ela some no quadro claro. O componente escrevia o rgba à mão. */
+  --cp-surface-on-media: rgba(255, 255, 255, .92);
+
+  /* =====================================================================
+     BORDA
+     ===================================================================== */
+  --cp-border-subtle: var(--cp-gray-200);
+  --cp-border:        var(--cp-gray-300);
+  --cp-border-strong: var(--cp-gray-400);
+  /* CONTORNO DE CONTROLE — o unico que precisa de 3:1.
+     WCAG 1.4.11 pede 3:1 para a fronteira que diz onde um controle esta, e
+     nenhum dos dois acima chega la: `--cp-border` da 1.40:1 e o `-strong` da
+     2.14:1 sobre branco. Eles servem para dividir bloco, que nao tem piso.
+     O gray-500 da 3.44:1 e e o degrau mais claro que passa — mesma escolha, e
+     pelo mesmo motivo, do `--cp-border-inverse-strong` (3.23:1) sobre escuro.
+
+     Isto so vale onde a borda E o controle: caixa de selecao e radio, cuja
+     forma inteira e a borda quando estao desmarcados. Campo de texto pode
+     seguir no `--cp-border` porque ali o rotulo, o fundo e o cursor tambem
+     dizem que ha um controle. */
+  --cp-border-control: var(--cp-gray-500);
+  /* @reservado — mesma razao do texto inverso: superficie escura precisa de
+     linha divisoria, e sem token ela vira var(--cp-gray-800) no componente. */
+  --cp-border-inverse: var(--cp-gray-800);
+  /* Linha de CONTROLE sobre escuro, que e outra coisa de divisoria. A
+     `--cp-border-inverse` mede 1.47:1 contra o painel: serve para separar
+     blocos, nao para dizer "isto e clicavel". Medi a rampa inteira contra
+     gray-950 e gray-600 e o degrau MAIS ESCURO que ainda passa o 3:1 da
+     WCAG 1.4.11 — 3.23:1. Um degrau abaixo (gray-700) da 2.17:1 e reprova. */
+  --cp-border-inverse-strong: var(--cp-gray-600);   /* 3.23:1 vs gray-950 */
+
+  /* =====================================================================
+     TEXTO
+     Regra dura: o piso de texto é gray-600. O gray-500 mede 3.44:1 e
+     REPROVA em AA — ele existe para ícone e borda, nunca para palavra.
+     ===================================================================== */
+  --cp-text-primary:   var(--cp-gray-950);  /* 16.66:1 */
+  --cp-text-secondary: var(--cp-gray-700);  /*  7.67:1 */
+  --cp-text-muted:     var(--cp-gray-600);  /*  5.15:1 — piso */
+  --cp-text-disabled:  var(--cp-gray-400);  /*  2.14:1 — só estado desabilitado */
+  --cp-text-inverse:   var(--cp-white);
+  /* descobertos pelas telas-prova: a seção escura precisava de texto
+     secundário e não havia token — o CSS caía na camada 0 para resolver */
+  /* @reservado — a rampa clara sobre escuro vem em par. Enviar so o `muted`
+     e o que fez o CSS cair na camada 0 da primeira vez; ver o comentario
+     acima. Um degrau sem consumidor hoje e mais barato que a proxima secao
+     escura reabrindo o mesmo buraco. */
+  --cp-text-secondary-inverse: var(--cp-gray-300);
+  --cp-text-muted-inverse:     var(--cp-gray-400);
+  --cp-text-on-action: var(--cp-white);     /* 16.66:1 sobre a ação primária */
+  --cp-text-link:      var(--cp-primary-700);
+  --cp-text-link-hover: var(--cp-primary-800);
+
+  /* =====================================================================
+     AÇÃO — o roxo da marca (#7C12C8). Existe onde há uma decisão a tomar: comprar,
+     enviar, confirmar.
+
+     ERA MAGENTA ATÉ 0.13, e a troca não é de paleta: é de papel. O gray-950
+     sempre foi a primária da marca (está escrito na camada 0); o roxo era
+     a cor de AÇÃO, emprestada à marca em cada botão. Agora a loja fala em
+     preto e o roxo recua para onde ele é sinal e não identidade — link,
+     anel de foco e favoritar — e para a documentação, que continua sendo a
+     casa dele.
+
+     O HOVER CLAREIA, e não escurece. Com o fundo em 950 não há degrau mais
+     escuro na rampa: o pressionado teria de ser preto puro, que o sistema não
+     tem, e o hover ficaria igual ao repouso. Clarear um degrau move 5 pontos
+     de contraste (16.66 → 11.35) e continua AAA com texto branco. */
+  /* PRIMARIA NO NOME desde 0.13. A secundaria sempre disse que era
+     (`--cp-action-secondary-*`) e o botao se chama `.cp-btn--primary`, mas a
+     primaria era so `--cp-action-bg` — quem procurava "primaria" no sistema
+     nao achava. O desabilitado fica sem papel no nome: e o mesmo para todas
+     as variantes. */
+  --cp-action-primary-bg:         var(--cp-primary-700);   /* 7.56:1 com texto branco */
+  --cp-action-primary-bg-hover:   var(--cp-primary-800);   /* 11.01:1 */
+  --cp-action-primary-bg-active:  var(--cp-primary-900);   /* 14.49:1 */
+  --cp-action-primary-text:       var(--cp-text-on-action);
+  --cp-action-bg-disabled: var(--cp-gray-200);
+  /* @deprecated desde 0.10 — use --cp-text-muted. Remocao em 2.0.
+     Este token era uma ARMADILHA: gray-500 sobre --cp-action-bg-disabled
+     (gray-200) mede 2.86:1. O proprio .cp-btn[disabled] o recusou e usa
+     --cp-text-muted (4.28:1), com a razao escrita no CSS. Um token que o
+     sistema nao usa porque e ilegivel nao pode continuar oferecido. */
+  --cp-action-text-disabled: var(--cp-text-muted);
+  /* @deprecated desde 0.13 — use --cp-action-primary-bg, --cp-action-primary-bg-hover,
+     --cp-action-primary-bg-active e --cp-action-primary-text. Remocao em 2.0.
+     So o nome mudou: os quatro seguem apontando para o mesmo valor, e o tema
+     da loja que ainda os consome nao muda uma linha ate migrar. */
+  --cp-action-bg:        var(--cp-action-primary-bg);
+  --cp-action-bg-hover:  var(--cp-action-primary-bg-hover);
+  --cp-action-bg-active: var(--cp-action-primary-bg-active);
+  --cp-action-text:      var(--cp-action-primary-text);
+
+  /* AÇÃO SECUNDÁRIA — contorno, e não bloco.
+     Historico: foi grafite solido (pesava 3,1x a primaria roxo e virava
+     duas primarias), depois roxo tingido (a diferenca para o desabilitado
+     era de matiz). Com a acao em roxo, o tingido perdeu o matiz que o
+     justificava.
+
+     Limite conhecido: o contorno preto depende de fundo claro. Sobre a faixa
+     escura do header ou sobre foto ele some — ali a secundaria teria de ser
+     contorno claro, variante que ainda nao existe porque nenhuma tela pede.
+     Ver a nota na ficha do Button. */
+  /* CONTORNO ESCURO desde 0.13. Com a acao em roxo, a secundaria em cinza
+     claro com borda cinza media parecia botao apagado de formulario — e ficava
+     quase igual a fantasma, que tambem e clara com borda: a diferenca entre as
+     duas era um fundo de 1.09:1 contra a pagina. Agora a escada e de peso, e
+     se le de longe: preenchido roxo (primaria), contorno escuro (secundaria),
+     so texto (fantasma).
+     O contorno em gray-950 mede 16.66:1 contra o branco — muito acima do 3:1
+     de fronteira de controle (WCAG 1.4.11) — e e ele, nao o fundo, que separa
+     a secundaria do desabilitado (gray-200 preenchido, sem aresta escura).
+     O hover e o pressionado escurecem o FUNDO, nao a borda: a aresta ja esta
+     no degrau mais escuro da rampa. */
+  --cp-action-secondary-bg:        var(--cp-surface);
+  --cp-action-secondary-bg-hover:  var(--cp-gray-100);
+  --cp-action-secondary-bg-active: var(--cp-gray-200);
+  --cp-action-secondary-text:      var(--cp-gray-950);   /* 16.66:1 sobre o branco */
+  --cp-action-secondary-text-hover: var(--cp-gray-950);  /* 15.30:1 no hover, 13.90:1 pressionado */
+  --cp-action-secondary-border:        var(--cp-gray-950);
+  --cp-action-secondary-border-hover:  var(--cp-gray-950);
+
+  /* ação terciária / fantasma */
+  --cp-action-ghost-text:   var(--cp-gray-950);
+  --cp-action-ghost-bg-hover: var(--cp-gray-100);
+  /* @deprecated desde 0.13 — sem consumidor. Remocao em 2.0.
+     A fantasma deixou de ter borda: com ela, era um contorno mais fraco que a
+     secundaria, e o sistema tinha dois contornos e nenhum botao so de texto. */
+  --cp-action-ghost-border: var(--cp-gray-300);
+
+  /* =====================================================================
+     ACENTO — laranja.
+     REGRA DURA: secondary-500 mede 2.39:1 sobre branco e não pode ser texto
+     nem ícone informativo sobre fundo claro. Sobre grafite mede 6.96:1.
+     Para texto sobre claro existe --cp-accent-text (secondary-700, 5.68:1).
+     ===================================================================== */
+  /* @deprecated desde 0.10 — use --cp-accent-on-dark. Remocao em 2.0.
+     Dois nomes para um valor so, e o generico e o que engana: "accent" nao
+     avisa que reprova sobre claro. Quem le --cp-accent-on-dark ja sabe. */
+  --cp-accent:           var(--cp-accent-on-dark);
+  --cp-accent-on-dark:   var(--cp-secondary-500);  /* só sobre superfície escura */
+  /* Acento sobre FOTO, que e outro problema: a superficie escura do
+     --cp-accent-on-dark e conhecida, a foto nao. Sobre o veu do banner com foto
+     (.77 sobre pixel branco puro) o secondary-500 da 3.28:1 e reprova como texto;
+     o secondary-300 da 6.02:1 e continua lendo como laranja. Escurecer o veu ate o
+     secondary-500 passar exigiria .86 — a essa altura nao ha mais foto embaixo. */
+  --cp-accent-text:      var(--cp-secondary-700);  /* texto sobre claro */
+
+  /* A COR DE ACAO SOBRE ESCURO, e ela NAO e a cor de acao.
+     Mesmo problema do laranja, ao contrario: o roxo-600 canonico foi
+     escolhido para ler sobre BRANCO (5.36:1) e sobre o grafite cai para
+     3.11:1 — reprova como texto pequeno. Nenhuma cor e escura o bastante
+     para o branco e clara o bastante para o grafite ao mesmo tempo.
+     O roxo-400 da 6.49:1 sobre --cp-bg-inverse e continua lendo como a
+     familia da marca. Varri a rampa: o 500 para em 3.89:1, tambem reprova.
+     O contexto esta no nome pelo mesmo motivo do --cp-accent-on-dark: usado
+     sobre claro, este tom reprova. */
+  /* MAGENTA, e nao o preto da acao — este e o unico token da familia que NAO
+     acompanhou a troca de 0.13, e de proposito.
+
+     Sobre grafite o preto e invisivel, entao a pergunta era so entre claro e
+     roxo. O claro funciona e nao diz nada: vira mais um texto branco sobre
+     mais uma faixa escura, no meio de uma foto. O roxo-400 e o unico lugar
+     da loja onde a cor da marca aparece sobre imagem, e e o que faz o selo de
+     brinde ser visto antes de ser lido.
+
+     Nao e contradicao com "a acao virou preta": aqui nao ha acao nenhuma. O
+     selo nao e clicavel — ele informa, e informacao sobre foto e justamente o
+     caso em que a cor carrega mais que a forma. Por isso o nome: ate 0.13
+     ele se chamava `--cp-action-on-dark` e dizia "acao" onde nao ha acao —
+     o botao de acao sobre escuro e o branco do `--on-dark`. Agora e o sinal
+     sobre escuro, par do `--cp-accent-signal`.
+
+     roxo-400 e nao o 600 canonico: o 600 da 3.11:1 sobre o grafite e
+     reprova. O 400 da 6.49:1. */
+  --cp-accent-signal-on-dark: var(--cp-primary-400);  /* só sobre superfície escura */
+  /* @reservado — superficie e borda de acento andam juntas; a doc ja usa a
+     borda. Ver a nota de --cp-text-secondary-inverse. */
+  --cp-accent-surface:   var(--cp-secondary-100);
+  --cp-accent-border:    var(--cp-secondary-300);
+
+  /* Estrelas de avaliacao. O preenchimento e o laranja de MARCA — vivo, e o
+     que a loja pratica hoje — mas ele mede 2.39:1 sobre branco, abaixo do 3:1
+     que a WCAG 1.4.11 pede de grafico que carrega informacao. A saida nao e
+     escolher entre vivo e legivel: a FORMA ganha o contraste que a cor nao
+     tem. O contorno e o secondary-700 (5.68:1) e e ele que define a silhueta da
+     estrela; o miolo continua o secondary-500.
+
+     Por que nao o #FFBB00 que a loja usa hoje: mede 1.70:1 sobre branco, mais
+     baixo ainda, e e um valor solto de Tailwind que nao pertence a paleta. O
+     secondary-500 e mais vivo que o que estava aqui e ja e cor do sistema. */
+  /* secondary-600 e nao secondary-500: a estrela perdeu o contorno e passou a ter de
+     cumprir sozinha os 3:1 da WCAG 1.4.11. 500 mede 2.39:1 e reprova; 600
+     mede 3.45:1. */
+  --cp-accent-star:      var(--cp-secondary-600);
+  /* @deprecated desde 0.12 — nao declare contorno na estrela. Remocao em 2.0.
+     O contorno existia porque o miolo em secondary-500 nao alcancava 3:1 sozinho;
+     com o miolo em secondary-600 ele deixou de ter funcao, e uma linha escura em
+     volta do glifo fazia a estrela parecer desenhada por cima. */
+  --cp-accent-star-edge: var(--cp-secondary-700);
+
+  /* Favoritar. O roxo era a cor de ACAO do sistema ate 0.13 —
+     reaproveitado aqui de proposito, e nao redefinido como valor proprio,
+     porque "favoritado" e uma leitura a mais do mesmo vermelho-rosa que a
+     marca ja usa para "isto e ComproPay". O nome separado existe para o dia em
+     que os dois precisarem divergir (accent-love vira estado, action-bg
+     continua sendo estimulo a clicar) sem procurar hex em CSS de componente.
+     5.36:1 sobre branco — passa o 3:1 de grafico com informacao (1.4.11). */
+  /* O SINAL — o roxo onde ele informa, e nao onde se clica.
+
+     A regra que a troca de 0.13 deixou no sistema cabe em uma linha: preto e
+     onde se CLICA, roxo e MARCACAO. Desconto, contagem do carrinho, ponto
+     de nao-lido e favorito nao sao acoes — sao marcas que aparecem POR CIMA de
+     conteudo e precisam ser vistas antes de serem lidas. Em preto elas somem
+     no meio do texto e do grafite da interface, que virou a cor de tudo o que
+     e clicavel.
+
+     Estes quatro apontavam para `--cp-action-bg` (hoje `--cp-action-primary-bg`) e acompanharam a acao para o
+     preto sem que ninguem tivesse decidido isso — a troca de papel de um token
+     arrasta quem o consome. Aqui eles ganham o motivo escrito e param de
+     depender de onde a acao for parar amanha.
+
+     SINAL NO NOME desde 0.13, e nao "brand": a marca hoje e o preto, e um
+     token chamado brand pintando roxo mandava o leitor para a cor errada.
+
+     roxo-600, o canonico: 5.36:1 com texto branco. */
+  --cp-accent-signal: var(--cp-primary-700);
+  /* @deprecated desde 0.13 — use --cp-accent-signal e --cp-accent-signal-on-dark.
+     Remocao em 2.0. Mesmo valor, nome novo. */
+  --cp-accent-brand:   var(--cp-accent-signal);
+  --cp-action-on-dark: var(--cp-accent-signal-on-dark);
+
+
+  /* VALOR PROPRIO desde 0.13, e nao mais `var(--cp-action-bg)`. O dia em que
+     os dois precisariam divergir, previsto no comentario acima, chegou: a
+     acao virou preta e "favoritado" continua sendo o vermelho-rosa da marca.
+     Um coracao preto nao le como favorito — le como desabilitado. */
+  --cp-accent-love: var(--cp-accent-signal);
+
+  /* =====================================================================
+     ESTADO
+     ===================================================================== */
+  /* `-border` desde 0.13: o fio da caixa tingida. A superficie (50) mede
+     1.10 a 1.16:1 contra o branco — a caixa existia so pela cor, nao pelo
+     contraste, o mesmo defeito do cinza sobre cinza com outra tinta. O 200
+     (1.38:1) desenha a borda sem virar segunda cor. */
+  --cp-success-text:    var(--cp-success-600);
+  --cp-success-surface: var(--cp-success-50);
+  --cp-success-border:  var(--cp-success-200);
+  --cp-success-solid:   var(--cp-success-600);
+
+  --cp-warning-text:    var(--cp-warning-600);
+  --cp-warning-surface: var(--cp-warning-50);
+  --cp-warning-border:  var(--cp-warning-200);
+  --cp-warning-solid:   var(--cp-warning-600);
+
+  --cp-danger-text:     var(--cp-danger-600);
+  --cp-danger-surface:  var(--cp-danger-50);
+  --cp-danger-border:   var(--cp-danger-200);
+  --cp-danger-solid:    var(--cp-danger-600);
+
+  --cp-info-text:       var(--cp-info-600);
+  --cp-info-surface:    var(--cp-info-50);
+  --cp-info-border:     var(--cp-info-200);
+  --cp-info-solid:      var(--cp-info-600);
+
+  /* SELECAO DE TEXTO. Sem ela, quem seleciona um trecho na loja ve o azul do
+     navegador — a unica cor da pagina que nao e da marca. Roxo-300 (1.51:1
+     contra o branco) aparece sem gritar, e o texto continua o primario:
+     11:1 sobre ele. */
+  --cp-selection-bg:    var(--cp-primary-300);
+  --cp-selection-text:  var(--cp-text-primary);
+
+  /* =====================================================================
+     FOCO — obrigatório e visível. Nunca `outline: none` sem substituto.
+     ===================================================================== */
+  /* GRAFITE desde 0.18, e era roxo-600. O anel de foco e o unico lugar do
+     sistema onde a cor de SINAL aparecia sozinha, sem acao nenhuma por tras —
+     um campo em foco nao e um botao, e o roxo ali prometia uma acao que o
+     campo nao tem. Pior: encostado na borda (afastamento 0), ele nao lia como
+     anel e sim como "a borda do campo ficou roxo", que e exatamente a
+     pergunta que chegou de quem usa.
+
+     O grafite e a PRIMARIA DA MARCA (ver --cp-gray-950 em 00-primitives.css).
+     Com ele o foco passa a ser a propria identidade do sistema, nao um aviso.
+
+     Uma so cor para todo controle: botao, link, caixa, aba. Anel diferente por
+     componente seria a pergunta "por que este e diferente" outra vez. */
+  --cp-focus-color:  var(--cp-gray-950);
+  --cp-focus-width:  2px;
+  /* ZERO desde 0.13, e era 2px. O afastamento existe para o anel nao se fundir
+     com a borda do controle — encostado, ele pode ler como uma borda que
+     engrossou e mudou de cor. Num campo com contorno o efeito era o contrario
+     do pretendido: apareciam tres tracos, a borda do campo, o vao branco e o
+     anel, e o vao lia como falha de desenho.
+
+     Zerado, o anel de 2px nasce na propria borda. Com o anel grafite essa fusao
+     deixou de ser efeito colateral e virou o desenho: a borda do campo tambem
+     vira grafite no foco, e os dois juntos leem como UM traco de 3px. A
+     distincao nao e mais de cor e sim de ESPESSURA — 1px em repouso, 1px mais
+     escuro no hover, 3px no foco. A WCAG 1.4.11 aceita mudanca de espessura
+     como indicador, e o grafite mede 16.66:1 sobre a pagina branca, bem acima
+     do 3:1 que ela pede.
+
+     Uma vez so, e nao por componente: anel com afastamento diferente em cada
+     controle seria a pergunta "por que este e diferente" outra vez. */
+  --cp-focus-offset: 0;
+  /* A EXCECAO, e so uma: controle que JA e grafite cheio — o botao primario, o
+     checkbox e o radio marcados, o chip ligado, o atalho de pular. Nesses o
+     anel grafite encostado nao aparece: ele e a mesma cor do proprio controle,
+     e o foco so engorda a peca em 2px sem dizer nada. Aqui o vao branco da
+     pagina e que desenha o anel — controle, 2px de pagina, 2px de grafite.
+     Mede 16.66:1 contra o branco e 1:1 contra o controle, que e justamente o
+     ponto: quem separa os dois e o vao, nao a cor. */
+  --cp-focus-offset-on-solid: 2px;
+
+  /* =====================================================================
+     FAMÍLIA
+     ===================================================================== */
+  --cp-font-family-base: var(--cp-font-sans);
+  --cp-font-family-mono: var(--cp-font-mono);
+
+  /* =====================================================================
+     ELEVAÇÃO SEMÂNTICA — por papel, não por intensidade
+     ===================================================================== */
+  /* @deprecated desde 0.10 — nao declare sombra. Remocao em 2.0.
+     "Sem sombra" e a ausencia da propriedade, nao um valor a aplicar. */
+  --cp-elevation-flat:     var(--cp-shadow-none);
+  --cp-elevation-card:     var(--cp-shadow-xs);
+  --cp-elevation-raised:   var(--cp-shadow-sm);
+  --cp-elevation-dropdown: var(--cp-shadow-md);
+  --cp-elevation-drawer:   var(--cp-shadow-lg);
+  --cp-elevation-modal:    var(--cp-shadow-xl);
+  /* não é elevação de caixa: é o que separa a legenda do vídeo do frame */
+  --cp-elevation-text-media: var(--cp-shadow-text);
+
+  /* =====================================================================
+     TRANSIÇÃO SEMÂNTICA
+     ===================================================================== */
+  /* RITMO DE ESPERA — não é transição, e por isso não sai da mesma rampa.
+     Transição responde a um gesto e termina; espera é um laço que roda
+     enquanto não há resposta, e a rampa de transição para em 420ms — tempo de
+     um clique, não de um laço. A 420ms uma barra indeterminada atravessa a
+     pista duas vezes e meia por segundo, que é estroboscópio, não sinal de
+     trabalho. 1,4s é o ritmo que o brilho do esqueleto já praticava, escrito
+     cru na folha desde que nasceu; agora os dois esperam no mesmo compasso. */
+  --cp-rhythm-loop: 1400ms;
+
+  --cp-transition-control: var(--cp-duration-fast) var(--cp-ease-standard);
+  --cp-transition-surface: var(--cp-duration-base) var(--cp-ease-standard);
+  /* @deprecated desde 0.10 — sem consumidor. Remocao em 2.0.
+     O <dialog> do sistema nao anima: ele aparece. Manter um token de
+     transicao de overlay promete um comportamento que nao existe. */
+  --cp-transition-overlay: var(--cp-duration-slow) var(--cp-ease-enter);
+
+  /* =====================================================================
+     PAPÉIS TIPOGRÁFICOS
+     Família única: a hierarquia vem de escala, peso e tracking.
+     Quanto maior o tamanho, mais negativo o tracking.
+     ===================================================================== */
+  /* @deprecated desde 0.13 — use --cp-type-display-2-*. Remocao em 2.0.
+
+     Os quatro nasceram como o teto da escala e nunca foram consumidos por peca
+     nenhuma: o `display-2` deu conta de todo titulo grande que a loja pediu, do
+     hero da home ao manifesto. A GOVERNANCA manda o contrario do que a inercia
+     sugere — token semantico e intencao COM consumidor, e token novo so entra
+     quando o caso aparece duas vezes. Este apareceu zero.
+
+     Nao vai embora agora porque remover semantico e mudanca maior; fica
+     depreciado o tempo que a governanca pede, apontando para onde ir. Se um dia
+     uma campanha pedir um degrau acima do `display-2`, o caminho e reabrir com
+     o caso na mao — nao manter a promessa parada esperando por ele. */
+  --cp-type-display-1-size:   var(--cp-font-size-6xl);
+  --cp-type-display-1-line:   var(--cp-line-height-tight);
+  --cp-type-display-1-track:  var(--cp-tracking-tightest);
+  --cp-type-display-1-weight: var(--cp-font-weight-extrabold);
+
+  --cp-type-display-2-size:   var(--cp-font-size-5xl);
+  --cp-type-display-2-line:   var(--cp-line-height-tight);
+  --cp-type-display-2-track:  var(--cp-tracking-tightest);
+  --cp-type-display-2-weight: var(--cp-font-weight-bold);
+
+  --cp-type-h1-size:   var(--cp-font-size-4xl);
+  --cp-type-h1-line:   var(--cp-line-height-snug);
+  --cp-type-h1-track:  var(--cp-tracking-tighter);
+  --cp-type-h1-weight: var(--cp-font-weight-bold);
+
+  --cp-type-h2-size:   var(--cp-font-size-3xl);
+  --cp-type-h2-line:   var(--cp-line-height-snug);
+  --cp-type-h2-track:  var(--cp-tracking-tighter);
+  --cp-type-h2-weight: var(--cp-font-weight-bold);
+
+  --cp-type-h3-size:   var(--cp-font-size-2xl);
+  --cp-type-h3-line:   var(--cp-line-height-base);
+  --cp-type-h3-track:  var(--cp-tracking-tight);
+  --cp-type-h3-weight: var(--cp-font-weight-semibold);
+
+  --cp-type-h4-size:   var(--cp-font-size-xl);
+  --cp-type-h4-line:   var(--cp-line-height-base);
+  --cp-type-h4-track:  var(--cp-tracking-tight);
+  --cp-type-h4-weight: var(--cp-font-weight-semibold);
+
+  --cp-type-body-lg-size:   var(--cp-font-size-lg);
+  --cp-type-body-lg-line:   var(--cp-line-height-relaxed);
+  /* @reservado — todo papel tipografico expoe size/line/track/weight. Os
+     quatro `track` abaixo valem 0, e por isso nenhum CSS os escreve: zero e
+     o default. Existem porque quem consome o contrato por programa (Figma
+     Variables, Style Dictionary, o JSON de dist/) itera as quatro
+     propriedades do papel — e um papel com tres quebra a iteracao. */
+  --cp-type-body-lg-track:  var(--cp-tracking-normal);
+  --cp-type-body-lg-weight: var(--cp-font-weight-regular);
+
+  --cp-type-body-size:   var(--cp-font-size-md);
+  --cp-type-body-line:   var(--cp-line-height-relaxed);
+  --cp-type-body-track:  var(--cp-tracking-normal);
+  --cp-type-body-weight: var(--cp-font-weight-regular);
+
+  --cp-type-body-sm-size:   var(--cp-font-size-sm);
+  --cp-type-body-sm-line:   var(--cp-line-height-base);
+  --cp-type-body-sm-track:  var(--cp-tracking-normal);
+  --cp-type-body-sm-weight: var(--cp-font-weight-regular);
+
+  --cp-type-caption-size:   var(--cp-font-size-xs);
+  --cp-type-caption-line:   var(--cp-line-height-base);
+  --cp-type-caption-track:  var(--cp-tracking-normal);
+  --cp-type-caption-weight: var(--cp-font-weight-regular);
+
+  --cp-type-overline-size:   var(--cp-font-size-2xs);
+  --cp-type-overline-line:   var(--cp-line-height-base);
+  --cp-type-overline-track:  var(--cp-tracking-wider);
+  --cp-type-overline-weight: var(--cp-font-weight-semibold);
+
+  /* preço: sempre tabular, sempre alinhado */
+
+  /* =====================================================================
+     ESPAÇO SEMÂNTICO
+
+     @deprecated desde 0.10 — use a escala de --cp-space-* direto.
+     Remocao em 2.0. Ver decision-log/DDR-004.
+
+     O cabecalho deste arquivo ja registrava que uso direto do primitivo e
+     permitido para espaco, e que "um alias semantico por caso so cria
+     indirecao sem informacao". Dez versoes depois, os onze aliases abaixo
+     tem ZERO consumidores em todo o repositorio — nem componente, nem
+     padrao, nem as telas-prova. Um vocabulario que ninguem fala nao e
+     vocabulario: e ruido no autocompletar de quem chega.
+
+     Nenhum deles muda de valor. Quem por acaso os use continua funcionando
+     ate 1.0.
+     ===================================================================== */
+  --cp-space-inline-xs: var(--cp-space-1);
+  --cp-space-inline-sm: var(--cp-space-2);
+  --cp-space-inline-md: var(--cp-space-3);
+  --cp-space-inline-lg: var(--cp-space-4);
+
+  --cp-space-stack-xs: var(--cp-space-2);
+  --cp-space-stack-sm: var(--cp-space-3);
+  --cp-space-stack-md: var(--cp-space-4);
+  --cp-space-stack-lg: var(--cp-space-6);
+
+  --cp-space-block-sm: var(--cp-space-8);
+  --cp-space-block-md: var(--cp-space-12);
+  --cp-space-block-lg: var(--cp-space-20);
+
+  /* =====================================================================
+     GOTEIRA E GRADE — estes NAO sao depreciados. Sao os dois unicos casos em
+     que o espaco muda com a largura da janela (ver o @media no fim do
+     arquivo), e por isso precisam de nome: o valor nao e um so.
+     ===================================================================== */
+  --cp-page-gutter: var(--cp-space-4);
+  --cp-grid-gap:    var(--cp-space-5);
+
+  /* =====================================================================
+     FORMA
+
+     O CANTO DO SISTEMA E 12px, e nao mais 8. Um degrau inteiro da escala para
+     cima, aplicado de uma vez nos tres papeis que sao CAIXA — o controle, o
+     cartao e a midia. Subir so o cartao deixaria o botao dentro dele mais
+     anguloso que a propria caixa, que e o jeito mais rapido de uma interface
+     parecer remendada.
+
+     A midia sobe junto porque na maioria dos cartoes ela encosta no canto de
+     cima: raio diferente ali aparece como um degrau de meio pixel entre a foto
+     e a borda do cartao.
+
+     O ALFINETE SOBE SO UM DEGRAU, para 8. Ele e o unico dos cinco que nao e
+     caixa: veste rotulo de 25px de altura, e 12 num retangulo de 25 da 48% da
+     altura — isso nao le como canto arredondado, le como pilula mal feita, e
+     pilula ja tem dono aqui (--cp-radius-pill). Em 8 ele fica nos mesmos 32%
+     que o stepper pequeno (12 de 36), que e a proporcao que o sistema ja
+     mostrava como certa. A relacao com o cartao continua sendo metade.
+
+     `--cp-radius-sm` cru, onde ele aparece nas folhas, NAO sobe junto: ali ele
+     veste caixa de checkbox, risco de esqueleto e item de menu — coisas de 16
+     a 20px, em que 4 ja e o canto certo.
+     ===================================================================== */
+  --cp-radius-control: var(--cp-radius-lg);
+  --cp-radius-card:    var(--cp-radius-lg);
+  --cp-radius-badge:   var(--cp-radius-md);
+  --cp-radius-pill:    var(--cp-radius-full);
+  --cp-radius-media:   var(--cp-radius-lg);
+
+  /* linha divisória: a espessura também é decisão de sistema, não de autor */
+  --cp-border-hairline: var(--cp-border-width-hair);
+  --cp-border-emphasis: var(--cp-border-width-thick);
+
+  /* =====================================================================
+     OPACIDADE POR PAPEL
+     REGRA DURA: nenhuma delas se aplica a TEXTO. Opacidade sobre palavra
+     derruba o contraste sem que nada no CSS registre a queda — para texto
+     apagado existe --cp-text-muted, que é medido.
+     ===================================================================== */
+  --cp-opacity-control-disabled: var(--cp-opacity-disabled);
+  /* A foto do produto esgotado recua, mas nao some: ela ainda e o que
+     identifica a peca na grade. Nao vale para texto — o preco e o nome ao
+     lado ficam em opacidade cheia. */
+  /* @deprecated desde 0.10 — use --cp-surface-overlay (o veu ja medido) ou
+     --cp-surface-on-media. Remocao em 2.0. Opacidade solta sobre midia nao
+     diz sobre O QUE ela cai, e por isso nunca da para medir o resultado. */
+
+  /* =====================================================================
+     MÍDIA — reservar a caixa antes da imagem chegar. Sem isto, o card do
+     grid cresce quando a foto carrega e empurra o preço para baixo do
+     dedo que já estava indo nele.
+     ===================================================================== */
+  --cp-aspect-product: var(--cp-aspect-square);     /* catálogo é 1:1 */
+  --cp-aspect-hero:    var(--cp-aspect-landscape);
+  --cp-aspect-reel:    var(--cp-aspect-vertical);
+  /* A arte que o marketing entrega pronta: o hero tem a proporcao dela. */
+  --cp-aspect-campaign:        var(--cp-aspect-wide);
+  --cp-aspect-campaign-mobile: var(--cp-aspect-tall);
+  /* Miniatura de produto em lista — resultado da busca e item da sacola. As
+     duas diziam 56px cada uma do seu jeito. */
+  --cp-thumb: 3.5rem;
+
+  /* =====================================================================
+     MEDIDA DE LEITURA
+     ===================================================================== */
+  --cp-measure-prose: var(--cp-measure-base);
+  --cp-measure-lede:  var(--cp-measure-narrow);
+
+  /* =====================================================================
+     ÍCONE
+     ===================================================================== */
+  --cp-icon-size: var(--cp-icon-md);
+
+  /* =====================================================================
+     ALTURA DE CONTROLE
+     ===================================================================== */
+  --cp-control-height:         var(--cp-control-height-md);
+  --cp-control-height-compact: var(--cp-control-height-sm);
+  --cp-control-height-hero:    var(--cp-control-height-lg);
+
+  /* Altura REAL de um controle "mid" — a que o botão padrão tem em pé, não o
+     piso de 44 que ele declara. Ela emerge do padding: 16 em cima, 16 embaixo,
+     uma linha de 1rem e o fio da borda. O campo de formulário precisa bater
+     com ela quando os dois dividem a mesma linha (o "calculate shipping" da
+     PDP, o cupom da sacola), e ninguém acerta isso por tentativa: está escrito
+     uma vez aqui e os dois leem daqui. */
+  --cp-control-h: calc(var(--cp-space-4) * 2 + 1rem + 2px);   /* 50px */
+
+  /* =====================================================================
+     ALVO DE TOQUE — mínimo WCAG 2.5.5 / iOS HIG
+     ===================================================================== */
+  --cp-target-min: 44px;
+
+  /* Altura da barra fixa do header. Quem gruda abaixo dela precisa saber
+     onde ela termina, e ninguem consegue medir isso em CSS. A conta e a
+     mesma que produz a barra — alvo + respiro + fio —, e a barra usa este
+     token como piso, entao os dois nao tem como divergir. */
+  --cp-header-h: calc(var(--cp-target-min) + var(--cp-space-4) * 2 + 1px);
+
+  /* Quanto do topo da tela esta OCUPADO por cromo preso. Por padrao e so o
+     cabecalho; quando a faixa do parceiro esta na tela, ela entra na conta
+     (ver .cp-partnerbar). Quem gruda embaixo do topo — o indice do FAQ — e
+     quem rola para uma ancora — os grupos do FAQ — leem este, e nao o
+     `--cp-header-h`: senao param atras da faixa. */
+  --cp-chrome-h: var(--cp-header-h);
+  /* O aperto do mobile esta no fim deste arquivo: a barra encolhe o respiro
+     la, e o token tem de encolher junto — ver @media (max-width:767.98px). */
+
+  /* Sinal da direcao de leitura. `transform` nao tem versao logica: um
+     translateX negativo tira a gaveta da tela em LTR e a traz para dentro em
+     RTL. Quem inverte o documento inverte este token junto. */
+  --cp-dir: 1;
+
+  /* =====================================================================
+     CAMADA 2 · COMPONENTE — só onde há desvio local, sempre justificado.
+     ===================================================================== */
+  /* Título de card no grid: as telas-prova mostraram títulos reais de
+     2 a 5 linhas (o maior tem 88 caracteres), desalinhando preço e rating
+     na mesma fileira. Truncar em 2 é o que mantém o grid legível. */
+
+  /* Barra de logos: as marcas sobem invertidas para branco puro sobre o
+     grafite e ficam mais quentes que o texto ao lado, puxando o olho para o
+     rodape em vez do conteudo. 85% as devolve ao mesmo peso optico.
+     Nao entra na escala de opacidade porque nao e um papel do sistema — e
+     um desvio de UM componente, que e exatamente o que a camada 2 aceita.
+     Nao ha texto envolvido: o alvo e <img>. */
+  --cp-logobar-opacity: .85;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --cp-page-gutter: var(--cp-space-8);
+    --cp-grid-gap:    var(--cp-space-6);
+  }
+}
+
+/* ===========================================================================
+   CAMADA DE MERCADO
+   Mesma marca, mercados diferentes: aqui NÃO se troca identidade.
+
+   ESTÁ VAZIA, E ISSO É O RESULTADO CERTO DA DECISÃO DE MARCA.
+   US e BR compartilham identidade integral, então não há nada de visual que
+   mude entre os dois — se houvesse, seria aqui.
+
+   O que havia aqui antes eram `--cp-locale` e `--cp-currency-symbol`, e os dois
+   eram ilusão: nenhum arquivo do repositório os lia, e não tinham como ler.
+   CSS não interpola string em texto de HTML — `content:` só alcança pseudo-
+   elemento, e preço vem do Shopify já formatado. Moeda e locale são decisão de
+   DADO, resolvida em quem monta a página; declará-los como token dava a
+   impressão de que trocar `data-market` mudaria a moeda, e não mudava nada.
+
+   O seletor fica declarado, sem propriedades, porque o gancho `data-market`
+   segue em uso no `<html>` e é onde uma diferença real de mercado entraria.
+   =========================================================================== */
+[data-market="us"] { /* sem diferença visual — ver nota acima */ }
+[dir="rtl"] { --cp-dir: -1; }
+
+[data-market="br"] { /* sem diferença visual — ver nota acima */ }
+
+/* ===========================================================================
+   ALTURA DO CABECALHO NO MOBILE
+
+   O respiro da barra cai de `--cp-space-4` para `--cp-space-3` abaixo de
+   768px, e a altura cai junto. Este ajuste morava na propria regra do
+   `.cp-header__bar`, e um valor declarado NO elemento so alcanca ele e seus
+   filhos: quem gruda abaixo da barra sem estar dentro dela — a doca do
+   parceiro, a faixa do parceiro — continuava lendo a altura do desktop e
+   ficava 8px fora do lugar no celular. Declarado aqui, no dono do token,
+   todo mundo le o mesmo numero.
+   =========================================================================== */
+@media (max-width:767.98px){
+  :root{ --cp-header-h: calc(var(--cp-target-min) + var(--cp-space-3) * 2 + 1px); }
+}

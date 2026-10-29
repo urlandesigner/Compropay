@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Chat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen screen--white">
+  <div class="statusbar statusbar--compact" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt="" width="17" height="11"><img src="assets/icons/statusbar-wifi.svg" alt="" width="15" height="11"><svg width="24" height="11" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#1c1c1c"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#1c1c1c"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#1c1c1c"/></svg></span>
+  </div>
+  <header class="topbar">
+    <a class="topbar__back" href="ajuda.html" aria-label="Voltar"><img src="assets/icons/arrow-left.svg" alt=""></a>
+    <h1 class="topbar__title">Chat</h1>
+    <span></span>
+  </header>
+  <div class="chat" aria-live="polite">
+    <div class="chat__row"><img class="chat__avatar" src="assets/img/lia-avatar.png" alt="Lia"><p class="bubble">Bem-vindo (a) ao atendimento ComproPay, sou a Lia.</p></div>
+    <p class="bubble chat__next">Como posso te ajudar no momento?</p>
+  </div>
+  <form class="composer" action="#" onsubmit="return false">
+    <button class="composer__clip" type="button" aria-label="Anexar arquivo"><img src="assets/icons/paperclip.svg" alt=""></button>
+    <div class="composer__field">
+      <input class="composer__input" type="text" placeholder="Envie uma mensagem..." aria-label="Mensagem">
+      <button class="composer__send" type="submit" aria-label="Enviar"><img src="assets/icons/send.svg" alt=""></button>
+    </div>
+  </form>
+</main>
+</body>
+</html>

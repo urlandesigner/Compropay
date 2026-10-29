@@ -1,0 +1,50 @@
+{
+  "_leia": "FONTE UNICA DA ETAPA. O cartao do catalogo e a capa de cada projeto leem daqui, e nao cada um da sua copia — etapa escrita em doze lugares envelhece em onze. Os rotulos sao os termos canonicos do Design Thinking e do Double Diamond, em ingles, porque sao reconhecidos sem traducao por quem vem de fora. Os IDS seguem em portugues e nao mudam: eles sao internos, e trocar id invalidaria o que ja esta marcado. Quem escreve e `scripts/novo-projeto.py etapa`.",
+  "fluxo": [
+    {
+      "id": "entender",
+      "rotulo": "Discover",
+      "sai": "problema claro"
+    },
+    {
+      "id": "definir",
+      "rotulo": "Define",
+      "sai": "recorte alinhado com o PO"
+    },
+    {
+      "id": "idear",
+      "rotulo": "Ideate",
+      "sai": "direção escolhida"
+    },
+    {
+      "id": "prototipar",
+      "rotulo": "Prototype",
+      "sai": "protótipo navegável"
+    },
+    {
+      "id": "testar",
+      "rotulo": "Test",
+      "sai": "protótipo revisado"
+    },
+    {
+      "id": "entregar",
+      "rotulo": "Deliver",
+      "sai": "handoff"
+    }
+  ],
+  "_projetos": "A chave e o nome da pasta. Projeto sem linha aqui nao mostra etapa em lugar nenhum — melhor vazio do que chute.",
+  "projetos": {
+    "ComproPay": {
+      "etapa": "entregar",
+      "desde": "26/10/2026"
+    },
+    "ComproPay Site": {
+      "etapa": "entregar",
+      "desde": "23/10/2026"
+    },
+    "ComproPay Wiki": {
+      "etapa": "prototipar",
+      "desde": "28/10/2026"
+    }
+  }
+}

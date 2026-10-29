@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Transação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt=""><img src="assets/icons/statusbar-wifi.svg" alt=""><svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#000" opacity=".35"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#000" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#000"/></svg></span>
+  </div>
+  <header class="topbar">
+    <a class="topbar__back" href="extrato.html" aria-label="Voltar"><img src="assets/icons/arrow-left.svg" alt=""></a>
+    <h1 class="topbar__title">Transação</h1>
+    <span></span>
+  </header>
+  <section class="detail" aria-label="Detalhes da transação">
+    <div class="detail__head">
+      <a class="detail__options" href="extrato-transacao-menu.html" aria-label="Opções da transação"><svg width="12" height="3" viewBox="0 0 12 3" aria-hidden="true"><circle cx="1.5" cy="1.5" r="1.5" fill="#7c12c8"/><circle cx="6" cy="1.5" r="1.5" fill="#7c12c8"/><circle cx="10.5" cy="1.5" r="1.5" fill="#7c12c8"/></svg></a>
+      <img class="detail__avatar" src="assets/img/fav-la-nutri.jpg" alt="">
+      <div class="detail__text">
+        <h2 class="tx__title">Você pagou @lautri</h2>
+        <p class="tx__desc" style="flex:none;text-align:center">Você ganhou R$0,48 para utilizar nas próximas compras com ComproPay</p>
+      </div>
+      <div class="detail__amount"><span class="tx__amount">- R$48,00</span><p class="tx__date">17 de setembro de 2026 às 12:41</p></div>
+    </div>
+    <a class="receipt" href="#"><span class="receipt__label"><img src="assets/icons/receipt.svg" alt="">Ver recibo</span><img src="assets/icons/chevron-right.svg" alt=""></a>
+  </section>
+</main>
+</body>
+</html>

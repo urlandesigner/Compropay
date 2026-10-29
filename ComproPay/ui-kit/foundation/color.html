@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR" data-kit-page="color">
+<head>
+<script src="../../../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color — ComproPay UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script>var KIT_BASE = '../';</script>
+</head>
+<body class="kit">
+<header class="kit-topbar">
+  <div class="kit-topbar__brand"><a href="../index.html" id="kit-home-link">← UI Kit</a></div>
+  <div class="kit-topbar__meta">css/tokens.css</div>
+</header>
+<div class="kit-layout">
+  <aside class="kit-sidebar">
+    <a class="kit-sidebar__home" id="kit-home-link-row" href="../index.html">Home</a>
+    <input class="kit-search" id="kit-search" type="search" placeholder="Buscar…">
+    <nav id="kit-nav"></nav>
+  </aside>
+  <div class="kit-main">
+    <div class="kit-crumb" id="kit-crumb"></div>
+    <h1>Color</h1>
+    <p class="kit-lede">Marca, texto, superfícies/bordas, ações/navegação, as escalas primitivas (Gray e Purple) e os quatro status completos. Sempre use a variável — nunca o hex direto. As translúcidas aparecem sobre o fundo quadriculado.</p>
+
+    <div class="kit-legend"><span><i class="use"></i> em uso numa tela</span><span><i class="new"></i> novo — gerado pra fechar a escala</span></div>
+
+    <div id="cores-groups"></div>
+
+    <div class="kit-prevnext" id="kit-prevnext"></div>
+  </div>
+</div>
+<script src="../assets/kit.js"></script>
+<script>
+  var COLORS = [
+    { group: 'Marca', items: [
+      ['--color-brand', '#7c12c8'], ['--color-brand-600', '#6610a8'], ['--color-brand-700', '#603c8f'],
+      ['--color-brand-800', '#450a70'], ['--color-brand-900', '#330752'], ['--color-brand-balance-label', '#390960'],
+      ['--color-greeting', '#330752'], ['--color-text-brand-dark', '#26063f'], ['--color-page-title', '#150427']
+    ]},
+    { group: 'Texto', items: [
+      ['--color-text', '#171717'], ['--color-text-strong', '#1c1c1c'], ['--color-text-muted', '#717171'],
+      ['--color-text-subtle', '#737373'], ['--color-neutral-500', '#8e8e8e'], ['--color-white', '#ffffff'], ['--color-black', '#000000']
+    ]},
+    { group: 'Superfícies & bordas', items: [
+      ['--color-bg', '#f6f6f6'], ['--color-surface', '#ffffff'], ['--color-surface-soft', '#fafafc'],
+      ['--color-surface-muted', '#f2f4f6'], ['--color-border', '#ececec'], ['--color-border-brand', '#e9d8ff'],
+      ['--color-handle', '#e2e4e7'], ['--color-overlay', 'rgb(0 0 0 / .35)']
+    ]},
+    { group: 'Ações & navegação', items: [
+      ['--color-action-bg', 'rgb(51 7 82 / .10)'], ['--color-action-border', 'rgb(69 10 112 / .15)'],
+      ['--color-nav-bg', 'rgb(51 7 82 / .05)'], ['--color-nav-item-inactive', 'rgb(51 7 82 / .55)'],
+      ['--color-nav-item-active-bg', 'rgb(255 255 255 / .60)']
+    ]},
+    { group: 'Status — Success', items: [
+      ['--color-success-50', '#f5f9f6', 1], ['--color-success-100', '#e6f4ea', 1],
+      ['--color-success-bg', '#cbffde'], ['--color-switch-on', '#55e061'],
+      ['--color-success-600', '#22b447', 1], ['--color-success-700', '#1b8836', 1]
+    ]},
+    { group: 'Status — Danger', items: [
+      ['--color-danger-50', '#faf5f5', 1], ['--color-danger-100', '#f5e5e5', 1],
+      ['--color-danger', '#dc0000'],
+      ['--color-danger-600', '#c31319', 1], ['--color-danger-700', '#931014', 1]
+    ]},
+    { group: 'Status — Warning (novo)', items: [
+      ['--color-warning-50', '#faf8f5', 1], ['--color-warning-100', '#f6f0e4', 1],
+      ['--color-warning-600', '#c9840e', 1], ['--color-warning-700', '#97640c', 1]
+    ]},
+    { group: 'Status — Info (novo)', items: [
+      ['--color-info-50', '#f5f7f9', 1], ['--color-info-100', '#e5edf5', 1],
+      ['--color-info-600', '#1868be', 1], ['--color-info-700', '#145090', 1]
+    ]},
+    { group: 'Switch', items: [
+      ['--color-switch-off', '#c9c9ce']
+    ]},
+    { group: 'Escala — Gray (novo)', items: [
+      ['--color-gray-50', '#f7f7f7', 1], ['--color-gray-100', '#ededed', 1], ['--color-gray-200', '#dbdbdb', 1],
+      ['--color-gray-300', '#c2c2c2', 1], ['--color-gray-400', '#a3a3a3', 1], ['--color-gray-500', '#808080', 1],
+      ['--color-gray-600', '#6b6b6b', 1], ['--color-gray-700', '#525252', 1], ['--color-gray-800', '#383838', 1],
+      ['--color-gray-900', '#242424', 1], ['--color-gray-950', '#141414', 1]
+    ]},
+    { group: 'Escala — Purple (novo)', items: [
+      ['--color-purple-50', '#f8f5fa', 1], ['--color-purple-100', '#efe5f5', 1], ['--color-purple-200', '#dfc6f1', 1],
+      ['--color-purple-300', '#c997ec', 1], ['--color-purple-400', '#af5de9', 1], ['--color-purple-500', '#9119e6', 1],
+      ['--color-purple-600', '#7a13c3', 1], ['--color-purple-700', '#5d1093', 1], ['--color-purple-800', '#3f0d63', 1],
+      ['--color-purple-900', '#280b3c', 1], ['--color-purple-950', '#160920', 1]
+    ]}
+  ];
+
+  var coresEl = document.getElementById('cores-groups');
+  COLORS.forEach(function (g) {
+    var wrap = document.createElement('div'); wrap.className = 'kit-group';
+    wrap.innerHTML = '<h2>' + g.group + '</h2>';
+    var grid = document.createElement('div'); grid.className = 'kit-swatches';
+    g.items.forEach(function (it) {
+      var isNew = it[2];
+      var card = document.createElement('div'); card.className = 'kit-swatch';
+      card.innerHTML =
+        (isNew ? '<span class="kit-pill kit-pill--new">novo</span>' : '') +
+        '<div class="kit-swatch__fill"><span style="background:var(' + it[0] + ')"></span></div>' +
+        '<div class="kit-swatch__meta"><span class="kit-swatch__name">' + it[0] + '</span><span class="kit-swatch__value">' + it[1] + '</span></div>';
+      grid.appendChild(card);
+    });
+    wrap.appendChild(grid);
+    coresEl.appendChild(wrap);
+  });
+</script>
+</body>
+</html>

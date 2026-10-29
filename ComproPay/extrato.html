@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Extrato</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt=""><img src="assets/icons/statusbar-wifi.svg" alt=""><svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#000" opacity=".35"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#000" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#000"/></svg></span>
+  </div>
+  <header class="topbar">
+    <span class="topbar__back" hidden></span>
+    <h1 class="topbar__title">Extrato</h1>
+    <span></span>
+  </header>
+  <ul class="tx-list">
+      <li class="tx" data-component="Transacao" data-props="avatar, titulo, descricao, valor" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="tx__avatar" src="assets/img/fav-la-nutri.jpg" alt="">
+        <div class="tx__main">
+          <h2 class="tx__title">Você pagou @lautri</h2>
+          <div class="tx__row"><p class="tx__desc">Você ganhou R$0,48 para utilizar nas próximas compras com ComproPay</p><span class="tx__amount">- R$48,00</span></div>
+          <p class="tx__date">2 semanas atrás</p>
+        </div>
+        <a class="tx__link" href="extrato-transacao.html"><span class="sr-only">Ver transação: você pagou @lautri, - R$48,00</span></a></li>
+      <li class="tx" data-component="Transacao" data-props="avatar, titulo, descricao, valor" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="tx__avatar" src="assets/img/avatar-subway.png" alt="">
+        <div class="tx__main">
+          <h2 class="tx__title">Você pagou @subwaypcosta</h2>
+          <div class="tx__row"><p class="tx__desc">Você ganhou R$0,36 para utilizar nas próximas compras com ComproPay</p><span class="tx__amount">- R$36,00</span></div>
+          <p class="tx__date">2 semanas atrás</p>
+        </div>
+        <a class="tx__link" href="extrato-transacao.html"><span class="sr-only">Ver transação: você pagou @subwaypcosta, - R$36,00</span></a></li>
+      <li class="tx" data-component="Transacao" data-props="avatar, titulo, descricao, valor" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="tx__avatar" src="assets/img/fav-tagline.png" alt="">
+        <div class="tx__main">
+          <h2 class="tx__title">Você pagou @tagline</h2>
+          <p class="tx__date">2 semanas atrás</p>
+        </div>
+        <span class="tx__amount">- R$98,00</span>
+        <a class="tx__link" href="extrato-transacao.html"><span class="sr-only">Ver transação: você pagou @tagline, - R$98,00</span></a></li>
+      <li class="tx" data-component="Transacao" data-props="avatar, titulo, descricao, valor" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="tx__avatar" src="assets/img/fav-steak-brand.jpg" alt="">
+        <div class="tx__main">
+          <h2 class="tx__title">Você pagou @steakbrand</h2>
+          <div class="tx__row"><p class="tx__desc">Você ganhou R$1,03 para utilizar nas próximas compras com ComproPay</p><span class="tx__amount">- R$103,00</span></div>
+          <p class="tx__date">2 semanas atrás</p>
+        </div>
+        <a class="tx__link" href="extrato-transacao.html"><span class="sr-only">Ver transação: você pagou @steakbrand, - R$103,00</span></a></li>
+      <li class="tx" data-component="Transacao" data-props="avatar, titulo, descricao, valor" data-states="padrao" data-state="padrao" data-ds="tx" data-template><img class="tx__avatar" src="assets/img/fav-la-nutri.jpg" alt="">
+        <div class="tx__main">
+          <h2 class="tx__title">Você pagou @lautri</h2>
+          <p class="tx__desc" style="flex:none">Você ganhou R$0,51 para utilizar nas próximas compras com ComproPay</p>
+          <p class="tx__date">2 semanas atrás</p>
+        </div>
+        <span class="tx__amount">- R$51,00</span>
+        <a class="tx__link" href="extrato-transacao.html"><span class="sr-only">Ver transação: você pagou @lautri, - R$51,00</span></a></li>
+  </ul>
+  <nav class="tabbar" aria-label="Principal" data-component="Tabbar" data-props="itemAtivo" data-states="padrao" data-state="padrao" data-ds="tabbar">
+    <div class="tabbar__group">
+      <a class="tabbar__item" href="home-1-cartao.html"><img src="assets/icons/nav-inicio-off.svg" alt="">Início</a>
+      <a class="tabbar__item" href="extrato.html" aria-current="page"><img src="assets/icons/nav-extrato-on.svg" alt="">Extrato</a>
+    </div>
+    <div class="tabbar__group">
+      <a class="tabbar__item" href="cartoes.html"><img src="assets/icons/nav-cartoes.svg" alt="">Cartões</a>
+      <a class="tabbar__item" href="ajuda.html"><img src="assets/icons/nav-ajuda.svg" alt="">Ajuda</a>
+    </div>
+    <a class="tabbar__pay" href="pagar.html"><img src="assets/icons/nav-pagar.svg" alt="">Pagar</a>
+  </nav>
+</main>
+</body>
+</html>

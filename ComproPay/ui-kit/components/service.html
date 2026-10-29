@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR" data-kit-page="service">
+<head>
+<script src="../../../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service tile — ComproPay UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script>var KIT_BASE = '../';</script>
+</head>
+<body class="kit">
+<header class="kit-topbar">
+  <div class="kit-topbar__brand"><a href="../index.html" id="kit-home-link">← UI Kit</a></div>
+  <div class="kit-topbar__meta">css/base.css</div>
+</header>
+<div class="kit-layout">
+  <aside class="kit-sidebar">
+    <a class="kit-sidebar__home" id="kit-home-link-row" href="../index.html">Home</a>
+    <input class="kit-search" id="kit-search" type="search" placeholder="Buscar…">
+    <nav id="kit-nav"></nav>
+  </aside>
+  <div class="kit-main">
+    <div class="kit-crumb" id="kit-crumb"></div>
+    <h1>Service tile</h1>
+    <p class="kit-lede">Grade 4 colunas na home (Rede, Cashback, Rotativo, Boletos...). O selo "Novo" é opcional, sobreposto no canto.</p>
+    <div class="kit-base-class"><b>Classes</b> <code>.service</code> <code>.service__tile</code></div>
+
+    <div class="kit-group">
+      <h2>Variantes</h2>
+      <div class="kit-preview">
+        <div class="kit-variant">
+          <a class="service" href="#"><span class="service__tile"><img src="../../assets/icons/svc-cashback.svg" alt=""></span>Cashback</a>
+          <span class="kit-variant__label">padrão</span>
+        </div>
+        <div class="kit-variant">
+          <a class="service" href="#"><span class="service__tile"><span class="badge-new">Novo</span><img src="../../assets/icons/svc-boletos.svg" alt=""></span>Boletos</a>
+          <span class="kit-variant__label">com .badge-new</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-prevnext" id="kit-prevnext"></div>
+  </div>
+</div>
+<script src="../assets/kit.js"></script>
+</body>
+</html>

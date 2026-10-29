@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR" data-kit-page="card">
+<head>
+<script src="../../../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card — ComproPay UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../assets/kit.css">
+<script>var KIT_BASE = '../';</script>
+</head>
+<body class="kit">
+<header class="kit-topbar">
+  <div class="kit-topbar__brand"><a href="../index.html" id="kit-home-link">← UI Kit</a></div>
+  <div class="kit-topbar__meta">css/base.css</div>
+</header>
+<div class="kit-layout">
+  <aside class="kit-sidebar">
+    <a class="kit-sidebar__home" id="kit-home-link-row" href="../index.html">Home</a>
+    <input class="kit-search" id="kit-search" type="search" placeholder="Buscar…">
+    <nav id="kit-nav"></nav>
+  </aside>
+  <div class="kit-main">
+    <div class="kit-crumb" id="kit-crumb"></div>
+    <h1>Card</h1>
+    <p class="kit-lede">O cartão ComproPay. Compacto na home, grande em Meus cartões — mesma anatomia, tamanho e botão de ação diferentes.</p>
+    <div class="kit-base-class"><b>Classes</b> <code>.card</code> <code>.card--lg</code> <code>.card__chip</code> <code>.card__balance</code></div>
+
+    <div class="kit-group">
+      <h2>Variantes</h2>
+      <div class="kit-preview">
+        <div class="kit-variant">
+          <article class="card" style="width:230px;background-image:url(../../assets/img/card-alimentacao-lg.png)">
+            <span class="card__chip">Alimentação</span>
+            <img class="card__logo" src="../../assets/img/card-logo.png" alt="">
+            <div class="card__balance">
+              <div><div class="card__balance-label">Saldo do cartão</div><div class="card__balance-value">R$300,00</div></div>
+              <span class="card__number">•••• 8393</span>
+            </div>
+          </article>
+          <span class="kit-variant__label">.card — compacto, carrossel da home</span>
+        </div>
+        <div class="kit-variant">
+          <article class="card card--lg" style="width:320px;background-image:url(../../assets/img/card-alimentacao-lg.png)">
+            <div class="card__top"><span class="card__chip">Alimentação</span><a class="link-more" href="#" style="color:#fff">Gerenciar</a></div>
+            <div class="card__balance">
+              <div><div class="card__balance-label">Saldo do cartão</div><div class="card__balance-value">R$300,00</div></div>
+              <div class="card__status"><span>Principal</span><span class="card__number">•••• 8393</span></div>
+            </div>
+          </article>
+          <span class="kit-variant__label">.card--lg — Meus cartões, com status</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="kit-prevnext" id="kit-prevnext"></div>
+  </div>
+</div>
+<script src="../assets/kit.js"></script>
+</body>
+</html>

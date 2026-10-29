@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Central de ajuda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt=""><img src="assets/icons/statusbar-wifi.svg" alt=""><svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#000" opacity=".35"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#000" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#000"/></svg></span>
+  </div>
+  <header class="topbar">
+    <span class="topbar__back" hidden></span>
+    <h1 class="topbar__title">Central de ajuda</h1>
+    <span></span>
+  </header>
+  <div class="help">
+    <label class="search" data-component="CampoBusca" data-props="valor, placeholder, onChange" data-states="padrao, preenchido" data-state="padrao" data-ds="search"><img src="assets/icons/search.svg" alt=""><input class="composer__input" type="search" placeholder="Pesquisar" aria-label="Pesquisar" style="font-family:var(--font-body);font-weight:400;font-size:14px;color:inherit"></label>
+    <a class="lia" href="ajuda-chat.html">
+      <div class="lia__base">
+        <img src="assets/icons/message-circle.svg" alt="" width="24" height="24">
+        <div><p class="lia__title">Fale com a Lia</p><p class="lia__sub">Nossa atendente virtual</p></div>
+      </div>
+      <img class="lia__photo" src="assets/img/lia.png" alt="">
+    </a>
+    <section aria-labelledby="t-pag" class="section">
+      <h2 class="section__title" id="t-pag">Opções de pagamento</h2>
+      <ul class="help-list">
+        <li><a class="help-item" href="#"><img src="assets/icons/help-faq.svg" alt=""><span>FAQ</span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+        <li><a class="help-item" href="#"><img src="assets/icons/help-phone.svg" alt=""><span>Telefones</span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+        <li><a class="help-item" href="#"><img src="assets/icons/help-user.svg" alt=""><span>Ouvidoria</span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+        <li><a class="help-item help-item--bold" href="#"><img src="assets/icons/help-user.svg" alt=""><span>Endereços</span><img src="assets/icons/chevron-muted.svg" alt=""></a></li>
+      </ul>
+    </section>
+  </div>
+  <nav class="tabbar" aria-label="Principal" data-component="Tabbar" data-props="itemAtivo" data-states="padrao" data-state="padrao" data-ds="tabbar">
+    <div class="tabbar__group">
+      <a class="tabbar__item" href="home-1-cartao.html"><img src="assets/icons/nav-inicio-off.svg" alt="">Início</a>
+      <a class="tabbar__item" href="extrato.html"><img src="assets/icons/nav-extrato.svg" alt="">Extrato</a>
+    </div>
+    <div class="tabbar__group">
+      <a class="tabbar__item" href="cartoes.html"><img src="assets/icons/nav-cartoes.svg" alt="">Cartões</a>
+      <a class="tabbar__item" href="ajuda.html" aria-current="page"><img src="assets/icons/nav-ajuda-on.svg" alt="">Ajuda</a>
+    </div>
+    <a class="tabbar__pay" href="pagar.html"><img src="assets/icons/nav-pagar.svg" alt="">Pagar</a>
+  </nav>
+</main>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Receber · QR code</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt=""><img src="assets/icons/statusbar-wifi.svg" alt=""><svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#000" opacity=".35"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#000" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#000"/></svg></span>
+  </div>
+  <header class="topbar">
+    <a class="topbar__back" href="pagar.html" aria-label="Voltar"><img src="assets/icons/arrow-left.svg" alt=""></a>
+    <h1 class="topbar__title">QR code</h1>
+    <span></span>
+  </header>
+  <div class="segmented" role="tablist" aria-label="Modo"><a href="pagar-qr.html" role="tab">Pagar</a><a href="receber-qr.html" aria-current="page" role="tab">Receber</a></div>
+  <div class="receive">
+    <p class="receive__lede">Apresente este código para receber. O valor é digitado manualmente pelo usuário após escanear.</p>
+    <div class="receive-card">
+      <div class="receive-card__who">
+        <img src="assets/img/avatar.png" alt="">
+        <div><p class="receive-card__name">Eduardo</p><p class="receive-card__handle">@eduardo</p></div>
+      </div>
+      <div class="receive-card__qr" id="qr"></div>
+    </div>
+    <a class="receive__link" href="receber-valor.html">Gerar código com valor</a>
+  </div>
+  <div class="newcard-cta">
+    <a class="btn-cta" href="#" data-component="BotaoPrimario" data-props="texto, onClick, desabilitado" data-states="padrao, desabilitado" data-state="padrao" data-ds="button">Compartilhar</a>
+  </div>
+</main>
+<script>
+  (function () {
+    var size = 21, seed = 1337;
+    function rand() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
+    var cells = [];
+    for (var y = 0; y < size; y++) { cells.push([]); for (var x = 0; x < size; x++) cells[y].push(rand() > 0.56); }
+    function finder(ox, oy) {
+      for (var y = 0; y < 7; y++) for (var x = 0; x < 7; x++) {
+        var on = x === 0 || x === 6 || y === 0 || y === 6 || (x > 1 && x < 5 && y > 1 && y < 5);
+        cells[oy + y][ox + x] = on;
+      }
+    }
+    finder(0, 0); finder(size - 7, 0); finder(0, size - 7);
+    var unit = 200 / size, rects = '';
+    for (var y = 0; y < size; y++) for (var x = 0; x < size; x++) if (cells[y][x]) {
+      rects += '<rect x="' + (x * unit).toFixed(2) + '" y="' + (y * unit).toFixed(2) + '" width="' + unit.toFixed(2) + '" height="' + unit.toFixed(2) + '" fill="#171717"/>';
+    }
+    document.getElementById('qr').innerHTML = '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">' + rects + '</svg>';
+  })();
+</script>
+</body>
+</html>

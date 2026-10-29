@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay — Novo cartão · escolher arte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<script src="js/embed.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/device-frame.css">
+<script src="js/device-frame.js" defer></script>
+</head>
+<body>
+<main class="screen">
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__icons"><img src="assets/icons/statusbar-cellular.svg" alt=""><img src="assets/icons/statusbar-wifi.svg" alt=""><svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.8" stroke="#000" opacity=".35"/><path d="M25 4.5v4c.8-.3 1.5-1.1 1.5-2s-.7-1.7-1.5-2Z" fill="#000" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5" fill="#000"/></svg></span>
+  </div>
+  <header class="topbar">
+    <a class="topbar__back" href="cartoes.html" aria-label="Voltar"><img src="assets/icons/arrow-left.svg" alt=""></a>
+    <h1 class="topbar__title">Novo cartão</h1>
+    <a class="topbar__back" href="#" aria-label="Importar foto própria"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="4.5" width="15" height="12" rx="2.5" stroke="#7C12C8" stroke-width="1.5"/><circle cx="10" cy="10.5" r="3" stroke="#7C12C8" stroke-width="1.5"/><path d="M7.5 4.5l.8-1.5h3.4l.8 1.5" stroke="#7C12C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </header>
+  <div class="newcard">
+    <h2 class="newcard__title">Escolha a arte do cartão</h2>
+    <p class="newcard__lede">Recomendamos escolher a mesma arte do cartão físico para facilitar o seu reconhecimento na hora de usá-lo.</p>
+    <div class="art-grid" id="art-grid">
+      <button class="art-option is-selected" type="button" data-name="Amor"><img src="assets/img/card-amor-lg.png" alt="Arte Amor"><span class="art-option__check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l2.5 2.5L11 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+      <button class="art-option" type="button" data-name="Amizade"><img src="assets/img/card-alimentacao-lg.png" alt="Arte Amizade"><span class="art-option__check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l2.5 2.5L11 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+      <button class="art-option" type="button" data-name="Gratidão"><img src="assets/img/card-transporte-lg.png" alt="Arte Gratidão"><span class="art-option__check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l2.5 2.5L11 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+      <button class="art-option" type="button" data-name="Paz"><img src="assets/img/card-paz-lg.png" alt="Arte Paz"><span class="art-option__check"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l2.5 2.5L11 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+    </div>
+  </div>
+  <div class="newcard-cta">
+    <a class="btn-cta" id="cta" href="cartao-dados.html" data-component="BotaoPrimario" data-props="texto, onClick, desabilitado" data-states="padrao, desabilitado" data-state="padrao" data-ds="button">Continuar</a>
+  </div>
+</main>
+<script>
+  var grid = document.getElementById('art-grid');
+  grid.addEventListener('click', function (e) {
+    var btn = e.target.closest('.art-option');
+    if (!btn) return;
+    [].forEach.call(grid.querySelectorAll('.art-option'), function (b) { b.classList.toggle('is-selected', b === btn); });
+    sessionStorage.setItem('compropay:arte', btn.dataset.name);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ComproPay · Handoff</title>
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("f-tema");
+      if (t) document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="painel.css">
+<link rel="stylesheet" href="dev-mode.css">
+</head>
+<body>
+<div class="f-shell">
+
+  <aside class="f-controles" id="fControles">
+    <div class="f-controles__top">
+      <a class="f-voltar" href="../index.html">‹ Voltar para a capa</a>
+      <label class="f-switch-row">
+        <span>Dev mode</span>
+        <input type="checkbox" id="fDevMode" class="f-chave" checked>
+      </label>
+    </div>
+
+    <div class="f-group">
+      <h2 class="f-group__title">Dispositivo</h2>
+      <div class="f-segmented" id="fDevicePreset">
+        <label><input type="radio" name="device" value="mobile" checked><span>Mobile</span></label>
+      </div>
+      <div class="f-field-row">
+        <label class="f-field">
+          <span>Largura digitada</span>
+          <input type="number" id="fWidthInput" min="240" max="3840" placeholder="ex. 360">
+        </label>
+        <button type="button" id="fWidthUsePreset" class="f-btn f-btn--ghost">Usar o preset</button>
+      </div>
+      <p class="f-nota" style="margin-top:8px">Este protótipo só tem o layout mobile. Tablet e desktop saíram do seletor por isso.</p>
+    </div>
+
+    <div class="f-group">
+      <h2 class="f-group__title">Cenário</h2>
+      <input type="search" id="fBusca" class="f-busca" placeholder="Buscar tela…">
+      <nav id="fNav"></nav>
+    </div>
+
+    <div class="f-group">
+      <p class="f-nota">
+        Cada cenário é uma tela já pronta do protótipo, não um estado gerado
+        por parâmetro. Preenchimento e erro dentro de uma mesma tela (como o
+        formulário do cartão) ainda não têm um cenário próprio aqui.
+      </p>
+    </div>
+  </aside>
+
+  <main class="f-palco">
+    <div class="f-palco__bar">
+      <button type="button" class="f-bar-btn" id="fToggleControles">‹ Controles · <span id="fWidthLabel">390 px</span></button>
+
+      <div class="f-seg-inspect" id="fInspectToggle">
+        <label><input type="radio" name="modo" value="navegar" checked><span>Navegar</span></label>
+        <label><input type="radio" name="modo" value="inspecionar"><span>Inspecionar</span></label>
+      </div>
+
+      <div class="f-bar-right">
+        <button type="button" class="f-icon-btn" id="fThemeToggle" title="Alternar tema">☾</button>
+        <button type="button" class="f-bar-btn" id="fToggleColuna">Inspecionar ›</button>
+      </div>
+    </div>
+
+    <div class="f-mesa">
+      <div class="f-moldura-wrap" id="fMolduraWrap">
+        <iframe id="fFrame" class="f-frame" title="Protótipo ComproPay"></iframe>
+      </div>
+      <p class="f-aplicando" id="fAplicando" hidden>Aplicando…</p>
+    </div>
+  </main>
+
+  <aside class="f-coluna" id="fColuna">
+    <div class="f-coluna__empty" id="fColunaEmpty">
+      Ligue “Inspecionar” na barra de cima e clique numa peça da tela.
+    </div>
+    <div class="f-ficha" id="fFicha" hidden></div>
+  </aside>
+
+</div>
+<script src="painel.js"></script>
+<script src="dev-mode.js"></script>
+</body>
+</html>
