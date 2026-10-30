@@ -1,13 +1,13 @@
 # ComproPay — projetos
 
-Tudo o que foi feito para a ComproPay num lugar só: o app, o site
-institucional e a central de ajuda. Cada projeto é uma **pasta autocontida na
+Tudo o que foi feito para a ComproPay num lugar só. Cada projeto é uma **pasta autocontida na
 raiz**, como no [`works`](https://github.com/urlandesigner/works) — o
 andaime (índice, 404, portão, scripts) veio de lá.
 
 Antes este repositório era só o site institucional, que agora mora em
 `ComproPay Site/` com o histórico inteiro. As telas do app e a central de
-ajuda vieram do `works`, sem o histórico, que continua lá.
+ajuda e a maquininha Roxinha vieram do `works`, sem o histórico, que
+continua lá.
 
 O repositório é **público**, e o site do Pages também. O portão de senha
 existe no andaime mas nasce desligado (ver abaixo).
@@ -15,7 +15,7 @@ existe no andaime mas nasce desligado (ver abaixo).
 **Link público:** <https://urlandesigner.github.io/compropay/>
 
 **Dois deploys, um repositório.** O GitHub Pages serve a raiz (o índice e os
-três projetos). A Vercel faz o preview só do site institucional, com o
+projetos). A Vercel faz o preview só do site institucional, com o
 **Root Directory** do projeto dela apontando para `ComproPay Site` — sem
 isso ela tenta compilar a raiz, que não tem build, e o preview quebra.
 
@@ -26,6 +26,7 @@ isso ela tenta compilar a raiz, que não tem build, e o preview quebra.
 | [`ComproPay/`](ComproPay/README.md) | Protótipo navegável do app de pagamento, com as telas mobile, o handoff e o UI kit que sustenta tudo |
 | [`ComproPay Site/`](ComproPay%20Site/README.md) | Landing one-page da carteira digital, com as trilhas de lojista e de usuário final e formulário de qualificação |
 | [`ComproPay Wiki/`](ComproPay%20Wiki/README.md) | Central de ajuda do app, com busca por palavra, filtro por categoria e uma página para cada pergunta |
+| [`Maquininha Roxinha/`](Maquininha%20Roxinha/README.md) | Terminal de maquininha, da cobrança e do Pix ao estorno e aos relatórios |
 
 ## Como está organizado
 
