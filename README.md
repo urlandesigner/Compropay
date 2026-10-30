@@ -23,9 +23,9 @@ isso ela tenta compilar a raiz, que não tem build, e o preview quebra.
 
 | Pasta | Projeto |
 |---|---|
-| [`ComproPay/`](ComproPay/README.md) | Protótipo navegável do app de pagamento, 30 telas mobile com cartões, receber, favoritos, login e o UI kit que sustenta tudo |
+| [`ComproPay/`](ComproPay/README.md) | Protótipo navegável do app de pagamento, com as telas mobile, o handoff e o UI kit que sustenta tudo |
 | [`ComproPay Site/`](ComproPay%20Site/README.md) | Landing one-page da carteira digital, com as trilhas de lojista e de usuário final e formulário de qualificação |
-| [`ComproPay Wiki/`](ComproPay%20Wiki/README.md) | Central de ajuda do app com 26 respostas, busca por palavra e filtro por categoria, uma página para cada pergunta |
+| [`ComproPay Wiki/`](ComproPay%20Wiki/README.md) | Central de ajuda do app, com busca por palavra, filtro por categoria e uma página para cada pergunta |
 
 ## Como está organizado
 
@@ -78,6 +78,35 @@ fora da lista some do filtro em silêncio.
 Dá para editar os dois arquivos à mão, como sempre deu: **continua não
 havendo passo de build**. O script edita no lugar e o `index.html` segue
 legível — ele é só um datilógrafo que não esquece a segunda metade.
+
+### Texto de apresentação não envelhece
+
+Os textos que **apresentam** um projeto dizem o que ele é, para quem e o que
+dá para fazer nele, e não como está hoje. Valem para:
+
+- o `--desc` do registro (cartão do índice e tabela deste README);
+- o `<meta name="description">` e os parágrafos de abertura da capa
+  (`detalhes/`);
+- a descrição de cada cartão dentro da capa.
+
+Nesses textos não entra nada que muda quando o projeto anda: **quantidade**
+(26 perguntas, 30 telas, 10 categorias), **lista de itens** (as categorias,
+as telas, os componentes) ou **histórico do trabalho** (o que foi corrigido,
+de onde veio, o que entrou nesta rodada). Se o número interessa, quem mostra
+é o próprio projeto — a lista de perguntas, o kit — porque lá ele se
+atualiza sozinho.
+
+O teste: se amanhã entrar uma pergunta ou uma tela nova, o texto continua
+certo? Se não continua, ele está descrevendo o estado, não o projeto.
+
+Ruim: "São 26 perguntas e respostas sobre o app, em 10 categorias: adicionar
+dinheiro, retirar dinheiro…"
+
+Bom: "A central de ajuda do app: as dúvidas de quem usa o app, organizadas
+por categoria."
+
+Os READMEs de cada pasta são documentação técnica e podem ter número, porque
+quem mexe no projeto atualiza junto.
 
 **Projeto com mais de uma mão:** `--designer` repete (`--designer Urlan
 --designer Fulano`). O campo é quem atuou, não quem registrou. Nome novo
