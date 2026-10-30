@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../scripts/portao.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#E9E7EE; font-family:'DM Sans', Helvetica, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:#7C12C8; text-decoration:none; }
+  a:hover { color:#5E0C99; }
+  @keyframes pulseRing { 0% { transform:scale(.85); opacity:.55 } 70% { transform:scale(1.35); opacity:0 } 100% { transform:scale(1.35); opacity:0 } }
+  @keyframes spin { to { transform:rotate(360deg) } }
+  @keyframes popIn { from { transform:scale(.7); opacity:0 } to { transform:scale(1); opacity:1 } }
+  @keyframes blink { 50% { opacity:.25 } }
+  @media (max-width: 860px) {
+    .dc-page { padding:16px !important; }
+    .dc-rail-title { display:none !important; }
+    .dc-rail {
+      position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important;
+      height:52px !important; z-index:20 !important; flex-direction:row !important; align-items:center !important;
+      gap:6px !important; padding:0 12px !important; margin:0 !important; border-radius:0 !important;
+      overflow-x:auto !important; -webkit-overflow-scrolling:touch !important; white-space:nowrap !important;
+      background:#EDEBF3 !important; border-bottom:1px solid #DBD7E3 !important; box-sizing:border-box !important;
+    }
+    .dc-rail > div { flex:none !important; }
+    .dc-stage {
+      margin-top:68px !important;
+      height:min(904px, calc((100vw - 32px) * 2.2828), calc(100vh - 100px)) !important;
+      overflow:hidden !important;
+      align-items:flex-start !important;
+    }
+    .dc-device {
+      transform:scale(min(1, calc((100vw - 32px) / 396px), calc((100vh - 100px) / 904px))) !important;
+      transform-origin:top center !important;
+    }
+  }
+</style>
+</helmet>
+
+<div class="dc-page" style="position:relative; min-height:100vh; padding:40px; box-sizing:border-box">
+
+  <div class="dc-rail" style="width:230px; position:fixed; left:40px; top:40px; display:flex; flex-direction:column; gap:4px; z-index:10">
+    <div class="dc-rail-title" style="font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#8C8797; font-weight:700; padding:0 10px 10px">Telas</div>
+    <sc-for list="{{ rail }}" as="s" hint-placeholder-count="8">
+      <div onClick="{{ s.go }}" style="display:flex; gap:10px; align-items:center; padding:7px 10px; border-radius:9px; cursor:pointer; font-size:13px; font-weight:500; color:{{ s.color }}; background:{{ s.bg }}" style-hover="background:#DEDAE6">
+        <span style="font-size:10px; font-variant-numeric:tabular-nums; opacity:.55; width:16px">{{ s.n }}</span>
+        <span>{{ s.label }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div class="dc-stage" style="display:flex; align-items:center; justify-content:center; height:min(904px, calc(100vh - 80px)); overflow:hidden">
+    <div class="dc-device" style="width:fit-content; flex:none; padding:28px 18px 20px; border-radius:34px; background:linear-gradient(165deg, #7C2CC0 0%, #5B0F94 55%, #43097A 100%); box-shadow:0 30px 70px rgba(56,8,102,.45), inset 0 1px 0 rgba(255,255,255,.12); position:relative; transform:scale(min(1, calc((100vh - 80px) / 904px))); transform-origin:center center">
+
+      <div style="position:relative; width:360px; height:640px; border-radius:18px; overflow:hidden; background:#FFFFFF; display:flex; flex-direction:column; box-shadow:0 0 0 6px #2A1240, 0 0 0 7px rgba(255,255,255,.06)">
+        <div style="position:absolute; top:9px; right:16px; width:6px; height:6px; border-radius:50%; background:rgba(0,0,0,.4); z-index:6"></div>
+
+        <!-- STATUS BAR -->
+        <div style="flex:none; height:28px; display:flex; align-items:center; justify-content:space-between; padding:0 14px; background:#16121C; color:#FFFFFF; font-size:11px; font-weight:500; font-variant-numeric:tabular-nums">
+          <span>{{ clock }}</span>
+          <div style="display:flex; align-items:center; gap:10px">
+            <span onClick="{{ toggleOnline }}" style="cursor:pointer; font-size:10px; font-weight:700; letter-spacing:.06em; padding:2px 7px; border-radius:6px; color:{{ netColor }}; background:{{ netBg }}">{{ netLabel }}</span>
+            <span style="display:flex; align-items:center; gap:3px">
+              <span style="width:18px; height:9px; border:1.5px solid #FFFFFF; border-radius:2px; display:inline-block; padding:1px"><span style="display:block; width:70%; height:100%; background:#FFFFFF; border-radius:1px"></span></span>
+              <span style="opacity:.7">72%</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- SPLASH -->
+        <sc-if value="{{ isSplash }}">
+          <div style="flex:1; background:#7C12C8; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px">
+            <img src="uploads/logo-br.svg" alt="" style="width:186px; display:block">
+            <div style="position:absolute; bottom:44px; left:0; right:0; display:flex; flex-direction:column; align-items:center; gap:12px">
+              <div style="width:120px; height:3px; border-radius:3px; background:rgba(255,255,255,.25); overflow:hidden"><div style="width:45%; height:100%; background:#FFFFFF; border-radius:3px; animation:blink 1.1s ease-in-out infinite"></div></div>
+              <div style="color:rgba(255,255,255,.7); font-size:12px">Iniciando terminal</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- PIN -->
+        <sc-if value="{{ isPin }}">
+          <div style="flex:1; display:flex; flex-direction:column; padding:24px 20px 16px; background:#FFFFFF">
+            <img src="uploads/logo-color-horizontal.svg.svg" alt="" style="width:126px; display:block; margin-bottom:22px">
+            <div style="font-size:22px; font-weight:700; color:#16121C; letter-spacing:-.02em">Olá, Marina</div>
+            <div style="font-size:14px; color:#6B6675; margin-top:4px">Digite seu PIN de operador</div>
+            <div style="display:flex; gap:14px; justify-content:center; margin:26px 0 18px">
+              <sc-for list="{{ pinDots }}" as="d" hint-placeholder-count="4">
+                <div style="width:16px; height:16px; border-radius:50%; background:{{ d.bg }}; border:2px solid {{ d.border }}; box-sizing:border-box"></div>
+              </sc-for>
+            </div>
+            <div style="text-align:center; font-size:13px; color:#D92D20; min-height:18px">{{ pinError }}</div>
+            <div style="flex:1"></div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px">
+              <sc-for list="{{ pinKeys }}" as="k" hint-placeholder-count="12">
+                <div onClick="{{ k.go }}" style="height:60px; border-radius:16px; background:{{ k.bg }}; color:{{ k.color }}; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:500; cursor:pointer; user-select:none" style-active="transform:scale(.96)">{{ k.label }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- HOME -->
+        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#F4F4F7; overflow:auto">
+            <div style="padding:20px 20px 18px; background:#FFFFFF; border-bottom:1px solid #E4E4EA">
+              <img src="uploads/logo-color-horizontal.svg.svg" alt="" style="width:112px; display:block; margin-bottom:14px">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px">
+                <div style="flex:1">
+                  <div style="font-size:13px; color:#6B6675">Operadora Marina</div>
+                  <div style="font-size:20px; font-weight:700; color:#16121C; letter-spacing:-.02em; margin-top:2px">Loja Centro · T-4471</div>
+                </div>
+                <div onClick="{{ goHelp }}" style="width:36px; height:36px; border-radius:12px; background:#F4F4F7; color:#6B6675; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">?</div>
+              </div>
+              <div style="margin-top:14px; display:flex; align-items:center; gap:8px; padding:9px 12px; border-radius:12px; background:{{ connBg }}">
+                <span style="width:8px; height:8px; border-radius:50%; background:{{ connDot }}"></span>
+                <span style="font-size:13px; font-weight:500; color:{{ connText }}">{{ connMsg }}</span>
+              </div>
+            </div>
+            <div style="padding:20px; display:flex; flex-direction:column; gap:14px">
+              <div onClick="{{ startSale }}" style="height:104px; border-radius:20px; background:#7C12C8; color:#FFFFFF; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; cursor:pointer; box-shadow:0 8px 20px rgba(124,18,200,.28)" style-active="transform:scale(.985)">
+                <div style="font-size:28px; font-weight:700; letter-spacing:-.02em">Vender</div>
+                <div style="font-size:13px; opacity:.8">Nova venda</div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+                <div onClick="{{ goHistory }}" style="height:86px; border-radius:18px; background:#FFFFFF; border:1px solid #E4E4EA; padding:14px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer" style-active="transform:scale(.985)">
+                  <div style="width:34px; height:34px; border-radius:11px; background:#F2E7FB; display:flex; align-items:center; justify-content:center">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="12" cy="12" r="9"></circle><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 7v5.2l3.2 2"></path></svg>
+                  </div>
+                  <div style="font-size:15px; font-weight:700; color:#16121C">Histórico</div>
+                </div>
+                <div onClick="{{ goReports }}" style="height:86px; border-radius:18px; background:#FFFFFF; border:1px solid #E4E4EA; padding:14px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer" style-active="transform:scale(.985)">
+                  <div style="width:34px; height:34px; border-radius:11px; background:#E3F5EB; display:flex; align-items:center; justify-content:center">
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path fill="none" stroke="#0E7F42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 20v-6"></path><path fill="none" stroke="#0E7F42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 20V9"></path><path fill="none" stroke="#0E7F42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M19 20V5"></path></svg>
+                  </div>
+                  <div style="font-size:15px; font-weight:700; color:#16121C">Relatórios</div>
+                </div>
+              </div>
+              <div onClick="{{ goSettings }}" style="height:56px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; justify-content:space-between; padding:0 16px; cursor:pointer">
+                <span style="font-size:15px; font-weight:500; color:#16121C">Configurações</span>
+                <span style="color:#B6B1C0; font-size:18px">›</span>
+              </div>
+              <div style="padding:14px 16px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA">
+                <div style="font-size:12px; color:#6B6675">Vendas de hoje</div>
+                <div style="display:flex; align-items:baseline; gap:10px; margin-top:4px">
+                  <span style="font-size:24px; font-weight:700; color:#16121C; letter-spacing:-.02em; font-variant-numeric:tabular-nums">{{ dayTotal }}</span>
+                  <span style="font-size:13px; color:#6B6675">{{ dayCount }} transações</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- VALOR -->
+        <sc-if value="{{ isAmount }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#FFFFFF">
+            <div style="height:52px; flex:none; display:flex; align-items:center; gap:12px; padding:0 16px; border-bottom:1px solid #E4E4EA">
+              <div onClick="{{ askDiscard }}" style="width:36px; height:36px; margin-left:-8px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#16121C; font-size:20px; cursor:pointer">‹</div>
+              <div style="font-size:16px; font-weight:700; color:#16121C; flex:1">Valor da venda</div>
+              <div style="font-size:12px; color:#6B6675; text-align:right; line-height:1.3; font-variant-numeric:tabular-nums">Hoje {{ dayTotal }}<br>{{ dayCount }} vendas</div>
+            </div>
+            <div style="flex:none; padding:26px 20px 18px; text-align:center">
+              <div style="font-size:12px; color:#6B6675; letter-spacing:.1em; text-transform:uppercase; font-weight:700">Total</div>
+              <div style="font-size:46px; font-weight:700; color:{{ amountColor }}; letter-spacing:-.03em; font-variant-numeric:tabular-nums; margin-top:6px">{{ amountFmt }}</div>
+            </div>
+            <div style="flex:1"></div>
+            <div style="padding:0 16px 12px; display:grid; grid-template-columns:repeat(3,1fr); gap:9px">
+              <sc-for list="{{ amountKeys }}" as="k" hint-placeholder-count="12">
+                <div onClick="{{ k.go }}" style="height:58px; border-radius:16px; background:{{ k.bg }}; color:{{ k.color }}; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:500; cursor:pointer; user-select:none" style-active="transform:scale(.96)">{{ k.label }}</div>
+              </sc-for>
+            </div>
+            <div style="padding:0 16px 18px">
+              <div onClick="{{ confirmAmount }}" style="height:60px; border-radius:18px; background:{{ contBg }}; color:{{ contColor }}; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; cursor:pointer">Continuar</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- FORMA DE PAGAMENTO -->
+        <sc-if value="{{ isMethod }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#F4F4F7">
+            <div style="flex:none; padding:14px 16px 16px; background:#FFFFFF; border-bottom:1px solid #E4E4EA">
+              <div style="display:flex; align-items:center; gap:12px">
+                <div onClick="{{ back }}" style="width:36px; height:36px; margin-left:-8px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#16121C; font-size:20px; cursor:pointer">‹</div>
+                <div style="font-size:16px; font-weight:700; color:#16121C">Forma de pagamento</div>
+              </div>
+              <div style="margin-top:8px; padding-left:40px; font-size:26px; font-weight:700; color:#7C12C8; letter-spacing:-.02em; font-variant-numeric:tabular-nums">{{ amountFmt }}</div>
+            </div>
+            <div style="padding:16px; display:flex; flex-direction:column; gap:12px">
+              <sc-for list="{{ methods }}" as="m" hint-placeholder-count="4">
+                <div onClick="{{ m.go }}" style="height:76px; border-radius:18px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; gap:14px; padding:0 16px; cursor:pointer" style-active="transform:scale(.99)">
+                  <div style="width:44px; height:44px; border-radius:14px; background:{{ m.tint }}; color:{{ m.ink }}; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700">{{ m.mark }}</div>
+                  <div style="flex:1">
+                    <div style="font-size:17px; font-weight:700; color:#16121C">{{ m.label }}</div>
+                    <div style="font-size:12px; color:#6B6675">{{ m.sub }}</div>
+                  </div>
+                  <span style="color:#B6B1C0; font-size:18px">›</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- PARCELAS -->
+        <sc-if value="{{ isInstallments }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#F4F4F7; overflow:auto">
+            <div style="flex:none; padding:14px 16px 16px; background:#FFFFFF; border-bottom:1px solid #E4E4EA">
+              <div style="display:flex; align-items:center; gap:12px">
+                <div onClick="{{ back }}" style="width:36px; height:36px; margin-left:-8px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#16121C; font-size:20px; cursor:pointer">‹</div>
+                <div style="font-size:16px; font-weight:700; color:#16121C">Parcelamento</div>
+              </div>
+              <div style="margin-top:8px; padding-left:40px; font-size:22px; font-weight:700; color:#7C12C8; letter-spacing:-.02em; font-variant-numeric:tabular-nums">{{ amountFmt }}</div>
+            </div>
+            <div style="padding:16px; display:flex; flex-direction:column; gap:10px">
+              <sc-for list="{{ instTop }}" as="i" hint-placeholder-count="3">
+                <div onClick="{{ i.go }}" style="min-height:70px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; padding:14px 16px; display:flex; align-items:center; gap:12px; cursor:pointer" style-active="transform:scale(.99)">
+                  <div style="flex:1">
+                    <div style="font-size:18px; font-weight:700; color:#16121C; font-variant-numeric:tabular-nums">{{ i.label }}</div>
+                    <div style="font-size:12px; color:#6B6675; font-variant-numeric:tabular-nums; margin-top:2px">{{ i.total }}</div>
+                  </div>
+                  <div style="font-size:11px; font-weight:700; padding:5px 9px; border-radius:8px; color:{{ i.tagColor }}; background:{{ i.tagBg }}">{{ i.tag }}</div>
+                </div>
+              </sc-for>
+              <div onClick="{{ toggleInst }}" style="height:52px; border-radius:14px; border:1.5px solid #E4E4EA; color:#7C12C8; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; cursor:pointer">{{ moreInstLabel }}</div>
+              <sc-if value="{{ showAllInst }}">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
+                  <sc-for list="{{ instRest }}" as="i" hint-placeholder-count="9">
+                    <div onClick="{{ i.go }}" style="height:72px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; padding:10px 12px; display:flex; flex-direction:column; justify-content:center; gap:2px; cursor:pointer" style-active="transform:scale(.98)">
+                      <div style="font-size:15px; font-weight:700; color:#16121C; font-variant-numeric:tabular-nums">{{ i.label }}</div>
+                      <div style="font-size:11px; color:#6B6675; font-variant-numeric:tabular-nums">{{ i.total }}</div>
+                      <div style="font-size:10px; font-weight:700; color:{{ i.tagColor }}">{{ i.tag }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- PIX -->
+        <sc-if value="{{ isPix }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#FFFFFF; padding:16px 20px 18px; align-items:center">
+            <div style="width:100%; display:flex; align-items:center; gap:10px">
+              <div onClick="{{ askDiscard }}" style="width:36px; height:36px; margin-left:-8px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#16121C; font-size:20px; cursor:pointer">‹</div>
+              <div style="font-size:16px; font-weight:700; color:#16121C">Pagamento por Pix</div>
+            </div>
+            <div style="font-size:30px; font-weight:700; color:#16121C; letter-spacing:-.03em; font-variant-numeric:tabular-nums; margin-top:10px">{{ amountFmt }}</div>
+            <div style="margin-top:14px; padding:12px; border-radius:18px; border:1px solid #E4E4EA; background:#FFFFFF">
+              <div style="width:196px; height:196px; display:grid; grid-template-columns:repeat(21,1fr); grid-template-rows:repeat(21,1fr)">
+                <sc-for list="{{ qrCells }}" as="c" hint-placeholder-count="441">
+                  <div style="background:{{ c.bg }}"></div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="font-size:16px; font-weight:700; color:#16121C; margin-top:16px; text-align:center">Peça para o cliente ler o código</div>
+            <div style="display:flex; align-items:center; gap:8px; margin-top:8px">
+              <span style="width:8px; height:8px; border-radius:50%; background:#0E9F52; animation:blink 1.2s ease-in-out infinite"></span>
+              <span style="font-size:13px; color:#6B6675">Aguardando confirmação do banco</span>
+            </div>
+            <div style="flex:1"></div>
+            <div onClick="{{ pixConfirm }}" style="width:100%; height:56px; border-radius:16px; background:#7C12C8; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Já paguei · verificar</div>
+          </div>
+        </sc-if>
+
+        <!-- AGUARDANDO CARTÃO -->
+        <sc-if value="{{ isAwait }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#FFFFFF; padding:24px 20px 20px; align-items:center">
+            <div style="font-size:12px; color:#6B6675; letter-spacing:.1em; text-transform:uppercase; font-weight:700">{{ methodLabel }}</div>
+            <div style="font-size:34px; font-weight:700; color:#16121C; letter-spacing:-.03em; font-variant-numeric:tabular-nums; margin-top:2px">{{ amountFmt }}</div>
+            <div style="font-size:13px; color:#6B6675">{{ installmentLabel }}</div>
+            <div style="flex:1; display:flex; align-items:center; justify-content:center; position:relative; width:100%">
+              <div style="position:absolute; width:150px; height:150px; border-radius:50%; background:#7C12C8; opacity:.18; animation:pulseRing 1.9s ease-out infinite"></div>
+              <div style="position:absolute; width:150px; height:150px; border-radius:50%; background:#7C12C8; opacity:.18; animation:pulseRing 1.9s ease-out .95s infinite"></div>
+              <div style="position:relative; width:118px; height:118px; border-radius:50%; background:#F2E7FB; display:flex; align-items:center; justify-content:center">
+                <svg width="58" height="58" viewBox="0 0 58 58" fill="none">
+                  <rect x="4" y="16" width="34" height="26" rx="5" fill="#7C12C8"></rect>
+                  <rect x="9" y="23" width="11" height="9" rx="2" fill="#FFFFFF"></rect>
+                  <path d="M44 20a13 13 0 0 1 0 18" stroke="#7C12C8" stroke-width="3.5" stroke-linecap="round"></path>
+                  <path d="M50 15a21 21 0 0 1 0 28" stroke="#7C12C8" stroke-width="3.5" stroke-linecap="round" opacity=".5"></path>
+                </svg>
+              </div>
+            </div>
+            <div style="font-size:20px; font-weight:700; color:#16121C; text-align:center; text-wrap:pretty">Aproxime, insira ou passe o cartão</div>
+            <div style="font-size:13px; color:#6B6675; margin-top:6px; text-align:center">Aguardando o cliente</div>
+            <div onClick="{{ askDiscard }}" style="margin-top:18px; width:100%; height:54px; border-radius:16px; border:1.5px solid #E4E4EA; color:#6B6675; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Cancelar venda</div>
+          </div>
+        </sc-if>
+
+        <!-- PROCESSANDO -->
+        <sc-if value="{{ isProcessing }}">
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; background:#16121C; padding:30px">
+            <div style="width:74px; height:74px; border-radius:50%; border:5px solid rgba(255,255,255,.15); border-top-color:#C57BF0; animation:spin .9s linear infinite"></div>
+            <div style="text-align:center">
+              <div style="color:#FFFFFF; font-size:22px; font-weight:700; letter-spacing:-.02em">Processando</div>
+              <div style="color:rgba(255,255,255,.65); font-size:14px; margin-top:6px">{{ amountFmt }} · {{ methodLabel }}</div>
+            </div>
+            <div style="position:absolute; bottom:36px; left:24px; right:24px; text-align:center; padding:12px; border-radius:14px; background:rgba(255,255,255,.08); color:#FFD8A8; font-size:14px; font-weight:700">Não remova o cartão</div>
+          </div>
+        </sc-if>
+
+        <!-- APROVADO -->
+        <sc-if value="{{ isApproved }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#0E9F52; padding:20px 20px; align-items:center; color:#FFFFFF">
+            <img src="uploads/logo-br-horizontal.svg" alt="" style="width:96px; opacity:.65; display:block">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px">
+              <div style="width:104px; height:104px; border-radius:50%; background:rgba(255,255,255,.16); display:flex; align-items:center; justify-content:center; animation:popIn .35s ease-out">
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><path d="M13 27.5 22 36l17-19" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+              <div style="font-size:28px; font-weight:700; letter-spacing:-.02em">Aprovado</div>
+              <div style="font-size:40px; font-weight:700; letter-spacing:-.03em; font-variant-numeric:tabular-nums">{{ amountFmt }}</div>
+              <div style="font-size:15px; opacity:.85">{{ methodLabel }} · {{ installmentLabel }}</div>
+              <div style="font-size:12px; opacity:.7; font-variant-numeric:tabular-nums">NSU 884213 · AUT 019327</div>
+            </div>
+            <div onClick="{{ afterApproved }}" style="width:100%; height:60px; border-radius:18px; background:#FFFFFF; color:#0E7F42; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; cursor:pointer">Continuar</div>
+          </div>
+        </sc-if>
+
+        <!-- RECUSADO -->
+        <sc-if value="{{ isDeclined }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#D92D20; padding:28px 20px 20px; align-items:center; color:#FFFFFF">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; text-align:center">
+              <div style="width:104px; height:104px; border-radius:50%; background:rgba(255,255,255,.16); display:flex; align-items:center; justify-content:center; animation:popIn .35s ease-out">
+                <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><path d="M12 12 34 34M34 12 12 34" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"></path></svg>
+              </div>
+              <div style="font-size:28px; font-weight:700; letter-spacing:-.02em">Recusado</div>
+              <div style="font-size:16px; opacity:.9; max-width:250px; text-wrap:pretty">Cartão sem saldo disponível para esta compra</div>
+              <div style="font-size:12px; opacity:.7; font-variant-numeric:tabular-nums">Código 51 · {{ amountFmt }}</div>
+            </div>
+            <div style="width:100%; display:flex; flex-direction:column; gap:10px">
+              <div onClick="{{ retry }}" style="height:60px; border-radius:18px; background:#FFFFFF; color:#B02219; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; cursor:pointer">Tentar novamente</div>
+              <div onClick="{{ goHome }}" style="height:54px; border-radius:16px; border:1.5px solid rgba(255,255,255,.45); color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Cancelar</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ASSINATURA -->
+        <sc-if value="{{ isSignature }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#FFFFFF; padding:20px 16px 18px">
+            <div style="font-size:20px; font-weight:700; color:#16121C; letter-spacing:-.02em">Assinatura do cliente</div>
+            <div style="font-size:13px; color:#6B6675; margin-top:4px">{{ amountFmt }} · {{ methodLabel }}</div>
+            <div style="flex:1; margin-top:16px; border-radius:18px; border:2px dashed #D6D2DE; background:#FAFAFC; position:relative; overflow:hidden">
+              <canvas ref="{{ sigRef }}" width="640" height="760" onPointerDown="{{ sigDown }}" onPointerMove="{{ sigMove }}" onPointerUp="{{ sigUp }}" onPointerLeave="{{ sigUp }}" style="width:100%; height:100%; display:block; touch-action:none; cursor:crosshair"></canvas>
+              <div style="position:absolute; left:24px; right:24px; bottom:40px; height:1px; background:#D6D2DE"></div>
+              <div style="position:absolute; left:24px; bottom:18px; font-size:12px; color:#9C97A6">Assine acima</div>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:14px">
+              <div onClick="{{ sigClear }}" style="flex:1; height:56px; border-radius:16px; border:1.5px solid #E4E4EA; color:#6B6675; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Limpar</div>
+              <div onClick="{{ goReceipt }}" style="flex:2; height:56px; border-radius:16px; background:#7C12C8; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Confirmar</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- COMPROVANTE OPÇÕES -->
+        <sc-if value="{{ isReceipt }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#F4F4F7">
+            <div style="padding:20px 20px 16px; background:#FFFFFF; border-bottom:1px solid #E4E4EA">
+              <div style="font-size:20px; font-weight:700; color:#16121C; letter-spacing:-.02em">Comprovante</div>
+              <div style="font-size:13px; color:#6B6675; margin-top:4px">Como o cliente quer receber?</div>
+            </div>
+            <div style="padding:16px; display:flex; flex-direction:column; gap:10px">
+              <div onClick="{{ rPrint }}" style="height:66px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; gap:14px; padding:0 16px; cursor:pointer" style-active="transform:scale(.99)">
+                <div style="width:38px; height:38px; border-radius:12px; background:#F2E7FB; display:flex; align-items:center; justify-content:center">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 9V4h10v5"></path><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"></path><rect fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="7" y="14" width="10" height="6" rx="1"></rect></svg>
+                </div>
+                <div style="flex:1; font-size:16px; font-weight:700; color:#16121C">Imprimir na maquininha</div>
+                <span style="color:#B6B1C0; font-size:18px">›</span>
+              </div>
+              <div onClick="{{ rWhats }}" style="height:66px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; gap:14px; padding:0 16px; cursor:pointer" style-active="transform:scale(.99)">
+                <div style="width:38px; height:38px; border-radius:12px; background:#E3F5EB; display:flex; align-items:center; justify-content:center">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path fill="none" stroke="#0E7F42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 11.5a7.5 7.5 0 0 1-11 6.7L4 19.5l1.4-4.6A7.5 7.5 0 1 1 20 11.5Z"></path></svg>
+                </div>
+                <div style="flex:1; font-size:16px; font-weight:700; color:#16121C">Enviar por WhatsApp</div>
+                <span style="color:#B6B1C0; font-size:18px">›</span>
+              </div>
+              <div onClick="{{ rSms }}" style="height:66px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; gap:14px; padding:0 16px; cursor:pointer" style-active="transform:scale(.99)">
+                <div style="width:38px; height:38px; border-radius:12px; background:#F2E7FB; display:flex; align-items:center; justify-content:center">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H9.5L5.5 19v-4H6a2 2 0 0 1-2-2Z"></path><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.5 9.5h.01M12 9.5h.01M15.5 9.5h.01"></path></svg>
+                </div>
+                <div style="flex:1; font-size:16px; font-weight:700; color:#16121C">Enviar por SMS</div>
+                <span style="color:#B6B1C0; font-size:18px">›</span>
+              </div>
+              <div onClick="{{ rEmail }}" style="height:66px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; gap:14px; padding:0 16px; cursor:pointer" style-active="transform:scale(.99)">
+                <div style="width:38px; height:38px; border-radius:12px; background:#F2E7FB; display:flex; align-items:center; justify-content:center">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none"><rect fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="3" y="5" width="18" height="14" rx="2"></rect><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m3.5 7.5 8.5 6 8.5-6"></path></svg>
+                </div>
+                <div style="flex:1; font-size:16px; font-weight:700; color:#16121C">Enviar por e-mail</div>
+                <span style="color:#B6B1C0; font-size:18px">›</span>
+              </div>
+              <div onClick="{{ newSale }}" style="height:56px; margin-top:6px; border-radius:16px; border:1.5px solid #E4E4EA; color:#6B6675; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Não enviar</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ENVIO -->
+        <sc-if value="{{ isSend }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#FFFFFF; padding:20px 20px 18px">
+            <div style="display:flex; align-items:center; gap:10px">
+              <div onClick="{{ back }}" style="width:36px; height:36px; margin-left:-8px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#16121C; font-size:20px; cursor:pointer">‹</div>
+              <div style="font-size:18px; font-weight:700; color:#16121C">{{ sendTitle }}</div>
+            </div>
+            <div style="font-size:13px; color:#6B6675; margin-top:8px">{{ sendHint }}</div>
+            <div style="margin-top:14px; height:64px; border-radius:16px; border:2px solid #7C12C8; display:flex; align-items:center; padding:0 16px; font-size:22px; font-weight:500; color:#16121C; font-variant-numeric:tabular-nums">{{ contactDisplay }}</div>
+            <div style="flex:1"></div>
+            <sc-if value="{{ sendIsPhone }}">
+              <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:12px">
+                <sc-for list="{{ contactKeys }}" as="k" hint-placeholder-count="12">
+                  <div onClick="{{ k.go }}" style="height:54px; border-radius:16px; background:{{ k.bg }}; color:{{ k.color }}; display:flex; align-items:center; justify-content:center; font-size:21px; font-weight:500; cursor:pointer; user-select:none" style-active="transform:scale(.96)">{{ k.label }}</div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <div onClick="{{ sendReceipt }}" style="height:60px; border-radius:18px; background:#7C12C8; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; cursor:pointer">Enviar comprovante</div>
+          </div>
+        </sc-if>
+
+        <!-- HISTÓRICO -->
+        <sc-if value="{{ isHistory }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#F4F4F7; overflow:hidden">
+            <div style="flex:none; padding:14px 16px; background:#FFFFFF; border-bottom:1px solid #E4E4EA; display:flex; align-items:center; gap:12px">
+              <div onClick="{{ goHome }}" style="width:36px; height:36px; margin-left:-8px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#16121C; font-size:20px; cursor:pointer">‹</div>
+              <div style="font-size:16px; font-weight:700; color:#16121C">Histórico</div>
+            </div>
+            <div style="flex:1; overflow:auto; padding:12px 16px 20px; display:flex; flex-direction:column; gap:8px">
+              <sc-for list="{{ transactions }}" as="t" hint-placeholder-count="6">
+                <div onClick="{{ t.go }}" style="border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; padding:14px 16px; display:flex; align-items:center; gap:12px; cursor:pointer">
+                  <div style="flex:1">
+                    <div style="font-size:17px; font-weight:700; color:#16121C; font-variant-numeric:tabular-nums">{{ t.amountFmt }}</div>
+                    <div style="font-size:12px; color:#6B6675; margin-top:2px">{{ t.meta }}</div>
+                  </div>
+                  <div style="font-size:11px; font-weight:700; padding:5px 9px; border-radius:8px; color:{{ t.statusColor }}; background:{{ t.statusBg }}">{{ t.status }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- DETALHE -->
+        <sc-if value="{{ isDetail }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#F4F4F7; overflow:auto">
+            <div style="flex:none; padding:14px 16px; background:#FFFFFF; border-bottom:1px solid #E4E4EA; display:flex; align-items:center; gap:12px">
+              <div onClick="{{ back }}" style="width:36px; height:36px; margin-left:-8px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#16121C; font-size:20px; cursor:pointer">‹</div>
+              <div style="font-size:16px; font-weight:700; color:#16121C">Transação</div>
+            </div>
+            <div style="padding:20px 16px; display:flex; flex-direction:column; gap:14px">
+              <div style="border-radius:18px; background:#FFFFFF; border:1px solid #E4E4EA; padding:18px">
+                <div style="font-size:32px; font-weight:700; color:#16121C; letter-spacing:-.02em; font-variant-numeric:tabular-nums">{{ txAmount }}</div>
+                <div style="display:inline-block; margin-top:8px; font-size:11px; font-weight:700; padding:5px 9px; border-radius:8px; color:{{ txStatusColor }}; background:{{ txStatusBg }}">{{ txStatus }}</div>
+                <div style="margin-top:16px; display:flex; flex-direction:column; gap:9px">
+                  <sc-for list="{{ txFields }}" as="f" hint-placeholder-count="6">
+                    <div style="display:flex; justify-content:space-between; font-size:13px">
+                      <span style="color:#6B6675">{{ f.k }}</span>
+                      <span style="color:#16121C; font-weight:500; font-variant-numeric:tabular-nums">{{ f.v }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div onClick="{{ goReceipt }}" style="height:56px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; color:#16121C; cursor:pointer">Reenviar comprovante</div>
+              <div onClick="{{ goRefund }}" style="height:56px; border-radius:16px; border:1.5px solid #F5C2BE; color:#D92D20; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Cancelar / estornar</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ESTORNO 1 -->
+        <sc-if value="{{ isRefund1 }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#FFFFFF; padding:22px 20px 18px">
+            <div style="font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#D92D20">Passo 1 de 2</div>
+            <div style="font-size:24px; font-weight:700; color:#16121C; letter-spacing:-.02em; margin-top:8px; text-wrap:pretty">Deseja estornar esta venda?</div>
+            <div style="margin-top:16px; padding:16px; border-radius:16px; background:#F4F4F7">
+              <div style="font-size:28px; font-weight:700; color:#16121C; font-variant-numeric:tabular-nums">{{ txAmount }}</div>
+              <div style="font-size:13px; color:#6B6675; margin-top:2px">{{ txMeta }}</div>
+            </div>
+            <div style="margin-top:14px; padding:14px 16px; border-radius:14px; background:#FEF3F2; color:#B02219; font-size:13px; line-height:1.5; text-wrap:pretty">O valor volta para o cliente em até 2 dias úteis no débito e em até 2 faturas no crédito. A operação não pode ser desfeita.</div>
+            <div style="flex:1"></div>
+            <div style="display:flex; flex-direction:column; gap:10px">
+              <div onClick="{{ goRefund2 }}" style="height:60px; border-radius:18px; background:#D92D20; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:700; cursor:pointer">Continuar estorno</div>
+              <div onClick="{{ back }}" style="height:54px; border-radius:16px; border:1.5px solid #E4E4EA; color:#6B6675; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Voltar</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ESTORNO 2 -->
+        <sc-if value="{{ isRefund2 }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#FFFFFF; padding:22px 20px 18px">
+            <div style="font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#D92D20">Passo 2 de 2</div>
+            <div style="font-size:24px; font-weight:700; color:#16121C; letter-spacing:-.02em; margin-top:8px; text-wrap:pretty">Confirme com o PIN do operador</div>
+            <div style="display:flex; gap:14px; justify-content:center; margin:26px 0 10px">
+              <sc-for list="{{ pinDots }}" as="d" hint-placeholder-count="4">
+                <div style="width:16px; height:16px; border-radius:50%; background:{{ d.bg }}; border:2px solid {{ d.border }}; box-sizing:border-box"></div>
+              </sc-for>
+            </div>
+            <div style="text-align:center; font-size:13px; color:#6B6675">Estorno de {{ txAmount }}</div>
+            <div style="flex:1"></div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:9px">
+              <sc-for list="{{ refundKeys }}" as="k" hint-placeholder-count="12">
+                <div onClick="{{ k.go }}" style="height:56px; border-radius:16px; background:{{ k.bg }}; color:{{ k.color }}; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:500; cursor:pointer; user-select:none" style-active="transform:scale(.96)">{{ k.label }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ESTORNADO OK -->
+        <sc-if value="{{ isRefunded }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#0E9F52; padding:28px 20px 20px; align-items:center; color:#FFFFFF">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; text-align:center">
+              <div style="width:100px; height:100px; border-radius:50%; background:rgba(255,255,255,.16); display:flex; align-items:center; justify-content:center; animation:popIn .35s ease-out">
+                <svg width="50" height="50" viewBox="0 0 52 52" fill="none"><path d="M13 27.5 22 36l17-19" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+              <div style="font-size:26px; font-weight:700; letter-spacing:-.02em">Estorno confirmado</div>
+              <div style="font-size:15px; opacity:.85">{{ txAmount }} devolvidos ao cliente</div>
+            </div>
+            <div onClick="{{ goHistory }}" style="width:100%; height:60px; border-radius:18px; background:#FFFFFF; color:#0E7F42; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; cursor:pointer">Voltar ao histórico</div>
+          </div>
+        </sc-if>
+
+        <!-- RELATÓRIOS -->
+        <sc-if value="{{ isReports }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#F4F4F7; overflow:auto">
+            <div style="flex:none; padding:14px 16px; background:#FFFFFF; border-bottom:1px solid #E4E4EA; display:flex; align-items:center; gap:12px">
+              <div onClick="{{ goHome }}" style="width:36px; height:36px; margin-left:-8px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#16121C; font-size:20px; cursor:pointer">‹</div>
+              <div style="font-size:16px; font-weight:700; color:#16121C">Relatório do dia</div>
+            </div>
+            <div style="padding:16px; display:flex; flex-direction:column; gap:12px">
+              <div style="border-radius:18px; background:#7C12C8; color:#FFFFFF; padding:18px">
+                <div style="font-size:12px; opacity:.75; letter-spacing:.08em; text-transform:uppercase; font-weight:700">Total vendido</div>
+                <div style="font-size:36px; font-weight:700; letter-spacing:-.03em; font-variant-numeric:tabular-nums; margin-top:2px">{{ dayTotal }}</div>
+                <div style="display:flex; gap:22px; margin-top:14px">
+                  <div>
+                    <div style="font-size:11px; opacity:.75">Transações</div>
+                    <div style="font-size:18px; font-weight:700; font-variant-numeric:tabular-nums">{{ dayCount }}</div>
+                  </div>
+                  <div>
+                    <div style="font-size:11px; opacity:.75">Ticket médio</div>
+                    <div style="font-size:18px; font-weight:700; font-variant-numeric:tabular-nums">{{ dayAvg }}</div>
+                  </div>
+                </div>
+              </div>
+              <div style="border-radius:18px; background:#FFFFFF; border:1px solid #E4E4EA; padding:18px">
+                <div style="font-size:14px; font-weight:700; color:#16121C">Por forma de pagamento</div>
+                <div style="margin-top:14px; display:flex; flex-direction:column; gap:12px">
+                  <sc-for list="{{ breakdown }}" as="b" hint-placeholder-count="4">
+                    <div>
+                      <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:5px">
+                        <span style="color:#16121C; font-weight:500">{{ b.label }}</span>
+                        <span style="color:#6B6675; font-variant-numeric:tabular-nums">{{ b.value }}</span>
+                      </div>
+                      <div style="height:10px; border-radius:6px; background:#F0EEF4; overflow:hidden">
+                        <div style="height:100%; border-radius:6px; width:{{ b.pct }}; background:{{ b.color }}"></div>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="border-radius:18px; background:#FFFFFF; border:1px solid #E4E4EA; padding:18px; display:flex; flex-direction:column; gap:9px">
+                <sc-for list="{{ reportRows }}" as="r" hint-placeholder-count="3">
+                  <div style="display:flex; justify-content:space-between; font-size:13px">
+                    <span style="color:#6B6675">{{ r.k }}</span>
+                    <span style="color:#16121C; font-weight:500; font-variant-numeric:tabular-nums">{{ r.v }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- CONFIGURAÇÕES -->
+        <sc-if value="{{ isSettings }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#F4F4F7; overflow:auto">
+            <div style="flex:none; padding:14px 16px; background:#FFFFFF; border-bottom:1px solid #E4E4EA; display:flex; align-items:center; gap:12px">
+              <div onClick="{{ goHome }}" style="width:36px; height:36px; margin-left:-8px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#16121C; font-size:20px; cursor:pointer">‹</div>
+              <div style="font-size:16px; font-weight:700; color:#16121C">Configurações</div>
+            </div>
+            <div style="padding:14px 16px 20px; display:flex; flex-direction:column; gap:8px">
+              <div style="min-height:62px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; gap:14px; padding:12px 16px; cursor:pointer">
+                <div style="width:34px; height:34px; border-radius:11px; background:#F2E7FB; flex:none; display:flex; align-items:center; justify-content:center">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 9V4h10v5"></path><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"></path><rect fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="7" y="14" width="10" height="6" rx="1"></rect></svg>
+                </div>
+                <div style="flex:1">
+                  <div style="font-size:15px; font-weight:700; color:#16121C">Impressora</div>
+                  <div style="font-size:12px; color:#6B6675">Bobina 58mm · pronta</div>
+                </div>
+                <span style="color:#B6B1C0; font-size:18px">›</span>
+              </div>
+              <div style="min-height:62px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; gap:14px; padding:12px 16px; cursor:pointer">
+                <div style="width:34px; height:34px; border-radius:11px; background:#F2E7FB; flex:none; display:flex; align-items:center; justify-content:center">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 11a11 11 0 0 1 15 0"></path><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 14.5a6.2 6.2 0 0 1 8 0"></path><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M11.98 18.5h.01"></path></svg>
+                </div>
+                <div style="flex:1">
+                  <div style="font-size:15px; font-weight:700; color:#16121C">Rede</div>
+                  <div style="font-size:12px; color:#6B6675">{{ netSub }}</div>
+                </div>
+                <span style="color:#B6B1C0; font-size:18px">›</span>
+              </div>
+              <div style="min-height:62px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; gap:14px; padding:12px 16px; cursor:pointer">
+                <div style="width:34px; height:34px; border-radius:11px; background:#F2E7FB; flex:none; display:flex; align-items:center; justify-content:center">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="12" cy="8.5" r="3.5"></circle><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5.5 19.5a6.5 6.5 0 0 1 13 0"></path></svg>
+                </div>
+                <div style="flex:1">
+                  <div style="font-size:15px; font-weight:700; color:#16121C">Dados da conta</div>
+                  <div style="font-size:12px; color:#6B6675">Loja Centro · CNPJ 12.345.678/0001-90</div>
+                </div>
+                <span style="color:#B6B1C0; font-size:18px">›</span>
+              </div>
+              <div style="min-height:62px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; gap:14px; padding:12px 16px; cursor:pointer">
+                <div style="width:34px; height:34px; border-radius:11px; background:#F2E7FB; flex:none; display:flex; align-items:center; justify-content:center">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="7.5" cy="7.5" r="2.5"></circle><circle fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="16.5" cy="16.5" r="2.5"></circle><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M18 6 6 18"></path></svg>
+                </div>
+                <div style="flex:1">
+                  <div style="font-size:15px; font-weight:700; color:#16121C">Taxas</div>
+                  <div style="font-size:12px; color:#6B6675">Débito 1,49% · Crédito 3,19%</div>
+                </div>
+                <span style="color:#B6B1C0; font-size:18px">›</span>
+              </div>
+              <div onClick="{{ goHelp }}" style="min-height:62px; border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; display:flex; align-items:center; gap:14px; padding:12px 16px; cursor:pointer">
+                <div style="width:34px; height:34px; border-radius:11px; background:#F2E7FB; flex:none; display:flex; align-items:center; justify-content:center">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 14v-2a8 8 0 0 1 16 0v2"></path><rect fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="3" y="13" width="4" height="6" rx="2"></rect><rect fill="none" stroke="#7C12C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="17" y="13" width="4" height="6" rx="2"></rect></svg>
+                </div>
+                <div style="flex:1">
+                  <div style="font-size:15px; font-weight:700; color:#16121C">Suporte</div>
+                  <div style="font-size:12px; color:#6B6675">0800 000 4471</div>
+                </div>
+                <span style="color:#B6B1C0; font-size:18px">›</span>
+              </div>
+              <div onClick="{{ logout }}" style="height:56px; margin-top:6px; border-radius:16px; border:1.5px solid #E4E4EA; color:#D92D20; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Sair da conta</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- OFFLINE -->
+        <sc-if value="{{ isOffline }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#16121C; padding:28px 20px 20px; align-items:center; color:#FFFFFF; text-align:center">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px">
+              <div style="width:96px; height:96px; border-radius:50%; background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+                  <path d="M8 12 36 34" stroke="#FF8A80" stroke-width="4" stroke-linecap="round"></path>
+                  <path d="M22 32.5h.02" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"></path>
+                  <path d="M13 22a13 13 0 0 1 18 0" stroke="rgba(255,255,255,.45)" stroke-width="4" stroke-linecap="round"></path>
+                </svg>
+              </div>
+              <div style="font-size:24px; font-weight:700; letter-spacing:-.02em">Sem conexão</div>
+              <div style="font-size:15px; color:rgba(255,255,255,.7); max-width:250px; text-wrap:pretty">O terminal precisa de internet para cobrar. Verifique o Wi-Fi ou o sinal 4G.</div>
+            </div>
+            <div style="width:100%; display:flex; flex-direction:column; gap:10px">
+              <div onClick="{{ retryNet }}" style="height:60px; border-radius:18px; background:#7C12C8; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:700; cursor:pointer">Tentar novamente</div>
+              <div onClick="{{ goSettings }}" style="height:54px; border-radius:16px; border:1.5px solid rgba(255,255,255,.25); color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Configurar rede</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- AJUDA -->
+        <sc-if value="{{ isHelp }}">
+          <div style="flex:1; display:flex; flex-direction:column; background:#F4F4F7; overflow:auto">
+            <div style="flex:none; padding:14px 16px; background:#FFFFFF; border-bottom:1px solid #E4E4EA; display:flex; align-items:center; gap:12px">
+              <div onClick="{{ goHome }}" style="width:36px; height:36px; margin-left:-8px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#16121C; font-size:20px; cursor:pointer">‹</div>
+              <div style="font-size:16px; font-weight:700; color:#16121C">Ajuda</div>
+            </div>
+            <div style="padding:16px; display:flex; flex-direction:column; gap:8px">
+              <sc-for list="{{ faq }}" as="f" hint-placeholder-count="4">
+                <div onClick="{{ f.go }}" style="border-radius:16px; background:#FFFFFF; border:1px solid #E4E4EA; padding:14px 16px; cursor:pointer">
+                  <div style="display:flex; justify-content:space-between; gap:12px; align-items:center">
+                    <div style="font-size:15px; font-weight:700; color:#16121C; text-wrap:pretty">{{ f.q }}</div>
+                    <span style="color:#B6B1C0; font-size:16px">{{ f.chev }}</span>
+                  </div>
+                  <div style="font-size:13px; color:#6B6675; line-height:1.5; margin-top:8px; display:{{ f.display }}; text-wrap:pretty">{{ f.a }}</div>
+                </div>
+              </sc-for>
+              <div style="margin-top:8px; border-radius:16px; background:#7C12C8; color:#FFFFFF; padding:18px">
+                <div style="font-size:16px; font-weight:700">Falar com o suporte</div>
+                <div style="font-size:13px; opacity:.8; margin-top:2px">Atendimento 24h · 0800 000 4471</div>
+                <div style="margin-top:14px; height:52px; border-radius:14px; background:#FFFFFF; color:#7C12C8; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Ligar agora</div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- CONFIRMAR DESCARTE -->
+        <sc-if value="{{ confirmOpen }}">
+          <div style="position:absolute; inset:0; background:rgba(12,8,18,.55); display:flex; align-items:flex-end; z-index:5">
+            <div style="width:100%; background:#FFFFFF; border-radius:24px 24px 0 0; padding:24px 20px 20px">
+              <div style="font-size:20px; font-weight:700; color:#16121C; letter-spacing:-.02em; text-wrap:pretty">Descartar esta venda?</div>
+              <div style="font-size:14px; color:#6B6675; margin-top:6px; text-wrap:pretty">O valor de {{ amountFmt }} será apagado e o terminal volta para a tela inicial.</div>
+              <div style="display:flex; flex-direction:column; gap:10px; margin-top:18px">
+                <div onClick="{{ discardYes }}" style="height:56px; border-radius:16px; background:#D92D20; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Descartar venda</div>
+                <div onClick="{{ discardNo }}" style="height:56px; border-radius:16px; border:1.5px solid #E4E4EA; color:#16121C; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; cursor:pointer">Continuar venda</div>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+      </div>
+
+      <div style="margin-top:16px; display:flex; gap:10px">
+        <div style="flex:1; display:grid; grid-template-columns:repeat(3,1fr); gap:8px">
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">1</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">2</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">3</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">4</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">5</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">6</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">7</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">8</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">9</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">*</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">0</div>
+          <div style="height:44px; border-radius:10px; background:#2A2438; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:600">#</div>
+        </div>
+        <div style="width:52px; display:flex; flex-direction:column; gap:8px">
+          <div style="flex:1; border-radius:10px; background:#C0453B; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700">✕</div>
+          <div style="flex:1; border-radius:10px; background:#D9A73B; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700">F</div>
+          <div style="flex:1.3; border-radius:10px; background:#3FAE58; color:#FFFFFF; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:700">↵</div>
+        </div>
+      </div>
+
+      <div style="position:absolute; right:9px; bottom:64px; writing-mode:vertical-rl; font-size:9px; font-weight:700; letter-spacing:.14em; color:rgba(255,255,255,.32)">roxinha</div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:700,&quot;height&quot;:800}}">
+class Component extends DCLogic {
+  state = {
+    route: 'splash', stack: [], amount: '', pin: '', method: null, inst: null,
+    online: true, forceFail: false, sendVia: null, contact: '', tx: null,
+    refundPin: '', faqOpen: -1, clock: '14:32', showAllInst: false, confirm: false
+  };
+
+  txs = [
+    { id: 1, cents: 12990, method: 'Crédito', inst: '3x sem juros', status: 'Aprovada', time: 'Hoje 14:12', nsu: '884213', brand: 'Visa ····4471' },
+    { id: 2, cents: 4500, method: 'Pix', inst: 'À vista', status: 'Aprovada', time: 'Hoje 13:48', nsu: '884198', brand: 'Chave celular' },
+    { id: 3, cents: 8790, method: 'Débito', inst: 'À vista', status: 'Aprovada', time: 'Hoje 12:31', nsu: '884120', brand: 'Elo ····8820' },
+    { id: 4, cents: 23000, method: 'Crédito', inst: '6x com juros', status: 'Estornada', time: 'Hoje 11:05', nsu: '884077', brand: 'Master ····1290' },
+    { id: 5, cents: 3200, method: 'Voucher', inst: 'À vista', status: 'Aprovada', time: 'Hoje 10:22', nsu: '884012', brand: 'Alelo ····3311' },
+    { id: 6, cents: 15600, method: 'Crédito', inst: 'À vista', status: 'Recusada', time: 'Hoje 09:47', nsu: '883990', brand: 'Visa ····7712' }
+  ];
+
+  brl(c) {
+    const s = (Math.abs(c) / 100).toFixed(2).split('.');
+    return 'R$ ' + s[0].replace(/\B(?=(\d{3})+$)/g, '.') + ',' + s[1];
+  }
+
+  componentDidMount() {
+    this.t = setTimeout(() => this.go('pin'), 1700);
+  }
+  componentWillUnmount() { clearTimeout(this.t); clearTimeout(this.t2); }
+
+  go(r, keep) {
+    clearTimeout(this.t); clearTimeout(this.t2);
+    this.setState(s => ({ route: r, stack: keep === false ? [] : [...s.stack, s.route] }));
+    if (r === 'await') this.t = setTimeout(() => this.go('processing'), 3000);
+    if (r === 'processing') this.t = setTimeout(() => this.go(this.state.forceFail ? 'declined' : 'approved'), 2200);
+  }
+  back = () => {
+    clearTimeout(this.t);
+    this.setState(s => {
+      const st = [...s.stack]; const p = st.pop();
+      return { route: p || 'home', stack: st };
+    });
+  };
+  reset(extra) { clearTimeout(this.t); this.setState(Object.assign({ route: 'home', stack: [], amount: '', method: null, inst: null, sendVia: null, contact: '', confirm: false, showAllInst: false }, extra || {})); }
+
+  keypad(onDigit, onBack, okLabel, onOk) {
+    const mk = (label, fn, bg, color) => ({ label, go: fn, bg: bg || '#F4F4F7', color: color || '#16121C' });
+    const a = [];
+    for (let i = 1; i <= 9; i++) a.push(mk(String(i), () => onDigit(String(i))));
+    a.push(mk(okLabel || '00', onOk || (() => { onDigit('0'); onDigit('0'); })));
+    a.push(mk('0', () => onDigit('0')));
+    a.push(mk('⌫', onBack, '#EDEAF2', '#6B6675'));
+    return a;
+  }
+
+  sigDown = e => {
+    const c = this.sig; if (!c) return;
+    c.setPointerCapture(e.pointerId);
+    const x = c.getContext('2d');
+    x.lineWidth = 6; x.lineCap = 'round'; x.lineJoin = 'round'; x.strokeStyle = '#16121C';
+    const r = c.getBoundingClientRect();
+    x.beginPath(); x.moveTo((e.clientX - r.left) * c.width / r.width, (e.clientY - r.top) * c.height / r.height);
+    this.drawing = true;
+  };
+  sigMove = e => {
+    if (!this.drawing || !this.sig) return;
+    const c = this.sig, r = c.getBoundingClientRect(), x = c.getContext('2d');
+    x.lineTo((e.clientX - r.left) * c.width / r.width, (e.clientY - r.top) * c.height / r.height); x.stroke();
+  };
+  sigUp = () => { this.drawing = false; };
+
+  renderVals() {
+    const s = this.state;
+    const cents = parseInt(s.amount || '0', 10);
+    const methodLabel = s.method || '—';
+    const instLabel = s.inst || 'À vista';
+    const dayCents = this.txs.filter(t => t.status === 'Aprovada').reduce((a, b) => a + b.cents, 0);
+    const dayN = this.txs.filter(t => t.status === 'Aprovada').length;
+    const tx = s.tx || this.txs[0];
+
+    const screens = [
+      ['Splash', 'splash'], ['PIN do operador', 'pin'], ['Home', 'home'], ['Valor da venda', 'amount'],
+      ['Forma de pagamento', 'method'], ['Parcelas', 'installments'], ['Pix · QR Code', 'pix'], ['Aguardando cartão', 'await'],
+      ['Processando', 'processing'], ['Aprovado', 'approved'], ['Recusado', 'declined'],
+      ['Assinatura', 'signature'], ['Comprovante', 'receipt'], ['Envio', 'send'], ['Histórico', 'history'],
+      ['Detalhe', 'detail'], ['Estorno · passo 1', 'refund1'], ['Estorno · passo 2', 'refund2'],
+      ['Estorno confirmado', 'refunded'], ['Relatórios', 'reports'], ['Configurações', 'settings'],
+      ['Sem conexão', 'offline'], ['Ajuda', 'help']
+    ];
+
+    const setPin = d => this.setState(st => {
+      const p = (st.pin + d).slice(0, 4);
+      if (p.length === 4) { clearTimeout(this.t2); this.t2 = setTimeout(() => this.setState({ pin: '' }, () => this.go('home', false)), 180); }
+      return { pin: p };
+    });
+    const setRefundPin = d => this.setState(st => {
+      const p = (st.refundPin + d).slice(0, 4);
+      if (p.length === 4) { clearTimeout(this.t2); this.t2 = setTimeout(() => this.setState({ refundPin: '' }, () => this.go('refunded')), 200); }
+      return { refundPin: p };
+    });
+    const pinLen = s.route === 'refund2' ? s.refundPin.length : s.pin.length;
+
+    const addDigit = d => this.setState(st => ({ amount: (st.amount + d).replace(/^0+/, '').slice(0, 8) }));
+    const addContact = d => this.setState(st => ({ contact: (st.contact + d).slice(0, 11) }));
+
+    const phone = s.contact;
+    let phoneFmt = '';
+    if (phone) {
+      phoneFmt = '(' + phone.slice(0, 2) + (phone.length > 2 ? ') ' + phone.slice(2, 7) : '');
+      if (phone.length > 7) phoneFmt += '-' + phone.slice(7);
+    }
+    const isPhone = s.sendVia !== 'E-mail';
+
+    const bd = [
+      { label: 'Crédito', cents: 12990 + 15600, color: '#7C12C8' },
+      { label: 'Débito', cents: 8790, color: '#A855E8' },
+      { label: 'Pix', cents: 4500, color: '#0E9F52' },
+      { label: 'Voucher', cents: 3200, color: '#F0A202' }
+    ];
+    const bdMax = Math.max.apply(null, bd.map(b => b.cents));
+
+    const inst = Array.from({ length: 12 }, (_, i) => {
+      const n = i + 1, free = n <= 3;
+      const total = free ? cents : Math.round(cents * (1 + 0.0299 * n));
+      return {
+        label: n === 1 ? 'À vista' : n + 'x de ' + this.brl(Math.round(total / n)),
+        total: n === 1 ? this.brl(cents) : 'Total ' + this.brl(total),
+        tag: free ? 'Sem juros' : 'Com juros',
+        tagColor: free ? '#0E7F42' : '#9A6800',
+        tagBg: free ? '#E3F5EB' : '#FDF1DC',
+        go: () => this.setState({ inst: n === 1 ? 'À vista' : n + 'x ' + (free ? 'sem juros' : 'com juros') }, () => this.go('await'))
+      };
+    });
+
+    const qr = [];
+    for (let y = 0; y < 21; y++) for (let x = 0; x < 21; x++) {
+      const finder = (a, b) => x >= a && x < a + 7 && y >= b && y < b + 7 &&
+        !(x > a && x < a + 6 && y > b && y < b + 6) || (x > a + 1 && x < a + 5 && y > b + 1 && y < b + 5);
+      const on = finder(0, 0) || finder(14, 0) || finder(0, 14) ||
+        ((x * 7 + y * 13 + (x * y) % 5) % 3 === 0 && x > 7 || (x + y * 3) % 4 === 0 && y > 7 && x < 14);
+      qr.push({ bg: on ? '#16121C' : 'transparent' });
+    }
+
+    return {
+      clock: s.clock,
+      netLabel: s.online ? '4G' : 'OFF', netColor: s.online ? '#8CF0B8' : '#FF8A80',
+      netBg: s.online ? 'rgba(140,240,184,.14)' : 'rgba(255,138,128,.18)',
+      toggleOnline: () => this.setState(st => ({ online: !st.online }), () => { if (!this.state.online) this.go('offline'); }),
+      retryNet: () => { this.setState({ online: true }); this.back(); },
+
+      isSplash: s.route === 'splash', isPin: s.route === 'pin', isHome: s.route === 'home',
+      isAmount: s.route === 'amount', isMethod: s.route === 'method', isInstallments: s.route === 'installments',
+      isAwait: s.route === 'await', isProcessing: s.route === 'processing', isApproved: s.route === 'approved',
+      isDeclined: s.route === 'declined', isSignature: s.route === 'signature', isReceipt: s.route === 'receipt',
+      isSend: s.route === 'send', isHistory: s.route === 'history', isDetail: s.route === 'detail',
+      isRefund1: s.route === 'refund1', isRefund2: s.route === 'refund2', isRefunded: s.route === 'refunded',
+      isReports: s.route === 'reports', isSettings: s.route === 'settings', isOffline: s.route === 'offline',
+      isHelp: s.route === 'help',
+
+      rail: screens.map((r, i) => ({
+        n: String(i + 1).padStart(2, '0'), label: r[0], go: () => this.go(r[1]),
+        bg: s.route === r[1] ? '#7C12C8' : 'transparent',
+        color: s.route === r[1] ? '#FFFFFF' : '#4B4655'
+      })),
+
+      pinDots: [0, 1, 2, 3].map(i => ({
+        bg: i < pinLen ? '#7C12C8' : 'transparent',
+        border: i < pinLen ? '#7C12C8' : '#D6D2DE'
+      })),
+      pinError: '',
+      pinKeys: this.keypad(setPin, () => this.setState(st => ({ pin: st.pin.slice(0, -1) })), 'Sair', () => this.go('splash', false)),
+      refundKeys: this.keypad(setRefundPin, () => this.setState(st => ({ refundPin: st.refundPin.slice(0, -1) })), '·', () => {}),
+
+      connMsg: s.online ? 'Conectado · 4G forte' : 'Sem conexão com a rede',
+      connBg: s.online ? '#E3F5EB' : '#FEF3F2',
+      connDot: s.online ? '#0E9F52' : '#D92D20',
+      connText: s.online ? '#0E7F42' : '#B02219',
+
+      dayTotal: this.brl(dayCents), dayCount: dayN, dayAvg: this.brl(Math.round(dayCents / dayN)),
+
+      startSale: () => this.go(s.online ? 'amount' : 'offline'),
+      goHome: () => this.reset(),
+      goHistory: () => this.go('history'),
+      goReports: () => this.go('reports'),
+      goSettings: () => this.go('settings'),
+      goHelp: () => this.go('help'),
+      logout: () => this.reset({ route: 'pin', pin: '' }),
+      back: this.back,
+
+      amountFmt: this.brl(cents),
+      amountColor: cents ? '#16121C' : '#C7C2D0',
+      amountKeys: this.keypad(addDigit, () => this.setState(st => ({ amount: st.amount.slice(0, -1) }))),
+      contBg: cents ? '#7C12C8' : '#EDEAF2', contColor: cents ? '#FFFFFF' : '#B6B1C0',
+      confirmAmount: () => { if (cents) this.go('method'); },
+
+      methods: [
+        { label: 'Crédito', sub: 'À vista ou parcelado', mark: 'CRE', tint: '#F2E7FB', ink: '#7C12C8' },
+        { label: 'Débito', sub: 'Desconto imediato', mark: 'DEB', tint: '#F2E7FB', ink: '#7C12C8' },
+        { label: 'Pix', sub: 'QR Code na tela', mark: 'PIX', tint: '#E3F5EB', ink: '#0E7F42' },
+        { label: 'Voucher', sub: 'Alimentação e refeição', mark: 'VOU', tint: '#FDF1DC', ink: '#9A6800' }
+      ].map(m => Object.assign({}, m, {
+        go: () => this.setState({ method: m.label }, () => this.go(m.label === 'Crédito' ? 'installments' : m.label === 'Pix' ? 'pix' : 'await'))
+      })),
+      methodLabel, installmentLabel: instLabel,
+
+      instTop: inst.slice(0, 3),
+      instRest: inst.slice(3),
+      showAllInst: s.showAllInst,
+      moreInstLabel: s.showAllInst ? 'Menos parcelas' : 'Mais parcelas · 4x a 12x',
+      toggleInst: () => this.setState(st => ({ showAllInst: !st.showAllInst })),
+
+      isPix: s.route === 'pix',
+      qrCells: qr,
+      pixConfirm: () => this.go('processing'),
+
+      confirmOpen: s.confirm,
+      askDiscard: () => cents ? this.setState({ confirm: true }) : this.back(),
+      discardYes: () => this.reset(),
+      discardNo: () => this.setState({ confirm: false }),
+      newSale: () => this.reset({ route: 'amount' }),
+
+      retry: () => this.go('await'),
+      afterApproved: () => this.go(s.method === 'Crédito' ? 'signature' : 'receipt'),
+      goReceipt: () => this.go('receipt'),
+
+      sigRef: el => { this.sig = el; },
+      sigDown: this.sigDown, sigMove: this.sigMove, sigUp: this.sigUp,
+      sigClear: () => { if (this.sig) this.sig.getContext('2d').clearRect(0, 0, this.sig.width, this.sig.height); },
+
+      rPrint: () => this.reset({ route: 'amount' }),
+      rWhats: () => this.setState({ sendVia: 'WhatsApp', contact: '' }, () => this.go('send')),
+      rSms: () => this.setState({ sendVia: 'SMS', contact: '' }, () => this.go('send')),
+      rEmail: () => this.setState({ sendVia: 'E-mail', contact: '' }, () => this.go('send')),
+      netSub: s.online ? 'Wi-Fi Loja Centro · 4G ativo' : 'Desconectado',
+      sendTitle: s.sendVia === 'E-mail' ? 'E-mail do cliente' : 'Celular do cliente',
+      sendHint: s.sendVia === 'E-mail' ? 'O comprovante chega em alguns segundos' : 'Enviaremos por ' + (s.sendVia || 'WhatsApp'),
+      sendIsPhone: isPhone,
+      contactDisplay: isPhone ? (phoneFmt || '(  )') : (s.contact || 'cliente@email.com'),
+      contactKeys: this.keypad(addContact, () => this.setState(st => ({ contact: st.contact.slice(0, -1) }))),
+      sendReceipt: () => this.reset({ route: 'amount' }),
+
+      transactions: this.txs.map(t => ({
+        amountFmt: this.brl(t.cents),
+        meta: t.time + ' · ' + t.method + ' · ' + t.inst,
+        status: t.status,
+        statusColor: t.status === 'Aprovada' ? '#0E7F42' : t.status === 'Recusada' ? '#B02219' : '#6B6675',
+        statusBg: t.status === 'Aprovada' ? '#E3F5EB' : t.status === 'Recusada' ? '#FEF3F2' : '#EDEAF2',
+        go: () => this.setState({ tx: t }, () => this.go('detail'))
+      })),
+
+      txAmount: this.brl(tx.cents),
+      txMeta: tx.time + ' · ' + tx.method,
+      txStatus: tx.status,
+      txStatusColor: tx.status === 'Aprovada' ? '#0E7F42' : tx.status === 'Recusada' ? '#B02219' : '#6B6675',
+      txStatusBg: tx.status === 'Aprovada' ? '#E3F5EB' : tx.status === 'Recusada' ? '#FEF3F2' : '#EDEAF2',
+      txFields: [
+        { k: 'Forma', v: tx.method }, { k: 'Parcelamento', v: tx.inst }, { k: 'Cartão', v: tx.brand },
+        { k: 'NSU', v: tx.nsu }, { k: 'Autorização', v: '019' + tx.nsu.slice(-3) },
+        { k: 'Data', v: tx.time }, { k: 'Operadora', v: 'Marina' }
+      ],
+      goRefund: () => this.go('refund1'),
+      goRefund2: () => this.go('refund2'),
+
+      breakdown: bd.map(b => ({ label: b.label, value: this.brl(b.cents), pct: Math.round(b.cents / bdMax * 100) + '%', color: b.color })),
+      reportRows: [
+        { k: 'Maior venda', v: this.brl(23000) },
+        { k: 'Estornos', v: '1 · ' + this.brl(23000) },
+        { k: 'Recusas', v: '1 · ' + this.brl(15600) },
+        { k: 'Abertura do caixa', v: 'Hoje 08:30' }
+      ],
+
+
+      faq: [
+        { q: 'O cliente não recebeu o comprovante', a: 'Abra o histórico, toque na transação e use “Reenviar comprovante”. Confira o número ou e-mail informado.' },
+        { q: 'Como estornar uma venda?', a: 'Histórico → transação → Cancelar/estornar. É preciso confirmar em dois passos com o PIN do operador.' },
+        { q: 'A maquininha não imprime', a: 'Verifique a bobina e feche bem a tampa. Em Configurações → Impressora você pode imprimir um teste.' },
+        { q: 'Quando o dinheiro cai na conta?', a: 'Débito e Pix em 1 dia útil. Crédito à vista em 30 dias, ou parcela a parcela no parcelado.' }
+      ].map((f, i) => ({
+        q: f.q, a: f.a,
+        display: s.faqOpen === i ? 'block' : 'none',
+        chev: s.faqOpen === i ? '−' : '+',
+        go: () => this.setState(st => ({ faqOpen: st.faqOpen === i ? -1 : i }))
+      })),
+
+      toggleFail: () => this.setState(st => ({ forceFail: !st.forceFail })),
+      failLabel: s.forceFail ? 'Simulando: recusa' : 'Simulando: aprovação',
+      failBg: s.forceFail ? '#FEF3F2' : '#FFFFFF',
+      failColor: s.forceFail ? '#B02219' : '#16121C'
+    };
+  }
+}
+</script>
+</body>
+</html>
