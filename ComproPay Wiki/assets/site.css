@@ -41,7 +41,9 @@ main:focus { outline: none; } /* recebe foco só pelo "Pular para o conteúdo" *
 .faq-q { display: grid; gap: var(--cp-space-1); justify-items: start; padding-inline-end: var(--cp-space-4); }
 .question-list { margin: 0; padding: 0; list-style: none; }
 .question-list li[hidden] { display: none; }
-.question-list li + li { border-block-start: var(--cp-border-hairline) solid var(--cp-border-subtle); }
+/* O divisor vai só entre itens VISÍVEIS. Com `li + li`, filtrar escondia a
+   primeira pergunta e a nova primeira da lista ficava com o fio em cima. */
+.question-list li:not([hidden]) ~ li:not([hidden]) { border-block-start: var(--cp-border-hairline) solid var(--cp-border-subtle); }
 .faq-item { display: flex; align-items: center; justify-content: space-between; gap: var(--cp-space-4); padding-block: var(--cp-space-4); color: var(--cp-text-primary); text-decoration: none; }
 /* Hover só com mouse: no toque ele "gruda" depois do clique. */
 @media (hover: hover) and (pointer: fine) {
