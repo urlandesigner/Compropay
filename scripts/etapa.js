@@ -130,6 +130,14 @@
 
       if (titulo && titulo.parentElement === dono) titulo.after(bloco);
       else dono.prepend(bloco);
+
+      /* O float so serve para a PROSA contornar o bloco. Uma grade ou flex ao
+         lado dele perde a largura que o bloco ocupa e cai uma coluna: a grade
+         de tres cartoes da capa do ComproPay virava duas. Esses descem para
+         baixo do bloco e ficam com a largura inteira. */
+      for (let irmao = bloco.nextElementSibling; irmao; irmao = irmao.nextElementSibling) {
+        if (/(^|-)(grid|flex)$/.test(getComputedStyle(irmao).display)) irmao.style.clear = "both";
+      }
     })
     .catch(() => {});
 })();
