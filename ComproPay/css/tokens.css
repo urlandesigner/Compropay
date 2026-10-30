@@ -98,6 +98,10 @@
   --color-info-600: #1868be;
   --color-info-700: #145090;
 
+  /* Modo apresentação do app.html — fundo escuro em volta do celular e o brilho roxo atrás dele */
+  --color-present-bg: var(--color-purple-950);
+  --color-present-glow: rgb(124 18 200 / 0.22);
+
   /* Tipografia */
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   /* O Figma usa Avenir nos valores e no título. Não há webfont livre: cai para Avenir do sistema. */
